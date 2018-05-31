@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/../ex/head.phtml'; ?>
+<body style="background-color: rgb(84,53,146);">
+<div class="container-fluid">
+    <div class="row d-lg-block">
+        <img src="/static/img/cooperation.jpg" class="img-fluid" style="object-fit: fill;height: 8rem;"  >
+    </div>
+    <form class="mt-2">
+        <div class="form-group">
+            <label for="userName" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                姓 名
+            </label>
+            <input type="text" class="form-control" id="userName" placeholder="陈 X X">
+        </div>
+        <div class="form-group">
+            <label for="phone" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                联系方式
+            </label>
+            <input type="number" class="form-control" id="phone" placeholder="135XXXXX765">
+        </div>
+        <div class="form-group">
+            <label for="sType" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                合作方式
+            </label>
+            <select class="form-control" id="sType">
+                <option value="person">个体合伙人</option>
+                <option value="city">城市合伙人</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                所在地
+            </label>
+            <input type="text" class="form-control" id="address" placeholder="个体合伙人必填省/市/区，城市合伙人只填省市">
+        </div>
+        <div class="form-group">
+            <label for="reason" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                申请合作原因
+            </label>
+            <textarea class="form-control" id="reason" rows="4" placeholder="请填写您的合作意向!"></textarea>
+        </div>
+        <div class="form-group text-center">
+            <button onclick="sellerIntention()" type="button" class="btn btn-primary btn-lg" >确定</button>
+        </div>
+    </form>
+
+</div>
+
+    <script src="/static/jquery-3.2.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="/static/koJS/knockout-3.4.2.js"></script>
+    <script src="/static/koJS/knockout.mapping.js"></script>
+    <script type="text/javascript" src="/dist/js/customerService/questions.js"></script>
+</body>
+</html>

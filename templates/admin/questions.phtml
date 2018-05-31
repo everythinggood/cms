@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Q&A</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <button type="button" id="create" class="btn btn-block btn-primary btn-lg" style="margin-bottom: 1rem;">Create</button>
+
+                <table id="questionTable" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Question</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Tags</th>
+                        <th>Weight</th>
+                        <th>Answer</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Question</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Tags</th>
+                        <th>Weight</th>
+                        <th>Answer</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var answerShowLength = 40;
+
+        var table = $('#questionTable').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/front/questions",
+                "columns": [
+                    {"data": "id"},
+                    {"data": "question"},
+                    {"data": "category"},
+                    {"data": "type"},
+                    {"data": "tags"},
+                    {"data": "weight"},
+                    {"data": "answer"},
+                    {"data": "createTime.date"},
+                    {"data": "updateTime.date"}
+                ],
+                "createdRow": function (row, data, index) {
+                    $('td', row).eq(1).addClass('text-info');
+                },
+                "columnDefs": [
+                    {
+                        "targets": 6,
+                        "render": function (data, type, row) {
+                            return data.length > answerShowLength ?
+                                data.substr(0, answerShowLength)+"..." : data;
+                        }
+                    },
+                    {
+                        "targets":5,
+                        "render":function (data,type,row) {
+                            return data > 100 ? "<div class='bg-primary-gradient text-center'>top<i class='fa fa-fire fa-fw'></i></div>":'default';
+                        }
+                    }
+                ]
+            }
+        );
+
+        $('#questionTable').find('tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            console.log(data);
+
+            window.location.href = '/view/question/editor/'+data.id;
+        });
+
+        $('#create').click(function () {
+           window.location.href = '/view/question/create';
+        });
+
+    });
+</script>
+
+</body>
+</html>

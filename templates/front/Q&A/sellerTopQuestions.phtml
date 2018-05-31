@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/../ex/head.phtml'; ?>
+<body style="background-color: rgb(84,53,146);">
+<div class="container-fluid">
+    <div class="row d-lg-block" style="position: relative; top:-30px;">
+        <img src="/static/img/questions.jpg" class="img-fluid" style="object-fit: fill;height: 8rem;">
+    </div>
+    <ul class="list-group list-group-flush">
+
+        <?php
+        /** @var array $topQuestions */
+        /** @var \Cms\Entity\Question $topQuestion */
+        foreach ($topQuestions as $topQuestion){?>
+        <li class="list-group-item d-flex">
+            <a class="flex-fill text-dark" href="/front/view/question/<?php echo $topQuestion->id;?>">
+                <?php echo $topQuestion->question;?>
+                <span class="float-right pt-1 fa fa-angle-right fa-lg "></span>
+            </a>
+        </li>
+        <?php }?>
+    </ul>
+</div>
+<div class="fixed-bottom d-flex bg-white text-center">
+    <a class="flex-fill nav-link text-dark" href="/front/view/sellerQuestionCategorys"><span class="fa fa-list-ul fa-fw"></span>所有问题分类</a>
+    <a class="flex-fill nav-link text-dark" href="/front/view/sellerFeedback"><span class="fa fa-comment-o fa-fw"></span>商户反馈</a>
+</div>
+
+<script src="/static/jquery-3.2.1.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

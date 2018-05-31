@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/../ex/head.phtml'; ?>
+<body style="background-color: rgb(84,53,146);">
+<div class="container-fluid">
+    <div class="row d-lg-block">
+        <img src="/static/img/cooperation.jpg" class="img-fluid" style="object-fit: fill;height: 8rem;"  >
+    </div>
+    <div class="alert alert-warning alert-dismissible fade" role="alert">
+        <strong id="alert-text"></strong>
+    </div>
+        <form class="mt-2">
+            <div class="form-group">
+                <label for="userName" class="text-white p-1">
+                    <i class="fa fa-pencil fa-fw"></i>
+                    姓 名
+                </label>
+                <input type="text" class="form-control" id="userName" placeholder="陈 X X" >
+            </div>
+            <div class="form-group">
+                <label for="phone" class="text-white p-1">
+                    <i class="fa fa-pencil fa-fw"></i>
+                    联系方式
+                </label>
+                <input type="number" class="form-control" id="phone" placeholder="135XXXXX755">
+            </div>
+            <div class="form-group">
+                <label for="aType" class="text-white p-1">
+                    <i class="fa fa-pencil fa-fw"></i>
+                    广告投放类型
+                </label>
+                <select class="form-control" id="aType">
+                    <option value="offline">线下广告投放</option>
+                    <option value="online">线上广告投放</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Province" class="text-white p-1">
+                    <i class="fa fa-pencil fa-fw"></i>
+                    所在地
+                </label>
+                <br />
+                <select style="display: inline-block;width:50%;" class="form-control" id ="Province" onchange ="changeCity()">
+                    <option>省份</option>
+                </select>
+                <select style="display: inline-block;width:40%;" class="form-control" id ="city">
+                    <option >城市</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="aDemand" class="text-white p-1">
+                    <i class="fa fa-pencil fa-fw"></i>
+                    广告需求
+                </label>
+                <textarea class="form-control" id="aDemand" rows="4" placeholder="如：广告预算,广告规模或其他需求"></textarea>
+            </div>
+            <div class="form-group text-center">
+                <button onclick="adIntention()" type="button" class="btn btn-primary btn-lg" >确定</button>
+            </div>
+        </form>
+</div>
+
+<script src="/static/jquery-3.2.1.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+<script src="/static/koJS/knockout-3.4.2.js"></script>
+<script src="/static/koJS/knockout.mapping.js"></script>
+<script type="text/javascript" src="/dist/js/customerService/questions.js"></script>
+<script type="text/javascript" src="/static/cityName/city.json"></script>
+<script src="/dist/js/customerService/city.js"></script>
+</body>
+</html>

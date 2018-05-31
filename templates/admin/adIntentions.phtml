@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">AdIntentions</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <table id="table" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>AdType</th>
+                        <th>AdMoney</th>
+                        <th>IsHandle</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>AdType</th>
+                        <th>AdMoney</th>
+                        <th>IsHandle</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var table = $('#table').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/admin/adIntentions",
+                "columns": [
+                    {"data": "id"},
+                    {"data": "userName"},
+                    {"data": "phone"},
+                    {"data": "address"},
+                    {"data": "adType"},
+                    {"data": "adMoney"},
+                    {"data": "isHandle"},
+                    {"data": "createTime.date"},
+                    {"data": "updateTime.date"}
+                ]
+            }
+        );
+    });
+</script>
+
+</body>
+</html>

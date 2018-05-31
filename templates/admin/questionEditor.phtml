@@ -1,0 +1,232 @@
+<?php
+/** @var \Cms\Entity\Question $question */
+?>
+
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Q&A Editor</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/view/questions">Q&A</a></li>
+                            <li class="breadcrumb-item active">Q&A Editor</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <?php include __DIR__.'/ex/alertMessage.phtml';?>
+
+                <div class=" content">
+
+                    <div class="ui form">
+
+                        <input type="hidden" name="id" id="id" value="<?php echo $question->id; ?>">
+
+                        <div class="field">
+
+                            <label for="question">
+                                Question
+                            </label>
+                            <input type="text" name="question" id="question" placeholder="please enter your Question"
+                                   value="<?php echo $question->question; ?>">
+
+                        </div>
+
+                        <div class="field">
+                            <label for="category">
+                                Category
+                            </label>
+                            <select name="category" id="category">
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(array_keys(\Cms\Entity\Question::$sellerCategorys),$question->category);
+                                ?>
+                            </select>
+
+                        </div>
+
+                        <div class="field">
+                            <label for="type">
+                                Type
+                            </label>
+                            <select name="type" id="type">
+                                <option value="user" <?php echo $question->type == 'user' ? 'selected' : ''; ?>>user
+                                </option>
+                                <option value="seller" <?php echo $question->type == 'seller' ? 'selected' : ''; ?>>
+                                    seller
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="field">
+
+                            <label for="weight">
+                                Weight
+                            </label>
+
+                            <select name="weight" id="weight">
+                                <option value="100" <?php echo $question->weight==100?"selected":"";?>>
+                                    default
+                                </option>
+                                <option value="101" <?php echo $question->weight>100?"selected":"";?>>
+                                    top
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="field">
+
+                            <label for="answer">
+                                Answer
+                            </label>
+                            <div id="answer">
+
+                                <?php echo $question->answer; ?>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="footer" style="padding-top: 1rem;">
+                    <div class="ui animated button red left floated" tabindex="0" id="delete">
+                        <div class="visible content">Deleted</div>
+                        <div class="hidden content">
+                            <i class="left arrow icon"></i>
+                        </div>
+                    </div>
+                    <div class="ui animated button primary right floated" tabindex="0" id="submit">
+                        <div class="visible content">Saved</div>
+                        <div class="hidden content">
+                            <i class="right arrow icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+<?php include __DIR__ . '/ex/deleteModal.phtml'; ?>
+<?php include __DIR__ . '/ex/editor.phtml'; ?>
+
+<script>
+
+    $('div#answer').froalaEditor({
+        heightMin: 400,
+        heightMax: 600
+    });
+
+    $("div#submit").click(function () {
+        if ($(this).hasClass('loading')) {
+            console.log('loading...');
+        } else {
+            $(this).addClass('loading');
+            console.log('click to ajax!');
+            $.ajax({
+                url: "/admin/question/add",
+                type: 'POST',
+                dataTye: 'json',
+                data: getJsonData(),
+                success: function (result) {
+                    $("div#submit").removeClass('loading');
+                    console.log(result);
+                },
+                error: function (result) {
+                    $("div#submit").removeClass('loading');
+                    console.log(result);
+                    var exception = result.responseJSON.exception;
+                    if(exception){
+                        $('#alert-message').append(exception);
+                        $('#alert-message').removeClass('hidden');
+                        $('#alert-message').addClass('show');
+                    }
+                }
+            });
+        }
+
+
+    });
+
+    function getJsonData() {
+        var json = {
+            'id': $('#id').val(),
+            'question': $('#question').val(),
+            'category': $('#category').val(),
+            'type': $('#type').val(),
+            'weight': $('#weight').val(),
+            'answer': $('div#answer').froalaEditor('html.get')
+        };
+
+        return json;
+    };
+
+    $('div#delete').click(function () {
+        $('#delete-modal').modal('show');
+    });
+
+    $('#delete-sure').click(function () {
+        $(this).attr('disabled', true);
+        var id = $('#id').val();
+        $.ajax({
+            url: "/admin/question/delete",
+            type: 'POST',
+            dataType: 'json',
+            data: {'id': id},
+            success: function (result) {
+                $('#delete-modal').modal('hide');
+                window.location.href = '/view/questions';
+            },
+            error: function (result) {
+                $('#delete-modal').modal("hide");
+                console.log(result);
+                var exception = result.responseJSON.exception;
+                if(exception){
+                    $('#alert-message').append(exception);
+                    $('#alert-message').removeClass('hidden');
+                    $('#alert-message').addClass('show');
+                }
+
+            }
+        });
+
+
+    });
+
+</script>
+
+</body>
+</html>
+

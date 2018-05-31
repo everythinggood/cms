@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/../ex/head.phtml'; ?>
+<body style="background-color: rgb(84,53,146);">
+<div class="container-fluid">
+    <div class="row d-lg-block" style="position: relative; top:-30px;">
+        <img src="/static/img/questions.jpg" class="img-fluid" style="object-fit: fill;height: 8rem;">
+    </div>
+
+    <?php /** @var \Cms\Entity\Question $question */ ?>
+    <div class="card border-light mb-3" >
+        <div class="card-body">
+            <h5 class="card-title"><?php echo $question->question;?></h5>
+            <p class="card-text"><?php echo $question->answer;?></p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

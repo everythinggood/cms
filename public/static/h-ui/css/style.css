@@ -1,0 +1,64 @@
+.page-container .page-container {height: auto; }
+/*.form-horizontal {padding-top: 60px;}*/
+.page-container .row,.page-container  .cl {width:100%;float: left;font-size: 14px;}
+.page-container .panel,.page-container .panel-default {overflow: hidden;padding-bottom:5px;}
+.page-container .form-label,.page-container .input-text {margin: 0;padding-left: 0;float:left;}
+.page-container .form-labell {display:block; color:#555;}
+.page-container .xk {height:26px;width: 120px;padding-top:3px; }
+.page-container .row1 {padding-left: 17px;}
+.page-container .bingshi {border: 1px solid #c7c7c7;height:178px;float:left;padding:3px 3px;overflow-y:auto;overflow-x: auto;}
+.page-container .bingshi_table{height: 140px; overflow:auto;}
+.page-container .xclabel {background-color:white;border:1px solid #e5e5ee;}
+.page-container .xc {padding-right: 3px;background-color: #F5FAFE;border:1px solid #ddd;position:absolute;bottom:3px;left:3px;margin-top:3px;height:31px}
+.page-container .xba {width:10.33333333333333%;position:relative;float:left;}
+.page-container .xbaa {width:10.33333333333333%;}
+.page-container .xbb {width:4.33333333%;}
+.page-container .rowtop {	
+	/*background-color:#f5f5f5;*/
+	background-color: #eeeeee;
+	text-align:left;
+	display: block; 
+	padding: 5px;
+	margin: 0px;
+	height: 32px;/*position: fixed; z-index:999;*/
+	width:1092px;
+}
+.page-container  input[disabled]{
+    border: 1px solid #DDD;
+    background-color:#f5f5f5;
+	color: #b7babc;
+}
+.page-container  select[disabled]{
+    border: 1px solid #DDD;
+    background-color:#f5f5f5;
+	color: #b7babc;
+}
+.page-container .zi-red {color: red;}
+.page-container .tabBar span.current{background-color:#6699cc;color:white;}
+
+#patientInfo{
+	margin-left: 10px;
+	margin-top: 10px;
+	color: white;
+	float:left;
+}
+#searchPatientInfo{
+	margin-left: 100px;
+	margin-top: 10px;
+	color: white;
+	float:left;
+}
+
+.confirm-btn-fixed > .btn{width:20%}
+.confirm-btn-fixed{position:fixed; top:75px;left:225px;text-align:center;width:100%;background-color: #F5FAFE}
+
+.confirm-btn-fixed1 > .btn{width:10%}
+.confirm-btn-fixed1{position:fixed; top:75px;left:2.4%;text-align:center;width:100%;}
+
+.confirm-btn-fixed2 > .btn{width:10%}
+.confirm-btn-fixed2{position:fixed; top:75px;left:2.4%;text-align:center;width:100%;}
+
+
+body{
+/**    -webkit-app-region: no-drag;**/
+}
