@@ -1,8 +1,5 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-
 // Routes
 
 //$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
@@ -13,78 +10,79 @@ use Slim\Http\Response;
 //    return $this->renderer->render($response, 'index.phtml', $args);
 //});
 
-$app->group('/admin',function (){
 
-    $this->post('/login',\Cms\Controller\UserController::class.':login');
+$app->get('/view/login', \Cms\Controller\ViewController::class . ":login");
 
-    $this->post('/question/add',\Cms\Controller\QuestionController::class.':add');
+$app->post('/admin/login', \Cms\Controller\UserController::class . ':login');
 
-    $this->post('/user/add',\Cms\Controller\UserController::class.':add');
+$app->group('/admin', function () {
 
-    $this->post('/question/delete',\Cms\Controller\QuestionController::class.':delete');
+    $this->post('/question/add', \Cms\Controller\QuestionController::class . ':add');
 
-    $this->get('/adIntentions',\Cms\Controller\AdIntentionController::class.':findAll');
+    $this->post('/user/add', \Cms\Controller\UserController::class . ':add');
 
-    $this->get('/sellerIntentions',\Cms\Controller\SellerIntentionController::class.":findAll");
+    $this->post('/question/delete', \Cms\Controller\QuestionController::class . ':delete');
 
-    $this->get('/sellerFeedbacks',\Cms\Controller\SellerFeedBackController::class.":findAll");
+    $this->get('/adIntentions', \Cms\Controller\AdIntentionController::class . ':findAll');
 
-    $this->get('/userFeedbacks',\Cms\Controller\UserFeedBackController::class.":findAll");
+    $this->get('/sellerIntentions', \Cms\Controller\SellerIntentionController::class . ":findAll");
 
-    $this->post('/question/pushTop',\Cms\Controller\QuestionController::class.":pushTop");
+    $this->get('/sellerFeedbacks', \Cms\Controller\SellerFeedBackController::class . ":findAll");
 
-    $this->post('/userFeedback/handle',\Cms\Controller\UserFeedBackController::class.":handle");
+    $this->get('/userFeedbacks', \Cms\Controller\UserFeedBackController::class . ":findAll");
 
-    $this->post('/sellerFeedback/handle',\Cms\Controller\SellerFeedBackController::class.':handle');
+    $this->post('/question/pushTop', \Cms\Controller\QuestionController::class . ":pushTop");
 
-});
+    $this->post('/userFeedback/handle', \Cms\Controller\UserFeedBackController::class . ":handle");
 
-$app->group('/front',function (){
-
-    $this->post('/adIntention/add',\Cms\Controller\AdIntentionController::class.':add');
-
-    $this->post('/sellerIntention/add',\Cms\Controller\SellerIntentionController::class.':add');
-
-    $this->map(['GET','POST'],'/questions',\Cms\Controller\QuestionController::class.':getAllByPage');
-
-    $this->post('/sellerFeedback/add',\Cms\Controller\SellerFeedBackController::class.':add');
-
-    $this->post('/userFeedback/add',\Cms\Controller\UserFeedBackController::class.':add');
-
-    $this->post('/tag/add',\Cms\Controller\TagController::class.':add');
+    $this->post('/sellerFeedback/handle', \Cms\Controller\SellerFeedBackController::class . ':handle');
 
 });
 
-$app->group('/view',function (){
+$app->group('/front', function () {
 
-    $this->get('/login',\Cms\Controller\ViewController::class.":login");
+    $this->post('/adIntention/add', \Cms\Controller\AdIntentionController::class . ':add');
 
-    $this->get('/questions',\Cms\Controller\ViewController::class.":questions");
+    $this->post('/sellerIntention/add', \Cms\Controller\SellerIntentionController::class . ':add');
 
-    $this->get('/question/editor/{id}',\Cms\Controller\ViewController::class.':questionEditor');
+    $this->map(['GET', 'POST'], '/questions', \Cms\Controller\QuestionController::class . ':getAllByPage');
 
-    $this->get('/question/create',\Cms\Controller\ViewController::class.":questionCreate");
+    $this->post('/sellerFeedback/add', \Cms\Controller\SellerFeedBackController::class . ':add');
 
-    $this->get('/adIntentions',\Cms\Controller\ViewController::class.':adIntentions');
+    $this->post('/userFeedback/add', \Cms\Controller\UserFeedBackController::class . ':add');
 
-    $this->get('/sellerIntentions',\Cms\Controller\ViewController::class.':sellerIntentions');
+    $this->post('/tag/add', \Cms\Controller\TagController::class . ':add');
 
-    $this->get('/userFeedbacks',\Cms\Controller\ViewController::class.':userFeedbacks');
-
-    $this->get('/sellerFeedbacks',\Cms\Controller\ViewController::class.':sellerFeedbacks');
 });
 
-$app->group('/front/view',function (){
+$app->group('/view', function () {
 
-    $this->get('/userFeedback',\Cms\Controller\FrontViewController::class.":userFeedback");
-    $this->get('/sellerFeedback',\Cms\Controller\FrontViewController::class.":sellerFeedback");
-    $this->get('/adIntention',\Cms\Controller\FrontViewController::class.":adIntention");
-    $this->get('/sellerIntention',\Cms\Controller\FrontViewController::class.":sellerIntention");
-    $this->get('/sellerQuestions',\Cms\Controller\FrontViewController::class.":sellerQuestions");
-    $this->get('/userQuestions',\Cms\Controller\FrontViewController::class.":userQuestions");
-    $this->get('/sellerTopQuestions',\Cms\Controller\FrontViewController::class.":sellerTopQuestions");
-    $this->get('/sellerQuestionCategorys',\Cms\Controller\FrontViewController::class.":sellerQuestionCategorys");
-    $this->get('/question/{id}',\Cms\Controller\FrontViewController::class.":question");
-    $this->get('/success',\Cms\Controller\FrontViewController::class.":success");
+    $this->get('/questions', \Cms\Controller\ViewController::class . ":questions");
+
+    $this->get('/question/editor/{id}', \Cms\Controller\ViewController::class . ':questionEditor');
+
+    $this->get('/question/create', \Cms\Controller\ViewController::class . ":questionCreate");
+
+    $this->get('/adIntentions', \Cms\Controller\ViewController::class . ':adIntentions');
+
+    $this->get('/sellerIntentions', \Cms\Controller\ViewController::class . ':sellerIntentions');
+
+    $this->get('/userFeedbacks', \Cms\Controller\ViewController::class . ':userFeedbacks');
+
+    $this->get('/sellerFeedbacks', \Cms\Controller\ViewController::class . ':sellerFeedbacks');
+})->add($app->getContainer()['sessionMiddleware']);
+
+$app->group('/front/view', function () {
+
+    $this->get('/userFeedback', \Cms\Controller\FrontViewController::class . ":userFeedback");
+    $this->get('/sellerFeedback', \Cms\Controller\FrontViewController::class . ":sellerFeedback");
+    $this->get('/adIntention', \Cms\Controller\FrontViewController::class . ":adIntention");
+    $this->get('/sellerIntention', \Cms\Controller\FrontViewController::class . ":sellerIntention");
+    $this->get('/sellerQuestions', \Cms\Controller\FrontViewController::class . ":sellerQuestions");
+    $this->get('/userQuestions', \Cms\Controller\FrontViewController::class . ":userQuestions");
+    $this->get('/sellerTopQuestions', \Cms\Controller\FrontViewController::class . ":sellerTopQuestions");
+    $this->get('/sellerQuestionCategorys', \Cms\Controller\FrontViewController::class . ":sellerQuestionCategorys");
+    $this->get('/question/{id}', \Cms\Controller\FrontViewController::class . ":question");
+    $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
 
 });

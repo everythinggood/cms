@@ -64,11 +64,11 @@ class UserController
 
         /** @var Helper $sessionHelper */
         $sessionHelper = $this->container->get('session');
-        $sessionHelper->set('admin_user', $user->getName());
+        $sessionHelper->set('admin_user', join([$user->getId(),$user->getName()],':'));
         $sessionHelper->set('admin_user_role', $user->getRole());
 
         /** @var Response $response */
-        return $response->withRedirect('/view/questions',302);
+        return $response->withRedirect('/view/questions');
     }
 
     /**

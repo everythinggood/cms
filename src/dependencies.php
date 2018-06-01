@@ -64,3 +64,12 @@ $container['errorHandler'] = function (\Psr\Container\ContainerInterface $contai
 $container['flash'] = function (\Psr\Container\ContainerInterface $container){
     return new \Slim\Flash\Messages();
 };
+
+$container['sessionMiddleware'] = function (\Psr\Container\ContainerInterface $container){
+
+    $logger = $container->get('logger');
+    $session = $container->get('session');
+    $userService = new \Cms\Service\UserService($container->get(\Doctrine\ORM\EntityManager::class));
+
+    return new \Cms\Middleware\SessionMiddleware($session,$userService,$logger);
+};

@@ -19,13 +19,15 @@ require __DIR__ . '/../src/dependencies.php';
 /** @var \Doctrine\ORM\EntityManager $em */
 $em = $app->getContainer()->get(\Doctrine\ORM\EntityManager::class);
 
-$user = new \Cms\Entity\User();
-$user->setName('ycy1');
-$user->setPassword(base64_encode(md5('ycy1')));
-$user->setRole('admin');
-$user->setCreateTime(new DateTime());
-$user->setUpdateTime(new DateTime());
+//$user = new \Cms\Entity\User();
+//$user->setName('ycy1');
+//$user->setPassword(base64_encode(md5('ycy1')));
+//$user->setRole('admin');
+//$user->setCreateTime(new DateTime());
+//$user->setUpdateTime(new DateTime());
+//
+//$em->persist($user);
+//$em->flush();
 
-$em->persist($user);
-$em->flush();
-
+echo base64_encode(md5('ycy1'));
+echo base64_encode(md5('ycy1'));

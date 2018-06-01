@@ -111,5 +111,14 @@ class UserService
         return $user;
     }
 
+    public function findByIdAndUserName($userId,$userName){
+        $user = $this->em->getRepository(User::class)->findBy([
+           'id'=>$userId,
+           'name'=>$userName
+        ]);
+
+        return $user;
+    }
+
 
 }
