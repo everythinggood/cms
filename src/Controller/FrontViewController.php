@@ -145,4 +145,8 @@ class FrontViewController
         return $this->view->render($response,'/front/common/success.phtml');
     }
 
+    public function paper(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        return $this->view->render($response,'/front/common/paper.phtml');
+    }
+
 }

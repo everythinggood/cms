@@ -84,5 +84,6 @@ $app->group('/front/view', function () {
     $this->get('/sellerQuestionCategorys', \Cms\Controller\FrontViewController::class . ":sellerQuestionCategorys");
     $this->get('/question/{id}', \Cms\Controller\FrontViewController::class . ":question");
     $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
+    $this->get('/paper',\Cms\Controller\FrontViewController::class.":paper");
 
 });
