@@ -58,7 +58,9 @@ $container['session'] = function (\Psr\Container\ContainerInterface $container){
 };
 
 $container['errorHandler'] = function (\Psr\Container\ContainerInterface $container){
-    return new \Cms\Handler\ErrorHandler();
+    $handler =  new \Cms\Handler\ErrorHandler();
+    $handler->setLogger($container->get('logger'));
+    return $handler;
 };
 
 $container['flash'] = function (\Psr\Container\ContainerInterface $container){

@@ -9,17 +9,35 @@
     <form>
         <div class="form-group">
             <label for="userName" class="text-white p-1">
-                <i class="fa fa-pencil fa-fw"></i>
-                姓 名
+                <i class="fa fa-pencil fa-fw"></i>  姓 名
             </label>
-            <input type="text" class="form-control" id="userName" placeholder="陈 x x">
+            <div class="input-group">
+                <input type="text" class="form-control border-right-0" id="userName" placeholder="陈 x x"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="userNameSpan" style="border:none !important;">
+                        <i id="userNameDeafult" class="fa fa-edit"></i>
+                        <i id="userNameRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="userNameError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="phone" class="text-white p-1">
-                <i class="fa fa-pencil fa-fw"></i>
+                <i class="fa fa-pencil fa-fw text-white"></i>
                 联系方式
             </label>
-            <input type="number" class="form-control" id="phone" placeholder="137XXXXX454">
+            <div class="input-group">
+                <!--                <input type="number" class="form-control font-weight-light" id="phone" placeholder="137XXXXX454">-->
+                <input type="number" class="form-control border-right-0" id="phone" placeholder="137XXXXX454"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="phoneSpan" style="border:none !important;">
+                        <i id="phoneDeafult" class="fa fa-edit"></i>
+                        <i id="phoneRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="phoneError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="qType" class="text-white p-1">
@@ -37,14 +55,32 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 故障部分
             </label>
-            <input type="text" class="form-control" id="fault" placeholder="如传感器损坏，光眼损坏等">
+            <div class="input-group">
+                <input type="text" class="form-control border-right-0" id="fault" placeholder="如传感器损坏，光眼损坏等"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="faultSpan" style="border:none !important;">
+                        <i id="faultDeafult" class="fa fa-edit"></i>
+                        <i id="faultRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="faultError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="qDescript" class="text-white p-1">
+            <label for="descript" class="text-white p-1">
                 <i class="fa fa-pencil fa-fw"></i>
                 问题描述
             </label>
-            <input type="text" class="form-control" id="qDescript" placeholder="配件损坏请填写以订单为准的设备购买时间及损坏原因...">
+            <div class="input-group">
+                <input type="text" class="form-control border-right-0" id="descript" placeholder="配件损坏请填写以订单为准的设备购买时间及损坏原因..."  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="descriptSpan" style="border:none !important;">
+                        <i id="descriptDeafult" class="fa fa-edit"></i>
+                        <i id="descriptRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="descriptError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="advice" class="text-white p-1">
@@ -54,7 +90,7 @@
             <textarea class="form-control" id="advice" rows="4" placeholder="写下您宝贵的意见，谢谢您的支持！"></textarea>
         </div>
         <div class="form-group text-center">
-            <button onclick="sellerFeedBack()" type="button" class="btn btn-primary btn-lg">确定</button>
+            <button onclick="sellerFeedBack()" type="button" class="btn btn-primary btn-lg" style="width:100% !important;">提  交</button>
         </div>
     </form>
 </div>

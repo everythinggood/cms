@@ -62,7 +62,6 @@ class UserFeedBackController
         ValidationHelper::checkIsNull($wxId,'wxId');
         ValidationHelper::checkIsNull($machineCode,'machineCode');
         ValidationHelper::checkIsNull($phone,'phone');
-        ValidationHelper::checkIsNull($qDescription,'qDescription');
         ValidationHelper::checkIsNull($qType,'qType');
 
         $userFeedbackService = new UserFeedBackService($this->container->get(EntityManager::class));
@@ -104,7 +103,7 @@ class UserFeedBackController
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @param array $args
-     * @return static
+     * @return Response
      * @throws \Exception
      */
     public function handle(ServerRequestInterface $request, ResponseInterface $response, array $args){

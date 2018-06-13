@@ -12,14 +12,32 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 姓 名
             </label>
-            <input type="text" class="form-control" id="userName" placeholder="陈 X X ">
+            <div class="input-group">
+                <input type="text" class="form-control border-right-0" id="userName" placeholder="陈 x x"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="userNameSpan" style="border:none !important;">
+                        <i id="userNameDeafult" class="fa fa-edit"></i>
+                        <i id="userNameRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="userNameError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="phone" class="text-white p-1">
                 <i class="fa fa-pencil fa-fw"></i>
                 联系方式
             </label>
-            <input type="number" class="form-control" id="phone" placeholder="137XXXXX784">
+            <div class="input-group">
+                <input type="number" class="form-control border-right-0" id="phone" placeholder="137XXXXX784"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="phoneSpan" style="border:none !important;">
+                        <i id="phoneDeafult" class="fa fa-edit"></i>
+                        <i id="phoneRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="phoneError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="qType" class="text-white p-1">
@@ -38,14 +56,32 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 设备唯一码
             </label>
-            <input type="text" class="form-control" id="eId" placeholder="请填写设备二维码图下的一行代码">
+            <div class="input-group">
+                <input type="number" class="form-control border-right-0" id="eId" placeholder="请填写设备二维码图下的一行代码"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="eIdSpan" style="border:none !important;">
+                        <i id="eIdDeafult" class="fa fa-edit"></i>
+                        <i id="eIdRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="eIdError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="wxId" class="text-white p-1">
                 <i class="fa fa-pencil fa-fw"></i>
                 微信ID
             </label>
-            <input type="text" class="form-control" id="wxId" placeholder="查实后,我们将会退款到您的微信帐号">
+            <div class="input-group">
+                <input type="text" class="form-control border-right-0" id="wxId" placeholder="请填写设备二维码图下的一行代码"  aria-describedby="userName" required>
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-0" id="wxIdSpan" style="border:none !important;">
+                        <i id="wxIdDeafult" class="fa fa-edit"></i>
+                        <i id="wxIdRight" class='fa fa-check fa-fw text-info d-none'></i>
+                        <i id="wxIdError" class="fa fa-exclamation-triangle text-danger d-none"></i>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="advice" class="text-white p-1">
@@ -55,15 +91,15 @@
             <textarea class="form-control" id="advice" rows="4" placeholder="写上您宝贵的意见,谢谢您的支持!"></textarea>
         </div>
         <div class="form-group text-center">
-            <button onclick="userFeedBack()" type="button" class="btn btn-primary btn-lg" >确定</button>
+            <button onclick="userFeedBack()" type="button" class="btn btn-primary btn-lg" style="width:100% !important;" >确定</button>
         </div>
     </form>
 </div>
-    <script src="/static/jquery-3.2.1.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="/plugins/bootstrap/js/bootstrap.js"></script>
-    <script src="/static/koJS/knockout-3.4.2.js"></script>
-    <script src="/static/koJS/knockout.mapping.js"></script>
-    <script type="text/javascript" src="/dist/js/customerService/questions.js"></script>
+<script src="/static/jquery-3.2.1.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+<script src="/static/koJS/knockout-3.4.2.js"></script>
+<script src="/static/koJS/knockout.mapping.js"></script>
+<script type="text/javascript" src="/dist/js/customerService/questions.js"></script>
 </body>
 </html>
