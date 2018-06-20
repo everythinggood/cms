@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Q&A Creator</h1>
+                        <h1 class="m-0 text-dark">Article Creator</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/view/questions">Q&A</a></li>
-                            <li class="breadcrumb-item active">Q&A Editor</li>
+                            <li class="breadcrumb-item"><a href="/view/articles">Articles</a></li>
+                            <li class="breadcrumb-item active">Article Editor</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -40,22 +40,20 @@
 
                         <div class="field">
 
-                            <label for="question">
-                                Question
+                            <label for="title">
+                                Title
                             </label>
-                            <input type="text" name="question" id="question" placeholder="please enter your Question">
+                            <input type="text" name="title" id="title" placeholder="please enter your Titile">
 
                         </div>
 
                         <div class="field">
-                            <label for="category">
-                                Category
+
+                            <label for="author">
+                                Author
                             </label>
-                            <select name="category" id="category">
-                               <?php
-                               echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys);
-                               ?>
-                            </select>
+                            <input type="text" name="author" id="author" placeholder="please enter your author"
+                            value="纸色">
 
                         </div>
 
@@ -64,40 +62,38 @@
                                 Type
                             </label>
                             <select name="type" id="type">
-                                <option value="user">
-                                    user
-                                </option>
-                                <option value="seller">
-                                    seller
-                                </option>
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Article::$types);
+                                ?>
                             </select>
 
                         </div>
 
                         <div class="field">
-
-                            <label for="weight">
-                                Weight
+                            <label for="status">
+                                Status
                             </label>
-
-                            <select name="weight" id="weight">
-                                <option value="100">
-                                    default
-                                </option>
-                                <option value="101">
-                                    top
-                                </option>
+                            <select name="status" id="status">
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Article::$statues);
+                                ?>
                             </select>
 
                         </div>
 
+                        <div class="field">
+                            <label for="status">
+                                DownloadUrl
+                            </label>
+                            <input type="text" name="downloadUrl" id="downloadUrl" placeholder="please enter your downloadUrl">
+                        </div>
 
                         <div class="field">
 
-                            <label for="answer">
-                                Answer
+                            <label for="content">
+                                Content
                             </label>
-                            <div name="answer" id="answer">
+                            <div name="content" id="content">
                                 Enjoy your comment!
                             </div>
 
@@ -130,7 +126,7 @@
 
 <script>
 
-    $('div#answer').froalaEditor({
+    $('div#content').froalaEditor({
         heightMin: 400,
         heightMax: 600
     });
@@ -142,14 +138,14 @@
             $(this).addClass('loading');
             console.log('click to ajax!');
             $.ajax({
-                url: "/admin/question/add",
+                url: "/admin/article/add",
                 type: 'POST',
                 dataTye: 'json',
                 data: getJsonData(),
                 success: function (result) {
                     $("div#submit").removeClass('loading');
                     console.log(result);
-                    window.location.href='/view/questions';
+                    window.location.href='/view/articles';
                 },
                 error: function (result) {
                     console.log(result);
@@ -169,14 +165,13 @@
 
     function getJsonData() {
         var json = {
-            'question': $('#question').val(),
-            'category': $('#category').val(),
+            'title': $('#title').val(),
+            'author': $('#author').val(),
             'type': $('#type').val(),
-            'weight': $('#weight').val(),
-            'answer': $('div#answer').froalaEditor('html.get')
+            'status': $('#status').val(),
+            'downloadUrl': $('#downloadUrl').val(),
+            'content': $('div#content').froalaEditor('html.get')
         };
-
-        // if()
 
         return json;
     }

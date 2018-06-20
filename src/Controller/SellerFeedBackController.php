@@ -113,11 +113,11 @@ class SellerFeedBackController
         /** @var Request $request */
         $id = $request->getParam('id');
 
-        $flag = $this->sellerFeedbackService->handle($id);
+        $sellerFeedback = $this->sellerFeedbackService->handle($id);
 
         /** @var Response $response */
         return $response->withJson([
-            'handle'=>$flag
+            $sellerFeedback
         ],200);
     }
 

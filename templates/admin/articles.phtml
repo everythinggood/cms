@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Articles</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <button type="button" id="create" class="btn btn-block btn-primary btn-lg" style="margin-bottom: 1rem;">Create</button>
+
+                <table id="articleTable" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Content</th>
+                        <th>DownloadUrl</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Content</th>
+                        <th>DownloadUrl</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var answerShowLength = 40;
+
+        var table = $('#articleTable').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/admin/article/list",
+                "columns": [
+                    {"data": "id"},
+                    {"data": "title"},
+                    {"data": "author"},
+                    {"data": "type"},
+                    {"data": "status"},
+                    {"data": "content"},
+                    {"data": "downloadUrl"},
+                    {"data": "createTime.date"},
+                    {"data": "updateTime.date"}
+                ],
+                "createdRow": function (row, data, index) {
+                    $('td', row).eq(1).addClass('text-info');
+                },
+                "columnDefs": [
+
+                    {
+                        "targets": 5,
+                        "render": function (data, type, row) {
+                            return data.length > answerShowLength ?
+                                data.substr(0, answerShowLength)+"..." : data;
+                        }
+                    },
+                    {
+                        "targets":4,
+                        "render":function (data,type,row) {
+                            return data == 'top' ? "<div class='bg-primary-gradient text-center'>top<i class='fa fa-fire fa-fw'></i></div>":'default';
+                        }
+                    },
+                    {
+                        "targets":3,
+                        "render":function (data,type,row) {
+                            if(data == 'news') return '新闻';
+                            if(data == 'notice') return '公告';
+                            return data;
+                        }
+                    },
+                    {
+                        "targets":6,
+                        "render":function (data, type, row) {
+                            return data?"<a href='"+data+"'>"+data+"</a>":"no addition file";
+                        }
+                    }
+                ]
+            }
+        );
+
+        $('#articleTable').find('tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            console.log(data);
+
+            window.location.href = '/view/article/editor/'+data.id;
+        });
+
+        $('#create').click(function () {
+            window.location.href = '/view/article/create';
+        });
+
+    });
+</script>
+
+</body>
+</html>

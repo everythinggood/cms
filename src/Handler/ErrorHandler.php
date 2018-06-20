@@ -39,6 +39,4 @@ class ErrorHandler
         $this->logger = $logger;
     }
 
-
-
 }

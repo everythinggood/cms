@@ -95,9 +95,80 @@
                     {"data": "isHandle"},
                     {"data": "createTime.date"},
                     {"data": "updateTime.date"}
+                ],
+                "columnDefs":[
+                    {
+                        "targets": -1,
+                        "render": function (data, type, full, meta) {
+                            // console.log(type);
+                            // console.log(full);
+                            // console.log(full.id);
+                            var id = full.id;
+                            var isHandle = full.isHandle;
+
+                            if(isHandle == 'pending'){
+
+                                return "<button type='button' class='handle ui button primary' id='" + id + "'>handle</button>"
+                            }
+
+                            return "";
+                        }
+                    },
+                    {
+                        "targets":9,
+                        "render":function (data, type, full, meta) {
+
+                            if(data == 'done'){
+                                return "<div class='bg-primary-gradient text-center'>done<i class='fa fa-thumbs-o-up fa-fw'></i></div>";
+                            }
+
+                            if(data == 'pending'){
+                                return "<div class='bg-warning-gradient text-center'>pending<i class='fa fa-warning fa-fw'></i></div>";
+                            }
+
+                            return data;
+
+                        }
+                    }
                 ]
             }
         );
+
+
+        $('#table').find('tbody').on('click', '.handle', function () {
+            var data = table.row(this).data();
+            var id = $(this).attr('id');
+
+            var btn = $(this);
+            if (btn.hasClass('loading')) {
+
+                alert('handling ...');
+
+            } else {
+                btn.addClass('loading');
+                $.ajax({
+                    url: "/admin/sellerIntention/handle",
+                    type: "POST",
+                    dataType: "json",
+                    data: {'id': id},
+                    success: function (result) {
+                        btn.removeClass('loading');
+                        btn.addClass('disabled');
+                        table.ajax.reload();
+                    },
+                    error: function (result) {
+                        btn.removeClass('loading');
+                        var exception = result.responseJSON.exception;
+                        if(exception){
+                            $('#alert-message').append(exception);
+                            $('#alert-message').removeClass('hidden');
+                            $('#alert-message').addClass('show');
+                        }
+                    }
+                });
+            }
+
+        });
     });
 </script>
 

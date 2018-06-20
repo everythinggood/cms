@@ -1,5 +1,7 @@
 <?php
-/** @var \Cms\Entity\Question $question */
+/** @var \Cms\Entity\Navigation $navigation
+ * @var array $topNavigations
+ */
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +21,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Q&A Editor</h1>
+                        <h1 class="m-0 text-dark">Navigation Editor</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/view/questions">Q&A</a></li>
-                            <li class="breadcrumb-item active">Q&A Editor</li>
+                            <li class="breadcrumb-item"><a href="/view/navigations">Navigations</a></li>
+                            <li class="breadcrumb-item active">Navigation Editor</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -36,78 +38,54 @@
         <section class="content">
             <div class="container-fluid">
 
-                <?php include __DIR__.'/ex/alertMessage.phtml';?>
+                <?php include __DIR__ . '/ex/alertMessage.phtml'; ?>
 
                 <div class=" content">
 
                     <div class="ui form">
 
-                        <input type="hidden" name="id" id="id" value="<?php echo $question->id; ?>">
+                        <input type="hidden" name="id" id="id" value="<?php echo $navigation->id; ?>">
 
                         <div class="field">
 
-                            <label for="question">
-                                Question
+                            <label for="name">
+                                Name
                             </label>
-                            <input type="text" name="question" id="question" placeholder="please enter your Question"
-                                   value="<?php echo $question->question; ?>">
+                            <input type="text" name="name" id="name" placeholder="please enter your Name"
+                                   value="<?php echo $navigation->name; ?>">
 
+                        </div>
+                        <div class="field">
+
+                            <label for="zIndex">
+                                zIndex
+                            </label>
+                            <select name="zIndex" id="zIndex">
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Navigation::$zIndexes, $navigation->zIndex);
+                                ?>
+                            </select>
                         </div>
 
                         <div class="field">
-                            <label for="category">
-                                Category
+                            <label for="inheritId">
+                                InheritId
                             </label>
-                            <select name="category" id="category">
+                            <select name="inheritId" id="inheritId">
+                                <option value="0">无</option>
                                 <?php
-                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys,$question->category);
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions($topNavigations, $navigation->inheritId);
                                 ?>
                             </select>
 
                         </div>
 
                         <div class="field">
-                            <label for="type">
-                                Type
+                            <label for="href">
+                                Href
                             </label>
-                            <select name="type" id="type">
-                                <option value="user" <?php echo $question->type == 'user' ? 'selected' : ''; ?>>user
-                                </option>
-                                <option value="seller" <?php echo $question->type == 'seller' ? 'selected' : ''; ?>>
-                                    seller
-                                </option>
-                            </select>
-
-                        </div>
-
-                        <div class="field">
-
-                            <label for="weight">
-                                Weight
-                            </label>
-
-                            <select name="weight" id="weight">
-                                <option value="100" <?php echo $question->weight==100?"selected":"";?>>
-                                    default
-                                </option>
-                                <option value="101" <?php echo $question->weight>100?"selected":"";?>>
-                                    top
-                                </option>
-                            </select>
-
-                        </div>
-
-                        <div class="field">
-
-                            <label for="answer">
-                                Answer
-                            </label>
-                            <div id="answer">
-
-                                <?php echo $question->answer; ?>
-
-                            </div>
-
+                            <input type="text" name="href" id="href" placeholder="please enter your href"
+                            value="<?php echo $navigation->href?>">
                         </div>
 
                     </div>
@@ -140,14 +118,9 @@
 
 <?php include __DIR__ . '/ex/scripts.phtml'; ?>
 <?php include __DIR__ . '/ex/deleteModal.phtml'; ?>
-<?php include __DIR__ . '/ex/editor.phtml'; ?>
 
 <script>
 
-    $('div#answer').froalaEditor({
-        heightMin: 400,
-        heightMax: 600
-    });
 
     $("div#submit").click(function () {
         if ($(this).hasClass('loading')) {
@@ -156,7 +129,7 @@
             $(this).addClass('loading');
             console.log('click to ajax!');
             $.ajax({
-                url: "/admin/question/add",
+                url: "/admin/navigation/edit",
                 type: 'POST',
                 dataTye: 'json',
                 data: getJsonData(),
@@ -168,7 +141,7 @@
                     $("div#submit").removeClass('loading');
                     console.log(result);
                     var exception = result.responseJSON.exception;
-                    if(exception){
+                    if (exception) {
                         $('#alert-message').append(exception);
                         $('#alert-message').removeClass('hidden');
                         $('#alert-message').addClass('show');
@@ -183,11 +156,10 @@
     function getJsonData() {
         var json = {
             'id': $('#id').val(),
-            'question': $('#question').val(),
-            'category': $('#category').val(),
-            'type': $('#type').val(),
-            'weight': $('#weight').val(),
-            'answer': $('div#answer').froalaEditor('html.get')
+            'name': $('#name').val(),
+            'zIndex': $('#zIndex').val(),
+            'inheritId': $('#inheritId').val(),
+            'href': $('#href').val(),
         };
 
         return json;
@@ -201,19 +173,19 @@
         $(this).attr('disabled', true);
         var id = $('#id').val();
         $.ajax({
-            url: "/admin/question/delete",
+            url: "/admin/navigation/remove",
             type: 'POST',
             dataType: 'json',
             data: {'id': id},
             success: function (result) {
                 $('#delete-modal').modal('hide');
-                window.location.href = '/view/questions';
+                window.location.href = '/view/navigations';
             },
             error: function (result) {
                 $('#delete-modal').modal("hide");
                 console.log(result);
                 var exception = result.responseJSON.exception;
-                if(exception){
+                if (exception) {
                     $('#alert-message').append(exception);
                     $('#alert-message').removeClass('hidden');
                     $('#alert-message').addClass('show');

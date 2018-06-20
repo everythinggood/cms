@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Metadatas</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <button type="button" id="create" class="btn btn-block btn-primary btn-lg" style="margin-bottom: 1rem;">
+                    Create
+                </button>
+
+                <table id="metadataTable" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>DownloadUrl</th>
+                        <th>Status</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>DownloadUrl</th>
+                        <th>Status</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+<?php include __DIR__ . '/ex/editor.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var table = $('#metadataTable').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/admin/metadata/list",
+                "columns": [
+                    {"data": "id"},
+                    {"data": "type"},
+                    {"data": "downloadUrl"},
+                    {"data": "status"},
+                    {"data": "createTime.date"},
+                    {"data": "updateTime.date"}
+                ],
+                "columnDefs": [
+
+                    {
+                        "targets": 2,
+                        "render": function (data, type, row) {
+                            return "<a href='/uploads/" + data + "' target='_blank'>" + data + "</a>";
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "render": function (data, type, row) {
+                            return data == 'up' ?
+                                "<div class='bg-success-gradient text-center'>启用" +
+                                "<i class='fa fa-level-up fa-fw'></i></div>" :
+                                "<div class='bg-dark-gradient text-center'>禁用" +
+                                "<i class='fa fa-level-down fa-fw'></i></div>";
+                        }
+                    },
+                ]
+            }
+        );
+
+        $('#metadataTable').find('tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            console.log(data);
+
+            window.location.href = '/view/metadata/editor/' + data.id;
+        });
+
+        $('#create').click(function () {
+            window.location.href = '/view/metadata/create';
+        });
+
+    });
+</script>
+
+</body>
+</html>

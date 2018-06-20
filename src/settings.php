@@ -42,6 +42,8 @@ return [
                 'password' => $_ENV['connect_password'],
                 'charset' => $_ENV['charset'],
             ]
-        ]
+        ],
+
+        'upload_file_directory'=> __DIR__ . '/../public/uploads'
     ],
 ];

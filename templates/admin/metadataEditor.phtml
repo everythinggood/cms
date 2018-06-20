@@ -1,7 +1,8 @@
 <?php
-/** @var \Cms\Entity\Question $question */
+/**
+ * @var \Cms\Entity\MetaData $metadata
+ */
 ?>
-
 <!DOCTYPE html>
 <html>
 <?php include __DIR__ . '/ex/header.phtml'; ?>
@@ -19,12 +20,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Q&A Editor</h1>
+                        <h1 class="m-0 text-dark">Metadata Editor</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/view/questions">Q&A</a></li>
-                            <li class="breadcrumb-item active">Q&A Editor</li>
+                            <li class="breadcrumb-item"><a href="/view/metadatas">Metadatas</a></li>
+                            <li class="breadcrumb-item active">Metadata Editor</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -36,81 +37,48 @@
         <section class="content">
             <div class="container-fluid">
 
-                <?php include __DIR__.'/ex/alertMessage.phtml';?>
+                <?php include __DIR__ . '/ex/alertMessage.phtml'; ?>
 
                 <div class=" content">
+                    <form id="metadataForm">
+                        <div class="ui form">
 
-                    <div class="ui form">
+                            <input type="hidden" name="id" id="id" value="<?php echo $metadata->id; ?>">
 
-                        <input type="hidden" name="id" id="id" value="<?php echo $question->id; ?>">
+                            <div class="field">
 
-                        <div class="field">
+                                <label for="type">
+                                    Type
+                                </label>
+                                <select name="type" id="type">
+                                    <?php
+                                    echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\MetaData::$types, $metadata->type);
+                                    ?>
+                                </select>
+                            </div>
 
-                            <label for="question">
-                                Question
-                            </label>
-                            <input type="text" name="question" id="question" placeholder="please enter your Question"
-                                   value="<?php echo $question->question; ?>">
+                            <div>
+                                <label for="status">
+                                    status
+                                </label>
+                                <select name="status" id="status">
+                                    <?php
+                                    echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\MetaData::$statues, $metadata->status);
+                                    ?>
+                                </select>
+                            </div>
 
-                        </div>
+                            <div class="field">
 
-                        <div class="field">
-                            <label for="category">
-                                Category
-                            </label>
-                            <select name="category" id="category">
-                                <?php
-                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys,$question->category);
-                                ?>
-                            </select>
-
-                        </div>
-
-                        <div class="field">
-                            <label for="type">
-                                Type
-                            </label>
-                            <select name="type" id="type">
-                                <option value="user" <?php echo $question->type == 'user' ? 'selected' : ''; ?>>user
-                                </option>
-                                <option value="seller" <?php echo $question->type == 'seller' ? 'selected' : ''; ?>>
-                                    seller
-                                </option>
-                            </select>
-
-                        </div>
-
-                        <div class="field">
-
-                            <label for="weight">
-                                Weight
-                            </label>
-
-                            <select name="weight" id="weight">
-                                <option value="100" <?php echo $question->weight==100?"selected":"";?>>
-                                    default
-                                </option>
-                                <option value="101" <?php echo $question->weight>100?"selected":"";?>>
-                                    top
-                                </option>
-                            </select>
-
-                        </div>
-
-                        <div class="field">
-
-                            <label for="answer">
-                                Answer
-                            </label>
-                            <div id="answer">
-
-                                <?php echo $question->answer; ?>
-
+                                <label for="downloadUrl">
+                                    DownloadUrl
+                                </label>
+                                <img class="img-responsive " height="500px" src="<?php echo '/uploads/' . $metadata->downloadUrl; ?>" alt="downloadUrl">
+                                <input type="file" name="singeFile" id="singeFile">
                             </div>
 
                         </div>
-
-                    </div>
+                    </form>
 
                 </div>
                 <div class="footer" style="padding-top: 1rem;">
@@ -140,14 +108,8 @@
 
 <?php include __DIR__ . '/ex/scripts.phtml'; ?>
 <?php include __DIR__ . '/ex/deleteModal.phtml'; ?>
-<?php include __DIR__ . '/ex/editor.phtml'; ?>
 
 <script>
-
-    $('div#answer').froalaEditor({
-        heightMin: 400,
-        heightMax: 600
-    });
 
     $("div#submit").click(function () {
         if ($(this).hasClass('loading')) {
@@ -156,19 +118,23 @@
             $(this).addClass('loading');
             console.log('click to ajax!');
             $.ajax({
-                url: "/admin/question/add",
+                url: "/admin/metadata/edit/"+$('#id').val()+"?type="+$('#type').val(),
                 type: 'POST',
-                dataTye: 'json',
                 data: getJsonData(),
+                //下面三个参数是上传文件 必须初始化的
+                cache:false,
+                processData:false,
+                contentType:false,
                 success: function (result) {
                     $("div#submit").removeClass('loading');
                     console.log(result);
+                    window.location.reload();
                 },
                 error: function (result) {
                     $("div#submit").removeClass('loading');
                     console.log(result);
                     var exception = result.responseJSON.exception;
-                    if(exception){
+                    if (exception) {
                         $('#alert-message').append(exception);
                         $('#alert-message').removeClass('hidden');
                         $('#alert-message').addClass('show');
@@ -181,16 +147,7 @@
     });
 
     function getJsonData() {
-        var json = {
-            'id': $('#id').val(),
-            'question': $('#question').val(),
-            'category': $('#category').val(),
-            'type': $('#type').val(),
-            'weight': $('#weight').val(),
-            'answer': $('div#answer').froalaEditor('html.get')
-        };
-
-        return json;
+        return new FormData($('#metadataForm')[0]);
     };
 
     $('div#delete').click(function () {
@@ -201,19 +158,19 @@
         $(this).attr('disabled', true);
         var id = $('#id').val();
         $.ajax({
-            url: "/admin/question/delete",
+            url: "/admin/metadata/remove",
             type: 'POST',
             dataType: 'json',
             data: {'id': id},
             success: function (result) {
                 $('#delete-modal').modal('hide');
-                window.location.href = '/view/questions';
+                window.location.href = '/view/metadatas';
             },
             error: function (result) {
                 $('#delete-modal').modal("hide");
                 console.log(result);
                 var exception = result.responseJSON.exception;
-                if(exception){
+                if (exception) {
                     $('#alert-message').append(exception);
                     $('#alert-message').removeClass('hidden');
                     $('#alert-message').addClass('show');

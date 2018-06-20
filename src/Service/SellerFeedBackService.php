@@ -68,7 +68,9 @@ class SellerFeedBackService
 
     /**
      * @param $id
-     * @return bool
+     * @return SellerFeedBack
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Exception
      */
     public function handle($id)
@@ -83,7 +85,7 @@ class SellerFeedBackService
         $this->em->persist($sellerFeedback);
         $this->em->flush();
 
-        return true;
+        return $sellerFeedback;
 
     }
 

@@ -42,5 +42,14 @@ class ValidationHelper
         if($examiner > $compare) throw new \Exception($name);
     }
 
+    /**
+     * @param $examiner
+     * @param array $arr
+     * @param $name
+     * @throws \Exception
+     */
+    public static function checkIsInArr($examiner, array $arr, $name){
+        if(!in_array($examiner,$arr)) throw new \Exception($name);
+    }
 
 }

@@ -10,6 +10,7 @@ namespace Cms\Service;
 
 
 use Cms\Entity\SellerIntention;
+use Cms\Helper\ValidationHelper;
 use Doctrine\ORM\EntityManager;
 
 class SellerIntentionService
@@ -35,19 +36,20 @@ class SellerIntentionService
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function createSellerIntention(array $data){
+    public function createSellerIntention(array $data)
+    {
         $sellerIntention = new SellerIntention();
         $sellerIntention->setUpdateTime(new \DateTime());
         $sellerIntention->setCreateTime(new \DateTime());
         $sellerIntention->setUserName($data['userName']);
         $sellerIntention->setPhone($data['phone']);
         $sellerIntention->setAddress($data['address']);
-        $sellerIntention->setAddition($data['addition']?:null);
-        $sellerIntention->setAdditionType($data['additionType']?:null);
+        $sellerIntention->setAddition($data['addition'] ?: null);
+        $sellerIntention->setAdditionType($data['additionType'] ?: null);
         $sellerIntention->setIntention($data['intention']);
         $sellerIntention->setIntentionType($data['intentionType']);
-        $sellerIntention->setMemo($data['memo']?:null);
-        $sellerIntention->setIsHandle($data['isHandle']?:'pending');
+        $sellerIntention->setMemo($data['memo'] ?: null);
+        $sellerIntention->setIsHandle($data['isHandle'] ?: 'pending');
 
         $this->em->persist($sellerIntention);
         $this->em->flush();
@@ -55,10 +57,31 @@ class SellerIntentionService
         return $sellerIntention;
     }
 
-    public function findAll(){
+    public function findAll()
+    {
         $sellerIntentions = $this->em->getRepository(SellerIntention::class)->findAll();
 
         return $sellerIntentions;
+    }
+
+    /**
+     * @param $id
+     * @return SellerIntention|null|object
+     * @throws \Exception
+     */
+    public function handle($id)
+    {
+        $sellerIntention = $this->em->getRepository(SellerIntention::class)->find($id);
+
+        ValidationHelper::checkIsTrue($sellerIntention, 'can not found sellerIntention');
+
+        $sellerIntention->setIsHandle(SellerIntention::$done);
+
+        $this->em->persist($sellerIntention);
+        $this->em->flush();
+
+        return $sellerIntention;
+
     }
 
 

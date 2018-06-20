@@ -1,5 +1,5 @@
 <?php
-/** @var \Cms\Entity\Question $question */
+/** @var \Cms\Entity\Article $article */
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +19,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Q&A Editor</h1>
+                        <h1 class="m-0 text-dark">Article Editor</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/view/questions">Q&A</a></li>
-                            <li class="breadcrumb-item active">Q&A Editor</li>
+                            <li class="breadcrumb-item"><a href="/view/articles">Articles</a></li>
+                            <li class="breadcrumb-item active">Article Editor</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -42,27 +42,25 @@
 
                     <div class="ui form">
 
-                        <input type="hidden" name="id" id="id" value="<?php echo $question->id; ?>">
+                        <input type="hidden" name="id" id="id" value="<?php echo $article->id; ?>">
 
                         <div class="field">
 
-                            <label for="question">
-                                Question
+                            <label for="title">
+                                Titile
                             </label>
-                            <input type="text" name="question" id="question" placeholder="please enter your Question"
-                                   value="<?php echo $question->question; ?>">
+                            <input type="text" name="title" id="title" placeholder="please enter your Title"
+                                   value="<?php echo $article->title; ?>">
 
                         </div>
 
                         <div class="field">
-                            <label for="category">
-                                Category
+
+                            <label for="author">
+                                Author
                             </label>
-                            <select name="category" id="category">
-                                <?php
-                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys,$question->category);
-                                ?>
-                            </select>
+                            <input type="text" name="author" id="author" placeholder="please enter your author"
+                                   value="纸色">
 
                         </div>
 
@@ -71,40 +69,42 @@
                                 Type
                             </label>
                             <select name="type" id="type">
-                                <option value="user" <?php echo $question->type == 'user' ? 'selected' : ''; ?>>user
-                                </option>
-                                <option value="seller" <?php echo $question->type == 'seller' ? 'selected' : ''; ?>>
-                                    seller
-                                </option>
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Article::$types,$article->type);
+                                ?>
+                            </select>
+
+                        </div>
+
+                        <div class="field">
+                            <label for="status">
+                                Status
+                            </label>
+                            <select name="status" id="status">
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Article::$statues,$article->status);
+                                ?>
                             </select>
 
                         </div>
 
                         <div class="field">
 
-                            <label for="weight">
-                                Weight
+                            <label for="downloadUrl">
+                                DownloadUrl
                             </label>
-
-                            <select name="weight" id="weight">
-                                <option value="100" <?php echo $question->weight==100?"selected":"";?>>
-                                    default
-                                </option>
-                                <option value="101" <?php echo $question->weight>100?"selected":"";?>>
-                                    top
-                                </option>
-                            </select>
-
+                            <input type="text" name="downloadUrl" id="downloadUrl" placeholder="please enter your Title"
+                                   value="<?php echo $article->downloadUrl; ?>">
                         </div>
 
                         <div class="field">
 
-                            <label for="answer">
-                                Answer
+                            <label for="content">
+                                Content
                             </label>
-                            <div id="answer">
+                            <div id="content">
 
-                                <?php echo $question->answer; ?>
+                                <?php echo $article->content; ?>
 
                             </div>
 
@@ -144,7 +144,7 @@
 
 <script>
 
-    $('div#answer').froalaEditor({
+    $('div#content').froalaEditor({
         heightMin: 400,
         heightMax: 600
     });
@@ -156,7 +156,7 @@
             $(this).addClass('loading');
             console.log('click to ajax!');
             $.ajax({
-                url: "/admin/question/add",
+                url: "/admin/article/edit",
                 type: 'POST',
                 dataTye: 'json',
                 data: getJsonData(),
@@ -183,11 +183,12 @@
     function getJsonData() {
         var json = {
             'id': $('#id').val(),
-            'question': $('#question').val(),
-            'category': $('#category').val(),
+            'title': $('#title').val(),
+            'author': $('#author').val(),
             'type': $('#type').val(),
-            'weight': $('#weight').val(),
-            'answer': $('div#answer').froalaEditor('html.get')
+            'status': $('#status').val(),
+            'downloadUrl': $('#downloadUrl').val(),
+            'content': $('div#content').froalaEditor('html.get')
         };
 
         return json;
@@ -201,13 +202,13 @@
         $(this).attr('disabled', true);
         var id = $('#id').val();
         $.ajax({
-            url: "/admin/question/delete",
+            url: "/admin/article/remove",
             type: 'POST',
             dataType: 'json',
             data: {'id': id},
             success: function (result) {
                 $('#delete-modal').modal('hide');
-                window.location.href = '/view/questions';
+                window.location.href = '/view/articles';
             },
             error: function (result) {
                 $('#delete-modal').modal("hide");

@@ -1,0 +1,136 @@
+<?php
+/**
+ * @var
+ */
+?>
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Metadata Creator</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/view/metadatas">Metadatas</a></li>
+                            <li class="breadcrumb-item active">Metadata Editor</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <?php include __DIR__ . '/ex/alertMessage.phtml'; ?>
+
+                <div class=" content">
+                    <form id="metadataForm">
+                        <div class="ui form">
+
+                            <div class="field">
+
+                                <label for="type">
+                                    Type
+                                </label>
+                                <select name="type" id="type">
+                                    <?php
+                                    echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\MetaData::$types);
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="field">
+
+                                <label for="downloadUrl">
+                                    DownloadUrl
+                                </label>
+                                <input type="file" name="singeFile" id="singeFile">
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="footer" style="padding-top: 1rem;">
+                    <div class="ui animated button primary right floated" tabindex="0" id="submit">
+                        <div class="visible content">Created</div>
+                        <div class="hidden content">
+                            <i class="right arrow icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+
+    $("div#submit").click(function () {
+        if ($(this).hasClass('loading')) {
+            console.log('loading...');
+        } else {
+            $(this).addClass('loading');
+            console.log('click to ajax!');
+            $.ajax({
+                url: "/admin/metadata/add?type="+$('#type').val(),
+                type: 'POST',
+                data: getJsonData(),
+                //下面三个参数是上传文件 必须初始化的
+                cache:false,
+                processData:false,
+                contentType:false,
+                success: function (result) {
+                    $("div#submit").removeClass('loading');
+                    console.log(result);
+                    window.location.href = '/view/metadatas';
+                },
+                error: function (result) {
+                    console.log(result);
+                    $("div#submit").removeClass('loading');
+                    var exception = result.responseJSON.exception;
+                    if (exception) {
+                        $('#alert-message').append(exception);
+                        $('#alert-message').removeClass('hidden');
+                        $('#alert-message').addClass('show');
+                    }
+                }
+            });
+        }
+
+
+    });
+
+    function getJsonData() {
+        return new FormData($('#metadataForm')[0]);
+    }
+
+</script>
+
+</body>
+</html>
+

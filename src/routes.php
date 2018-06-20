@@ -27,6 +27,8 @@ $app->group('/admin', function () {
 
     $this->get('/sellerIntentions', \Cms\Controller\SellerIntentionController::class . ":findAll");
 
+    $this->post('/sellerIntention/handle',\Cms\Controller\SellerIntentionController::class.':handle');
+
     $this->get('/sellerFeedbacks', \Cms\Controller\SellerFeedBackController::class . ":findAll");
 
     $this->get('/userFeedbacks', \Cms\Controller\UserFeedBackController::class . ":findAll");
@@ -37,6 +39,43 @@ $app->group('/admin', function () {
 
     $this->post('/sellerFeedback/handle', \Cms\Controller\SellerFeedBackController::class . ':handle');
 
+    $this->post('/article/add', \Cms\Controller\ArticleController::class . ':add');
+
+    $this->get('/article/list', \Cms\Controller\ArticleController::class . ':details');
+
+    $this->get('/article/{id:[0-9]+}', \Cms\Controller\ArticleController::class . ':detail');
+
+    $this->post('/article/remove', \Cms\Controller\ArticleController::class . ':remove');
+
+    $this->post('/article/edit', \Cms\Controller\ArticleController::class . ':edit');
+
+    $this->get('/article/pushTop/{id:[0-9]+}', \Cms\Controller\ArticleController::class . ':pushTop');
+
+    $this->get('/article/tops', \Cms\Controller\ArticleController::class . ':tops');
+
+    $this->post('/metadata/add', \Cms\Controller\MetaDataController::class . ':add');
+
+    $this->post('/metadata/edit/{id}', \Cms\Controller\MetaDataController::class . ':edit');
+
+    $this->post('/metadata/remove', \Cms\Controller\MetaDataController::class . ':remove');
+
+    $this->get('/metadata/{id:[0-9]+}', \Cms\Controller\MetaDataController::class . ':find');
+
+    $this->get('/metadata/arr', \Cms\Controller\MetaDataController::class . ':getMetaDataArr');
+
+    $this->get('/metadata/list', \Cms\Controller\MetaDataController::class . ':metadataList');
+
+    $this->post('/navigation/add', \Cms\Controller\NavigationController::class . ':add');
+
+    $this->post('/navigation/edit', \Cms\Controller\NavigationController::class . ':edit');
+
+    $this->get('/navigation/{id:[0-9]+}', \Cms\Controller\NavigationController::class . ':find');
+
+    $this->post('/navigation/remove', \Cms\Controller\NavigationController::class . ':remove');
+
+    $this->get('/navigation/arr', \Cms\Controller\NavigationController::class . ':navigationArr');
+
+    $this->get('/navigation/list',\Cms\Controller\NavigationController::class.':navigationList');
 });
 
 $app->group('/front', function () {
@@ -70,6 +109,25 @@ $app->group('/view', function () {
     $this->get('/userFeedbacks', \Cms\Controller\ViewController::class . ':userFeedbacks');
 
     $this->get('/sellerFeedbacks', \Cms\Controller\ViewController::class . ':sellerFeedbacks');
+
+    $this->get('/articles', \Cms\Controller\ViewController::class . ':articles');
+
+    $this->get('/article/create',\Cms\Controller\ViewController::class.':articleCreate');
+
+    $this->get('/article/editor/{id}',\Cms\Controller\ViewController::class.':articleEditor');
+
+    $this->get('/navigations',\Cms\Controller\ViewController::class.':navigations');
+
+    $this->get('/navigation/create',\Cms\Controller\ViewController::class.':navigationCreate');
+
+    $this->get('/navigation/editor/{id}',\Cms\Controller\ViewController::class.':navigationEditor');
+
+    $this->get('/metadatas',\Cms\Controller\ViewController::class.':metadatas');
+
+    $this->get('/metadata/create',\Cms\Controller\ViewController::class.':metadataCreate');
+
+    $this->get('/metadata/editor/{id}',\Cms\Controller\ViewController::class.':metadataEditor');
+
 })->add($app->getContainer()['sessionMiddleware']);
 
 $app->group('/front/view', function () {
@@ -84,6 +142,6 @@ $app->group('/front/view', function () {
     $this->get('/sellerQuestionCategorys', \Cms\Controller\FrontViewController::class . ":sellerQuestionCategorys");
     $this->get('/question/{id}', \Cms\Controller\FrontViewController::class . ":question");
     $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
-    $this->get('/paper',\Cms\Controller\FrontViewController::class.":paper");
+    $this->get('/paper', \Cms\Controller\FrontViewController::class . ":paper");
 
 });

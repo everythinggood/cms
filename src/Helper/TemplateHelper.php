@@ -15,11 +15,11 @@ class TemplateHelper
     public static function generateSelectOptions($optionValues,$selected = null){
 
         $content = '';
-        foreach ($optionValues as $optionValue){
+        foreach ($optionValues as $optionKey=>$optionValue){
 
-            $selectedOption = $optionValue===$selected?'selected':'';
+            $selectedOption = $optionKey===$selected?'selected':'';
 
-            $content .= "<option value=\"$optionValue\" $selectedOption>$optionValue</option>".PHP_EOL;
+            $content .= "<option value=\"$optionKey\" $selectedOption>$optionValue</option>".PHP_EOL;
         }
 
         return $content;

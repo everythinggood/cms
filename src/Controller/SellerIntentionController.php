@@ -42,7 +42,8 @@ class SellerIntentionController
      * @throws \Exception
      * @throws \Interop\Container\Exception\ContainerException
      */
-    public function add(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function add(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         /** @var Request $request */
         $userName = $request->getParam('userName');
         $phone = $request->getParam('phone');
@@ -53,23 +54,23 @@ class SellerIntentionController
         $intentionType = $request->getParam('intentionType');
         $memo = $request->getParam('memo');
 
-        ValidationHelper::checkIsNull($userName,'userName');
-        ValidationHelper::checkIsNull($phone,'phone');
-        ValidationHelper::checkIsNull($address,'address');
-        ValidationHelper::checkIsNull($intention,'intention');
-        ValidationHelper::checkIsNull($intentionType,'intentionType');
+        ValidationHelper::checkIsNull($userName, 'userName');
+        ValidationHelper::checkIsNull($phone, 'phone');
+        ValidationHelper::checkIsNull($address, 'address');
+        ValidationHelper::checkIsNull($intention, 'intention');
+        ValidationHelper::checkIsNull($intentionType, 'intentionType');
 
         $sellerIntentionService = new SellerIntentionService($this->container->get(EntityManager::class));
 
         $sellerIntention = $sellerIntentionService->createSellerIntention(
-            compact('userName','phone','address',
-                'addition','additionType','intentionType','intention','memo'));
+            compact('userName', 'phone', 'address',
+                'addition', 'additionType', 'intentionType', 'intention', 'memo'));
 
-        ValidationHelper::checkIsTrue($sellerIntention,'create SellerIntention fail!');
+        ValidationHelper::checkIsTrue($sellerIntention, 'create SellerIntention fail!');
         /** @var Response $response */
         return $response->withJson([
-            'sellerIntention'=>$sellerIntention
-        ],200);
+            'sellerIntention' => $sellerIntention
+        ], 200);
 
     }
 
@@ -81,18 +82,41 @@ class SellerIntentionController
      * @throws \Interop\Container\Exception\ContainerException
      * @throws \Exception
      */
-    public function findAll(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function findAll(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
 
         $sellerIntentionService = new SellerIntentionService($this->container->get(EntityManager::class));
 
         $sellerIntentions = $sellerIntentionService->findAll();
 
-        ValidationHelper::checkIsTrue($sellerIntentions,'sellerIntentions is empty!');
+        ValidationHelper::checkIsTrue($sellerIntentions, 'sellerIntentions is empty!');
         /** @var Response $response */
         return $response->withJson([
-            'data'=>$sellerIntentions
-        ],200);
+            'data' => $sellerIntentions
+        ], 200);
 
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return Response
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function handle(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        /** @var Request $request */
+        /** @var Response $response */
+
+        $id = $request->getParam('id');
+
+        $sellerIntentionService = new SellerIntentionService($this->container->get(EntityManager::class));
+
+        $sellerIntention = $sellerIntentionService->handle($id);
+
+        return $response->withJson((array)$sellerIntention,200);
     }
 
 

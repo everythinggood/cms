@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Navigations</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <button type="button" id="create" class="btn btn-block btn-primary btn-lg" style="margin-bottom: 1rem;">Create</button>
+
+                <table id="navigationTable" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>ZIndex</th>
+                        <th>InheritId</th>
+                        <th>Href</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>ZIndex</th>
+                        <th>InheritId</th>
+                        <th>Href</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var table = $('#navigationTable').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/admin/navigation/list",
+                "columns": [
+                    {"data": "id"},
+                    {"data": "name"},
+                    {"data": "zIndex"},
+                    {"data": "inheritId"},
+                    {"data": "href"},
+                    {"data": "createTime.date"},
+                    {"data": "updateTime.date"}
+                ],
+                "createdRow": function (row, data, index) {
+                    $('td', row).eq(1).addClass('text-info');
+                },
+                "columnDefs": [
+
+                    {
+                        "targets":2,
+                        "render":function (data,type,row) {
+                            return data+"级导航";
+                        }
+                    },
+                    {
+                        "targets":4,
+                        "render":function (data,type,row) {
+                            return "<a href='"+data+"'>"+data+"</a>";
+                        }
+                    },
+                ]
+            }
+        );
+
+        $('#navigationTable').find('tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            console.log(data);
+
+            window.location.href = '/view/navigation/editor/'+data.id;
+        });
+
+        $('#create').click(function () {
+            window.location.href = '/view/navigation/create';
+        });
+
+    });
+</script>
+
+</body>
+</html>

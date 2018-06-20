@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var array $topNavigations
+ */
+?>
 <!DOCTYPE html>
 <html>
 <?php include __DIR__ . '/ex/header.phtml'; ?>
@@ -15,12 +20,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Q&A Creator</h1>
+                        <h1 class="m-0 text-dark">Navigation Creator</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/view/questions">Q&A</a></li>
-                            <li class="breadcrumb-item active">Q&A Editor</li>
+                            <li class="breadcrumb-item"><a href="/view/navigations">Navigations</a></li>
+                            <li class="breadcrumb-item active">Navigation Editor</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -40,67 +45,43 @@
 
                         <div class="field">
 
-                            <label for="question">
-                                Question
+                            <label for="name">
+                                Name
                             </label>
-                            <input type="text" name="question" id="question" placeholder="please enter your Question">
+                            <input type="text" name="name" id="name" placeholder="please enter your Name">
 
                         </div>
 
                         <div class="field">
-                            <label for="category">
-                                Category
+
+                            <label for="zIndex">
+                                zIndex
                             </label>
-                            <select name="category" id="category">
-                               <?php
-                               echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys);
-                               ?>
+                            <select name="zIndex" id="zIndex">
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Navigation::$zIndexes);
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="inheritId">
+                                InheritId
+                            </label>
+                            <select name="inheritId" id="inheritId">
+                                <option value="0">无</option>
+                                <?php
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions($topNavigations);
+                                ?>
                             </select>
 
                         </div>
 
                         <div class="field">
-                            <label for="type">
-                                Type
+                            <label for="href">
+                                Href
                             </label>
-                            <select name="type" id="type">
-                                <option value="user">
-                                    user
-                                </option>
-                                <option value="seller">
-                                    seller
-                                </option>
-                            </select>
-
-                        </div>
-
-                        <div class="field">
-
-                            <label for="weight">
-                                Weight
-                            </label>
-
-                            <select name="weight" id="weight">
-                                <option value="100">
-                                    default
-                                </option>
-                                <option value="101">
-                                    top
-                                </option>
-                            </select>
-
-                        </div>
-
-
-                        <div class="field">
-
-                            <label for="answer">
-                                Answer
-                            </label>
-                            <div name="answer" id="answer">
-                                Enjoy your comment!
-                            </div>
-
+                            <input type="text" name="href" id="href" placeholder="please enter your href">
                         </div>
 
                     </div>
@@ -126,14 +107,8 @@
 <!-- ./wrapper -->
 
 <?php include __DIR__ . '/ex/scripts.phtml'; ?>
-<?php include __DIR__ . '/ex/editor.phtml'; ?>
 
 <script>
-
-    $('div#answer').froalaEditor({
-        heightMin: 400,
-        heightMax: 600
-    });
 
     $("div#submit").click(function () {
         if ($(this).hasClass('loading')) {
@@ -142,14 +117,14 @@
             $(this).addClass('loading');
             console.log('click to ajax!');
             $.ajax({
-                url: "/admin/question/add",
+                url: "/admin/navigation/add",
                 type: 'POST',
                 dataTye: 'json',
                 data: getJsonData(),
                 success: function (result) {
                     $("div#submit").removeClass('loading');
                     console.log(result);
-                    window.location.href='/view/questions';
+                    window.location.href='/view/navigations';
                 },
                 error: function (result) {
                     console.log(result);
@@ -169,14 +144,11 @@
 
     function getJsonData() {
         var json = {
-            'question': $('#question').val(),
-            'category': $('#category').val(),
-            'type': $('#type').val(),
-            'weight': $('#weight').val(),
-            'answer': $('div#answer').froalaEditor('html.get')
+            'name': $('#name').val(),
+            'zIndex': $('#zIndex').val(),
+            'inheritId': $('#inheritId').val(),
+            'href': $('#href').val(),
         };
-
-        // if()
 
         return json;
     }
