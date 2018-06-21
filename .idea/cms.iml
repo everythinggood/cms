@@ -176,5 +176,6 @@
     <orderEntry type="library" name="jquery.dataTables" level="application" />
     <orderEntry type="library" name="dataTables.semanticui" level="application" />
     <orderEntry type="library" name="semantic" level="application" />
+    <orderEntry type="library" name="froala_editor.pkgd" level="application" />
   </component>
 </module>

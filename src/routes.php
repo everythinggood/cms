@@ -59,6 +59,8 @@ $app->group('/admin', function () {
 
     $this->post('/metadata/remove', \Cms\Controller\MetaDataController::class . ':remove');
 
+    $this->post('/metadata/upload',\Cms\Controller\MetaDataController::class.':upload');
+
     $this->get('/metadata/{id:[0-9]+}', \Cms\Controller\MetaDataController::class . ':find');
 
     $this->get('/metadata/arr', \Cms\Controller\MetaDataController::class . ':getMetaDataArr');

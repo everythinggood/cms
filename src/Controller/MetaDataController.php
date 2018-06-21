@@ -20,6 +20,7 @@ use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\UploadedFile;
+use Slim\Router;
 
 class MetaDataController
 {
@@ -156,7 +157,7 @@ class MetaDataController
         /** @var Response $response */
         $id = $request->getParam('id');
 
-        ValidationHelper::checkIsNull($id,'id');
+        ValidationHelper::checkIsNull($id, 'id');
 
         $metaData = $this->metaDataService->deleteById($id);
 
@@ -196,5 +197,32 @@ class MetaDataController
         $metadataList = $this->metaDataService->findAll();
         /** @var Response $response */
         return $response->withJson(['data' => $metadataList], 200);
+    }
+
+    /**
+     *
+     * forala editor upload api
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return static
+     * @throws \Exception
+     */
+    public function upload(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        /** @var Request $request */
+        /** @var Response $response */
+        $type = $request->getParam('type');
+        $uploadedFiles = $request->getUploadedFiles();
+
+        ValidationHelper::checkIsNull($type, 'type');
+        ValidationHelper::checkIsTrue($uploadedFiles, 'must upload some thing');
+
+        $responseData = $this->moveUploadedFilesResponse($uploadedFiles);
+
+        $metaData = null;
+        if ($responseData['singeFile']) $metaData = $this->metaDataService->addMetaData(['type' => $type, 'downloadUrl' => $responseData['singeFile']]);
+
+        return $response->withJson(['link'=>"/uploads/".$responseData['singeFile']], 200);
     }
 }

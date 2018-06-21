@@ -36,7 +36,7 @@
         <section class="content">
             <div class="container-fluid">
 
-                <?php include __DIR__.'/ex/alertMessage.phtml';?>
+                <?php include __DIR__ . '/ex/alertMessage.phtml'; ?>
 
                 <div class=" content">
 
@@ -60,7 +60,7 @@
                             </label>
                             <select name="category" id="category">
                                 <?php
-                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys,$question->category);
+                                echo \Cms\Helper\TemplateHelper::generateSelectOptions(\Cms\Entity\Question::$sellerCategorys, $question->category);
                                 ?>
                             </select>
 
@@ -87,10 +87,10 @@
                             </label>
 
                             <select name="weight" id="weight">
-                                <option value="100" <?php echo $question->weight==100?"selected":"";?>>
+                                <option value="100" <?php echo $question->weight == 100 ? "selected" : ""; ?>>
                                     default
                                 </option>
-                                <option value="101" <?php echo $question->weight>100?"selected":"";?>>
+                                <option value="101" <?php echo $question->weight > 100 ? "selected" : ""; ?>>
                                     top
                                 </option>
                             </select>
@@ -146,8 +146,44 @@
 
     $('div#answer').froalaEditor({
         heightMin: 400,
-        heightMax: 600
-    });
+        heightMax: 600,
+        // Set the image upload parameter.
+        imageUploadParam: 'singeFile',
+
+        // Set the image upload URL.
+        imageUploadURL: '/admin/metadata/upload',
+
+        // Additional upload params.
+        imageUploadParams: {type: 'image'},
+
+        // Set request type.
+        imageUploadMethod: 'POST',
+
+        // Set max image size to 5MB.
+        imageMaxSize: 5 * 1024 * 1024,
+
+        // Allow to upload PNG and JPG.
+        imageAllowedTypes: ['jpeg', 'jpg', 'png']
+    }).on('froalaEditor.image.beforeUpload', function (e, editor, images) {
+        // Return false if you want to stop the image upload.
+        console.log("Return false if you want to stop the image upload.");
+    })
+        .on('froalaEditor.image.uploaded', function (e, editor, response) {
+            // Image was uploaded to the server.
+            console.log("Image was uploaded to the server.");
+        })
+        .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+            // Image was inserted in the editor.
+            console.log("Image was inserted in the editor.");
+        })
+        .on('froalaEditor.image.replaced', function (e, editor, $img, response) {
+            // Image was replaced in the editor.
+            console.log("Image was replaced in the editor.");
+        })
+        .on('froalaEditor.image.error', function (e, editor, error, response) {
+            console.log(error);
+
+        });
 
     $("div#submit").click(function () {
         if ($(this).hasClass('loading')) {
@@ -168,7 +204,7 @@
                     $("div#submit").removeClass('loading');
                     console.log(result);
                     var exception = result.responseJSON.exception;
-                    if(exception){
+                    if (exception) {
                         $('#alert-message').append(exception);
                         $('#alert-message').removeClass('hidden');
                         $('#alert-message').addClass('show');
@@ -213,7 +249,7 @@
                 $('#delete-modal').modal("hide");
                 console.log(result);
                 var exception = result.responseJSON.exception;
-                if(exception){
+                if (exception) {
                     $('#alert-message').append(exception);
                     $('#alert-message').removeClass('hidden');
                     $('#alert-message').addClass('show');
