@@ -20,7 +20,6 @@ use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\UploadedFile;
-use Slim\Router;
 
 class MetaDataController
 {
@@ -46,7 +45,7 @@ class MetaDataController
     {
         $this->container = $container;
         $this->metaDataService = new MetaDataService($this->container[EntityManager::class]);
-        $this->uploadDirectory = $container->get('settings')['upload_file_directory'];
+        $this->uploadDirectory = $container['settings']['upload_file_directory'];
     }
 
     /**
@@ -94,9 +93,11 @@ class MetaDataController
             $responseData['singeFile'] = $filename;
         }
 
-        foreach ($uploadedFiles['multipleFiles'] as $uploadedFile) {
-            $filename = FileHelper::moveUploadedFile($this->uploadDirectory, $uploadedFile);
-            $responseData['multipleFiles'][] = $filename;
+        if ($uploadedFiles['multipleFiles']) {
+            foreach ($uploadedFiles['multipleFiles'] as $uploadedFile) {
+                $filename = FileHelper::moveUploadedFile($this->uploadDirectory, $uploadedFile);
+                $responseData['multipleFiles'][] = $filename;
+            }
         }
 
         return $responseData;
@@ -221,8 +222,8 @@ class MetaDataController
         $responseData = $this->moveUploadedFilesResponse($uploadedFiles);
 
         $metaData = null;
-        if ($responseData['singeFile']) $metaData = $this->metaDataService->addMetaData(['type' => $type, 'downloadUrl' => $responseData['singeFile']]);
+        if ($responseData['singeFile']) $this->metaDataService->addMetaData(['type' => $type, 'downloadUrl' => $responseData['singeFile']]);
 
-        return $response->withJson(['link'=>"/uploads/".$responseData['singeFile']], 200);
+        return $response->withJson(['link' => "/uploads/" . $responseData['singeFile']], 200);
     }
 }
