@@ -149,4 +149,24 @@ class FrontViewController
         return $this->view->render($response,'/front/common/paper.phtml');
     }
 
+    public function index(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'index';
+        return $this->view->render($response,'/front/pages/index.phtml',compact('active'));
+    }
+
+    public function successList(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'success';
+        return $this->view->render($response,'/front/pages/success.phtml',compact('active'));
+    }
+
+    public function contact(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'contact';
+        return $this->view->render($response,'/front/pages/contact.phtml',compact('active'));
+    }
+
+    public function team(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'team';
+        return $this->view->render($response,'/front/pages/team.phtml',compact('active'));
+    }
+
 }

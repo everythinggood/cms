@@ -128,8 +128,44 @@
 
     $('div#content').froalaEditor({
         heightMin: 400,
-        heightMax: 600
-    });
+        heightMax: 600,
+        // Set the image upload parameter.
+        imageUploadParam: 'singeFile',
+
+        // Set the image upload URL.
+        imageUploadURL: '/admin/metadata/upload',
+
+        // Additional upload params.
+        imageUploadParams: {type: 'image'},
+
+        // Set request type.
+        imageUploadMethod: 'POST',
+
+        // Set max image size to 5MB.
+        imageMaxSize: 5 * 1024 * 1024,
+
+        // Allow to upload PNG and JPG.
+        imageAllowedTypes: ['jpeg', 'jpg', 'png']
+    }).on('froalaEditor.image.beforeUpload', function (e, editor, images) {
+        // Return false if you want to stop the image upload.
+        console.log("Return false if you want to stop the image upload.");
+    })
+        .on('froalaEditor.image.uploaded', function (e, editor, response) {
+            // Image was uploaded to the server.
+            console.log("Image was uploaded to the server.");
+        })
+        .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+            // Image was inserted in the editor.
+            console.log("Image was inserted in the editor.");
+        })
+        .on('froalaEditor.image.replaced', function (e, editor, $img, response) {
+            // Image was replaced in the editor.
+            console.log("Image was replaced in the editor.");
+        })
+        .on('froalaEditor.image.error', function (e, editor, error, response) {
+            console.log(error);
+
+        });
 
     $("div#submit").click(function () {
         if ($(this).hasClass('loading')) {

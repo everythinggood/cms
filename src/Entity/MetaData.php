@@ -25,6 +25,8 @@ class MetaData
     const TYPE_IMAGE = 'image';
     const TYPE_OTHER = 'other';
     const TYPE_SUCCESS = 'success';
+    const TYPE_VIDEO = 'video';
+    const TYPE_QR_CODE = 'qr_code';
     const TYPE_ALL = 'all';
 
     const STATUS_UP = 'up';
@@ -35,6 +37,8 @@ class MetaData
         self::TYPE_OTHER=>'其他',
         self::TYPE_SWIPER=>'轮播图',
         self::TYPE_SUCCESS=>'成功案例图',
+        self::TYPE_VIDEO=>'短视频',
+        self::TYPE_QR_CODE=>'二维码图',
         self::TYPE_ALL=>'所有'
     ];
 
@@ -47,7 +51,7 @@ class MetaData
 
     /**
      * @var string
-     * @ORM\Column(name="type",type="string",columnDefinition="ENUM('swiper','image','other','success')")
+     * @ORM\Column(name="type",type="string",columnDefinition="ENUM('swiper','image','other','success','video','qr_code')")
      */
     public $type;
     /**
