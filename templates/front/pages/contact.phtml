@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/plugins/bootstrap-4.1.1-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.css"/>
     <link rel="stylesheet" href="/static/css/font.css"/>
-    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/plugins/jquery/jquery.min.js"></script>
     <script src="/plugins/bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
     <script src="/static/js/index.js"></script>
 
@@ -180,7 +180,7 @@
                                      style="width: 80%;"/>
                                 <p class="text-center pt-3" style="font-size: 80%;">官方客服微信号</p>
                             </div>
-                            <div class="col-6 col-md col-lg col-xl text-center">
+                            <div class="col-sm-6 col-md col-lg col-xl text-center">
                                 <img src="/static/img/qrCode/weixin.jpg" class="img-responsive center-block"
                                      style="width: 80%;"/>
                                 <p class="text-center pt-3" style="font-size: 80%;">官方微信公众号</p>
@@ -192,79 +192,7 @@
         </div>
     </div>
 
-    <div class="pb-5" style="font-size: 60%;background-color: rgb(101,2,246);">
-        <div class="container pl-5 pr-5 pt-5 text-white">
-            <div class="row">
-                <div class="col-6 border-right border-white pr-lg-4">
-                    <div class="float-lg-right">
-                        <div class="row">
-                            <span>全国招商热线：</span>
-                            <span>400-1399-330</span>
-                        </div>
-                        <div class="row">
-                            <span>地址：</span>
-                            <span>广州市海珠区黄埔古港历史文化景观区石基路528-2号首层</span>
-                        </div>
-                        <div class="row">
-                            <span>商业咨询邮件：</span>
-                            <span>IQGOGO@yeah.net</span>
-                        </div>
-                        <div class="row">
-                            <span>客服热线：</span>
-                            <span>18027133575</span>
-                        </div>
-                        <div class="row">
-                            <span>公司名称：</span>
-                            <span>广州智谷科技有限责任公司</span>
-                        </div>
-                        <div class="row">
-                            <span>工商登记号码：</span>
-                            <span>563-81-00723</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 pl-lg-3">
-                    <div class="float-left">
-                        <p>Our values</p>
-                        <p>Being beneficial to people, to the pubilc is our main effort.
-                            By offering free tissue to people everyday, we hope the
-                            whole society will achieve to be modern and convenient.
-                        </p>
-                        <div class="pt-2">
-                            <i class="fa fa-weibo pr-2 fa-2x"></i>
-                            <i class="fa fa-qq pr-2 fa-2x"></i>
-                            <i class="fa fa-weixin fa-2x"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2"></div>
-            </div>
-            <div class="text-center text-white pt-5 pb-3" style="font-size: 8px;">
-                <span>Copyright 广州智谷科技有限公司All rights reserved. 粤ICP备16059531号-1</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="tips">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- 模态框头部 -->
-                <div class="modal-header">
-                    <i class="fa fa-smile-o text-danger fa-3x"></i>温馨提示
-                </div>
-                <!-- 模态框主体 -->
-                <div class="modal-body text-center">
-                    小猿正在努力开发中... ...
-                </div>
-
-                <!-- 模态框底部 -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <?php include __DIR__ . '/../ex/page_footer.phtml'; ?>
 
     <script type="application/javascript" src="/static/js/map.js"></script>
     <script type="application/javascript" src="/static/js/main.js"></script>
