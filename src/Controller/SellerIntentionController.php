@@ -9,6 +9,7 @@
 namespace Cms\Controller;
 
 
+use Cms\Entity\SellerIntention;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\SellerIntentionService;
 use Doctrine\ORM\EntityManager;
@@ -119,5 +120,32 @@ class SellerIntentionController
         return $response->withJson((array)$sellerIntention,200);
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return ResponseInterface
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function exportCsv(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        $sellerIntentionService = new SellerIntentionService($this->container->get(EntityManager::class));
 
+        $sellerIntentions = $sellerIntentionService->findAll();
+
+        ValidationHelper::checkIsTrue($sellerIntentions, 'sellerIntentions is empty!');
+
+        $result = '';
+        /** @var SellerIntention $sellerIntention */
+        foreach ($sellerIntentions as $sellerIntention){
+            $result .= implode(',',$sellerIntention->toArray()).PHP_EOL;
+        }
+        $body = $response->getBody();
+        $body->write($result);
+
+        $response = $response->withHeader("Content-type","text/csv");
+
+        return $response->withBody($body);
+
+    }
 }

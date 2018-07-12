@@ -29,6 +29,8 @@ $app->group('/admin', function () {
 
     $this->post('/sellerIntention/handle',\Cms\Controller\SellerIntentionController::class.':handle');
 
+    $this->get('/sellerIntention/exportCsv',\Cms\Controller\SellerIntentionController::class.':exportCsv');
+
     $this->get('/sellerFeedbacks', \Cms\Controller\SellerFeedBackController::class . ":findAll");
 
     $this->get('/userFeedbacks', \Cms\Controller\UserFeedBackController::class . ":findAll");

@@ -72,6 +72,19 @@ class SellerIntention
      */
     public $memo;
 
+    public function toArray(){
+        return [
+            "userName"=>$this->userName,
+            "phone"=>$this->phone,
+            "intentionType"=>$this->intentionType,
+            "address"=>$this->address,
+            "additionType"=>$this->additionType,
+            "addition"=>$this->addition,
+            "intention"=>$this->intention,
+            "memo"=>$this->memo,
+        ];
+    }
+
     /**
      * @return string
      */

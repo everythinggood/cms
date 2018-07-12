@@ -26,6 +26,8 @@
         <section class="content">
             <div class="container-fluid">
 
+                <button type="button" id="export" class="btn btn-block btn-primary btn-lg" style="margin-bottom: 1rem;">Export</button>
+
                 <table id="table" class="ui celled table hover cell-border" style="width: 100%">
                     <thead>
                     <tr>
@@ -169,6 +171,10 @@
             }
 
         });
+
+        $('#export').click(function(){
+           window.open("/admin/sellerIntention/exportCsv");
+        })
     });
 </script>
 
