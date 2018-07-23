@@ -144,6 +144,7 @@ class SellerIntentionController
         $body->write($result);
 
         $response = $response->withHeader("Content-type","text/csv");
+        $response = $response->withHeader("Content-Disposition","attachment;filename=export.csv");
 
         return $response->withBody($body);
 

@@ -9,14 +9,12 @@
 namespace Cms\Controller;
 
 
-use Cms\Helper\ValidationHelper;
 use Cms\Service\QuestionService;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
 use Slim\Http\Request;
-use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 class FrontViewController
@@ -168,5 +166,19 @@ class FrontViewController
         $active = 'team';
         return $this->view->render($response,'/front/pages/team.phtml',compact('active'));
     }
+
+    public function upWorks(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        return $this->view->render($response,'/front/activity/upWorks.phtml');
+    }
+
+    public function submitWorks(ServerRequestInterface $request,ResponseInterface $response,array  $args){
+        return $this->view->render($response,'/front/activity/submitWorks.phtml');
+    }
+
+    public function myWorks(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        return $this->view->render($response,'/front/activity/myWorks.phtml');
+    }
+
+
 
 }

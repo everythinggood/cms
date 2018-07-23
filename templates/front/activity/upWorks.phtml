@@ -1,0 +1,90 @@
+<html>
+<head lang="en">
+    <title>我纸钟意你，发现最美纸色瞬间</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"/>
+    <link rel="stylesheet" href="/plugins/bootstrap-4.1.1-dist/css/bootstrap.min.css">
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body class="container"
+      style="background-image: url('http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: rgb(255, 255, 255);background-attachment:fixed;">
+
+<div class="card m-2" style="opacity: 0.9;">
+    <div class="card-header text-center" style="color: #0b2e13;">
+        <h5>纸色嘉年华</h5>
+        <h5>"我纸钟意你，发现最美纸色瞬间"</h5>
+        <h5 class="text-muted">摄影作品提交表</h5>
+    </div>
+    <div class="card-body">
+
+        <form action="/front/view/submitWorks">
+            <div class="form-group">
+                <label for="name">姓名<i class="text-danger">*</i></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><span class="fa fa-fw fa-user" style="color: #0b2e13;"></span>
+                        </div>
+                    </div>
+                    <input type="text" name="name" class="form-control" aria-describedby="nameHelp"
+                           placeholder="请输入你的姓名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">城市<i class="text-danger">*</i></label>
+                <input type="text" name="city" class="form-control" aria-describedby="cityHelp" placeholder="请输入你的城市">
+            </div>
+            <div class="form-group">
+                <label for="phone">手机<i class="text-danger">*</i></label>
+                <small class="form-text text-muted">请如实填写，以便发放奖品。</small>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><span class="fa fa-fw fa-mobile-phone"
+                                                            style="color: #0b2e13;"></span></div>
+                    </div>
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="请输入你的手机">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="wechat">微信<i class="text-danger">*</i></label>
+                <small class="form-text text-muted">请如实填写，以便发放奖品。</small>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><span class="fa fa-fw fa-weixin"
+                                                            style="color: #0b2e13;"></span></div>
+                    </div>
+                    <input type="text" name="wechat" id="wechat" class="form-control" placeholder="请输入你的微信号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="worksName">作品名称<i class="text-danger">*</i></label>
+                <input type="text" name="worksName" id="worksName" class="form-control" placeholder="请输入你的作品名称">
+            </div>
+            <div class="form-group">
+                <label for="worksDescription">作品描述<i class="text-danger">*</i></label>
+                <input type="text" name="worksDescription" id="worksDescription" class="form-control"
+                       placeholder="请输入你的作品描述">
+            </div>
+            <div class="form-group">
+                <label for="uploadPicture">上传作品<i class="text-danger">*</i></label>
+                <small class="form-text text-muted">上传的作品只支持jpg,png,gif,bmp,psd,tiff的格式</small>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="uploadPicture" name="uploadFile"
+                           placeholder="请上传你的作品">
+                    <label class="custom-file-label" for="uploadPicture">上传你的作品</label>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark" style="background-color: #0b2e13;">提&nbsp;&nbsp;交</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+
+</html>

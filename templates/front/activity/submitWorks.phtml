@@ -1,0 +1,46 @@
+<html>
+
+<head lang="en">
+    <title>投票已开放，快为您的作品拉拉票吧！</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"/>
+    <link rel="stylesheet" href="/plugins/bootstrap-4.1.1-dist/css/bootstrap.min.css">
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <style>
+        .underline{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="container" style="background-image: url('http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: rgb(255, 255, 255);background-attachment:fixed;">
+
+    <div class="card m-2" style="opacity: 0.9;">
+        <div class="card-header text-center bg-white" style="color: #0b2e13;">
+            <h5>提交成功！</h5>
+            <h5>投票已开放，快为您的作品拉拉票吧！</h5>
+        </div>
+        <div class="card-body">
+            <h6>作品编号：<span class="underline">a_20180723</span></h6>
+            <h6>作品名称：<span class="underline">城市喧哗中的纸巾机</span></h6>
+            <h6>作品描述：<span class="underline">城市喧哗中的纸巾机,位落天河城中万达广场中央,依傍美丽的广州塔。</span></h6>
+        </div>
+        <div class="card-footer border-0">
+            <img class="card-img-bottom" src="http://img5.iqilu.com/c/u/2016/0504/1462326320241.jpg" alt="美丽的港口" >
+            <div class="text-center mt-3">
+                <button id="relay" class="btn btn-dark" style="background-color: #0b2e13;">转发给好友为我投票</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $(function () {
+       $("#relay").click(function () {
+           window.location.href="/front/view/myWorks";
+       }) ;
+    });
+</script>
+
+</html>
