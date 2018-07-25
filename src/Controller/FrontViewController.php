@@ -254,6 +254,7 @@ class FrontViewController
         $vote = $voteService->findByWxOpenId($wxOpenId);
 
         ValidationHelper::checkIsTrue($vote,'sign in please!');
+        $voteFlag =true;
 
         $myWork = $workService->findById($id);
         $myWorkImage = $workImageService->findByWorkNo($id);
@@ -291,7 +292,7 @@ class FrontViewController
         }
 
 
-        return $this->view->render($response,'/front/activity/myWorks.phtml',compact('myWorkVote','resultTop'));
+        return $this->view->render($response,'/front/activity/myWorks.phtml',compact('myWorkVote','resultTop','voteFlag'));
     }
 
 
