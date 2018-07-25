@@ -274,9 +274,9 @@ class FrontViewController
         $vote = $voteService->findByWxOpenId($wxOpenId);
 
         if ($vote) {
-            $voteFlag = true;
-        } else {
             $voteFlag = false;
+        } else {
+            $voteFlag = true;
         }
 
         $this->logger->addInfo(FrontViewController::class,(array)$voteFlag);
