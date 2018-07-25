@@ -74,7 +74,7 @@ class OauthCallback
         $weChatUser = $this->session->get('wechat_user');
 
         $this->logger->addInfo(OauthCallback::class,(array)$targetUrl);
-        $this->logger->addInfo(OauthCallback::class,$weChatUser);
+        $this->logger->addInfo(OauthCallback::class,(array)$weChatUser);
 
         if (!$weChatUser) {
             /** @var User $wxUser */
