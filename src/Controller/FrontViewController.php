@@ -283,8 +283,6 @@ class FrontViewController
 
         $top = $chartsService->getTop100();
 
-//        ValidationHelper::checkIsTrue($top,'can not found top100');
-
         $myWorkVote = null;
 
         $resultTop = [];
@@ -302,10 +300,6 @@ class FrontViewController
             $workImage = $workImageService->findByWorkNo($id);
             $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work, $workImage, $position, $voteNum);
             $resultTop[] = $workVote;
-        }
-
-        if (count($top) < 1) {
-            $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork, $myWorkImage, 1, 0);
         }
 
 

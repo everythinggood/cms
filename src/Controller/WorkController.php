@@ -12,6 +12,7 @@ namespace Cms\Controller;
 use Cms\Constant\SessionConstant;
 use Cms\Helper\FileHelper;
 use Cms\Helper\ValidationHelper;
+use Cms\Service\VoteService;
 use Cms\Service\WorkImageService;
 use Cms\Service\WorkService;
 use Doctrine\ORM\EntityManager;
@@ -97,14 +98,17 @@ class WorkController
 
         $workService = new WorkService($em);
         $workImageService = new WorkImageService($em);
+        $voteService = new VoteService($em);
 
         $work = $workService->createWork(compact('author','city','phone','weixin','name','description','wxOpenId'));
         $workImages = $workImageService->createWorkImages($work->id,compact('singeFile'));
+        $vote = $voteService->createVote($work->id,$wxOpenId);
 
         /** @var Response $response */
         return $response->withJson([
             'work'=>$work,
-            'workImages'=>$workImages
+            'workImages'=>$workImages,
+            'vote'=>$vote
         ]);
     }
 
