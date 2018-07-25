@@ -13,6 +13,7 @@ use Cms\Service\WeChatUserService;
 use Doctrine\ORM\EntityManager;
 use EasyWeChat\OfficialAccount\Application;
 use Monolog\Logger;
+use Overtrue\Socialite\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
@@ -72,9 +73,10 @@ class OauthCallback
 
         $weChatUser = $this->session->get('wechat_user');
         if (!$weChatUser) {
-            /** @var array $wxUser */
+            /** @var User $wxUser */
             $wxUser = $this->app->oauth->user();
-            if ($weChatUser = $this->weChatUserService->createWeChatUser($wxUser)) {
+            $this->logger->addInfo(OauthCallback::class,$wxUser->toArray());
+            if ($weChatUser = $this->weChatUserService->createWeChatUser($wxUser->toArray())) {
                 $this->logger->addInfo(OauthCallback::class, (array)$weChatUser);
             }
 
