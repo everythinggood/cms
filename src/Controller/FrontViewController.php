@@ -246,7 +246,7 @@ class FrontViewController
 
         $top = $chartsService->getTop100();
 
-        ValidationHelper::checkIsTrue($top,'can not found top100');
+//        ValidationHelper::checkIsTrue($top,'can not found top100');
 
         $myWorkVote = null;
 
