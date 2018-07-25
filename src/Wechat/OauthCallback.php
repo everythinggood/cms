@@ -9,6 +9,7 @@
 namespace Cms\Wechat;
 
 
+use Cms\Constant\SessionConstant;
 use Cms\Service\WeChatUserService;
 use Doctrine\ORM\EntityManager;
 use EasyWeChat\OfficialAccount\Application;
@@ -69,9 +70,9 @@ class OauthCallback
     public function officialAccount(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
 
-        $targetUrl = $this->session->get('wechat_target_url') ?: '/activity/upWorks';
 
-        $weChatUser = $this->session->get('wechat_user');
+        $targetUrl = $this->session->get(SessionConstant::WECHAT_TARGET_URL) ?: '/activity/upWorks';
+        $weChatUser = $this->session->get(SessionConstant::WECHAT_USER);
 
         $this->logger->addInfo(OauthCallback::class,(array)$targetUrl);
         $this->logger->addInfo(OauthCallback::class,(array)$weChatUser);

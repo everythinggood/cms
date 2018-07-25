@@ -50,6 +50,27 @@ class Work
      * @ORM\Column(name="work_description",type="string")
      */
     public $workDescription;
+    /**
+     * @var string
+     * @ORM\Column(name="wx_open_id",type="string")
+     */
+    public $wxOpenId;
+
+    /**
+     * @return string
+     */
+    public function getWxOpenId()
+    {
+        return $this->wxOpenId;
+    }
+
+    /**
+     * @param string $wxOpenId
+     */
+    public function setWxOpenId($wxOpenId)
+    {
+        $this->wxOpenId = $wxOpenId;
+    }
 
     /**
      * @return string

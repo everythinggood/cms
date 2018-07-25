@@ -9,6 +9,7 @@
 namespace Cms\Controller;
 
 
+use Cms\Constant\SessionConstant;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\VoteService;
 use Cms\Service\WorkService;
@@ -18,6 +19,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use SlimSession\Helper;
 
 class VoteController
 {
@@ -26,6 +28,10 @@ class VoteController
      * @var Container
      */
     private $container;
+    /**
+     * @var Helper
+     */
+    private $session;
 
     /**
      * VoteController constructor.
@@ -34,6 +40,7 @@ class VoteController
     public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->session = $container['session'];
     }
 
     /**
@@ -47,7 +54,10 @@ class VoteController
     public function add(ServerRequestInterface $request, ResponseInterface $response, array $args){
         /** @var Request $request */
         $id = $request->getParam('id');
-        $wxOpenId = $request->getParam('wxOpenId','wx_12311');
+        $wxOpenId = null;
+        if ($wxUser = $this->session->get(SessionConstant::WECHAT_USER)){
+            $wxOpenId = $wxUser['id'];
+        }
 
         ValidationHelper::checkIsNull($id,'id');
 

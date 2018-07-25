@@ -9,6 +9,7 @@
 namespace Cms\Middleware;
 
 
+use Cms\Constant\SessionConstant;
 use EasyWeChat\OfficialAccount\Application;
 use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
@@ -58,9 +59,9 @@ class WeChatUserSessionMiddleware
         $uri = $request->getUri();
         $path = $uri->getPath();
 
-        $this->session->set('wechat_oauth_target_url',$path);
+        $this->session->set(SessionConstant::WECHAT_TARGET_URL,$path);
 
-        $weChatUser = $this->session->get('wechat_user');
+        $weChatUser = $this->session->get(SessionConstant::WECHAT_USER);
 
         if(!$weChatUser){
             $syResponse = $this->app->oauth->redirect();

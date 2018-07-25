@@ -50,6 +50,7 @@ class WorkService
         $work->setWeiXin($data['weixin']);
         $work->setWorkDescription($data['description']);
         $work->setWorkName($data['name']);
+        $work->setWxOpenId($data['wxOpenId']);
 
         $this->em->persist($work);
         $this->em->flush();

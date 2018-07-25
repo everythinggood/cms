@@ -9,6 +9,7 @@
 namespace Cms\Controller;
 
 
+use Cms\Constant\SessionConstant;
 use Cms\Helper\FileHelper;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\WorkImageService;
@@ -21,6 +22,7 @@ use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\UploadedFile;
+use SlimSession\Helper;
 
 class WorkController
 {
@@ -33,6 +35,10 @@ class WorkController
      */
     private $logger;
     private $uploadDirectory;
+    /**
+     * @var Helper
+     */
+    private $session;
 
     /**
      * WorkController constructor.
@@ -44,6 +50,7 @@ class WorkController
         $this->container = $container;
         $this->logger = $container['logger'];
         $this->uploadDirectory = $container['settings']['upload_file_directory'];
+        $this->session = $container['session'];
     }
 
     /**
@@ -55,6 +62,11 @@ class WorkController
      * @throws \Interop\Container\Exception\ContainerException
      */
     public function add(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        $wxOpenId = null;
+        if($wxUser = $this->session->get(SessionConstant::WECHAT_USER)){
+            $wxOpenId = $wxUser['id'];
+        }
+
         /** @var Request $request */
         $author = $request->getParam('author');
         $city = $request->getParam('city');
@@ -71,6 +83,7 @@ class WorkController
             $singeFile = $filename;
         }
 
+        ValidationHelper::checkIsNull($wxOpenId,'wxOpenId');
         ValidationHelper::checkIsNull($author,'author');
         ValidationHelper::checkIsNull($city,'city');
         ValidationHelper::checkIsNull($phone,'phone');
@@ -85,7 +98,7 @@ class WorkController
         $workService = new WorkService($em);
         $workImageService = new WorkImageService($em);
 
-        $work = $workService->createWork(compact('author','city','phone','weixin','name','description'));
+        $work = $workService->createWork(compact('author','city','phone','weixin','name','description','wxOpenId'));
         $workImages = $workImageService->createWorkImages($work->id,compact('singeFile'));
 
         /** @var Response $response */
