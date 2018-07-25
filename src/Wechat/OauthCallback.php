@@ -69,7 +69,7 @@ class OauthCallback
     public function officialAccount(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
 
-        $targetUrl = $this->session->get('wechat_target_url') ?: '/activity/work/add';
+        $targetUrl = $this->session->get('wechat_target_url') ?: '/activity/upWorks';
 
         $weChatUser = $this->session->get('wechat_user');
 
