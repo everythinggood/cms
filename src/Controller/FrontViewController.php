@@ -279,6 +279,8 @@ class FrontViewController
             $voteFlag = false;
         }
 
+        $this->logger->addInfo(FrontViewController::class,(array)$voteFlag);
+
         $myWork = $workService->findById($id);
         $myWorkImage = $workImageService->findByWorkNo($id);
 
