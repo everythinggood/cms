@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
+    <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="[HotFix]fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontViewController.php" afterPath="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
+      <change beforePath="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,19 +63,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myWorks.phtml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="myWorks.phtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/front/activity/myWorks.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="90" column="33" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+            <state relative-caret-position="317">
+              <caret line="47" column="186" lean-forward="false" selection-start-line="47" selection-start-column="186" selection-end-line="47" selection-end-column="186" />
               <folding>
                 <element signature="e#6#103#0#PHP" expanded="true" />
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1532518733964" expanded="true" signature="2285:2291" ph=" " />
-                <marker date="1532518733964" expanded="true" signature="2439:2469" ph="..." />
-                <marker date="1532518733964" expanded="true" signature="2628:3265" ph="..." />
-                <marker date="1532518733964" expanded="true" signature="2771:3246" ph="..." />
-                <marker date="1532518733964" expanded="true" signature="3532:3647" ph="..." />
+                <marker date="1532518952186" expanded="true" signature="2285:2291" ph=" " />
+                <marker date="1532518952186" expanded="true" signature="2440:2470" ph="..." />
+                <marker date="1532518952186" expanded="true" signature="2629:3266" ph="..." />
+                <marker date="1532518952186" expanded="true" signature="2772:3247" ph="..." />
+                <marker date="1532518952186" expanded="true" signature="3533:3648" ph="..." />
               </folding>
             </state>
           </provider>
@@ -93,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="273" column="56" lean-forward="true" selection-start-line="273" selection-start-column="56" selection-end-line="273" selection-end-column="56" />
+            <state relative-caret-position="285">
+              <caret line="275" column="20" lean-forward="true" selection-start-line="275" selection-start-column="20" selection-end-line="275" selection-end-column="20" />
               <folding>
                 <element signature="e#114#147#0#PHP" expanded="true" />
               </folding>
@@ -262,8 +262,8 @@
         <option value="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
         <option value="$PROJECT_DIR$/src/Controller/WorkController.php" />
         <option value="$PROJECT_DIR$/src/Middleware/WeChatUserSessionMiddleware.php" />
-        <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
         <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
+        <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
       </list>
     </option>
   </component>
@@ -546,7 +546,7 @@
       <workItem from="1532394523463" duration="5363000" />
       <workItem from="1532413018446" duration="15471000" />
       <workItem from="1532482334553" duration="10771000" />
-      <workItem from="1532506151669" duration="12049000" />
+      <workItem from="1532506151669" duration="12143000" />
     </task>
     <task id="LOCAL-00001" summary="takePaper.jpg">
       <created>1527859527635</created>
@@ -800,11 +800,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532518752603</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="[HotFix]fix">
+      <created>1532518863385</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1532518863385</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278599000" />
+    <option name="totallyTimeSpent" value="278693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="310" width="1366" height="770" extended-state="6" />
@@ -1284,28 +1291,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/activity/myWorks.phtml">
+    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="90" column="33" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+        <state relative-caret-position="285">
+          <caret line="275" column="20" lean-forward="true" selection-start-line="275" selection-start-column="20" selection-end-line="275" selection-end-column="20" />
           <folding>
-            <element signature="e#6#103#0#PHP" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1532518733964" expanded="true" signature="2285:2291" ph=" " />
-            <marker date="1532518733964" expanded="true" signature="2439:2469" ph="..." />
-            <marker date="1532518733964" expanded="true" signature="2628:3265" ph="..." />
-            <marker date="1532518733964" expanded="true" signature="2771:3246" ph="..." />
-            <marker date="1532518733964" expanded="true" signature="3532:3647" ph="..." />
+            <element signature="e#114#147#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
+    <entry file="file://$PROJECT_DIR$/templates/front/activity/myWorks.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="273" column="56" lean-forward="true" selection-start-line="273" selection-start-column="56" selection-end-line="273" selection-end-column="56" />
+        <state relative-caret-position="317">
+          <caret line="47" column="186" lean-forward="false" selection-start-line="47" selection-start-column="186" selection-end-line="47" selection-end-column="186" />
           <folding>
-            <element signature="e#114#147#0#PHP" expanded="true" />
+            <element signature="e#6#103#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1532518952186" expanded="true" signature="2285:2291" ph=" " />
+            <marker date="1532518952186" expanded="true" signature="2440:2470" ph="..." />
+            <marker date="1532518952186" expanded="true" signature="2629:3266" ph="..." />
+            <marker date="1532518952186" expanded="true" signature="2772:3247" ph="..." />
+            <marker date="1532518952186" expanded="true" signature="3533:3648" ph="..." />
           </folding>
         </state>
       </provider>
