@@ -62,7 +62,7 @@ class WeChatUserService
         $weChatUser->setOpenid($data['openid']);
         $weChatUser->setProvince($data['province']);
         $weChatUser->setSex($data['sex']);
-        $weChatUser->setUnionId($data['unionid']);
+        $weChatUser->setUnionId($data['unionid']?:"");
 
         return $weChatUser;
     }
