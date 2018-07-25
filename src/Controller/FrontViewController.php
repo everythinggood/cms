@@ -9,9 +9,11 @@
 namespace Cms\Controller;
 
 
+use Cms\Constant\SessionConstant;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\ChartsService;
 use Cms\Service\QuestionService;
+use Cms\Service\VoteService;
 use Cms\Service\WorkImageService;
 use Cms\Service\WorkService;
 use Cms\View\WorkVote;
@@ -21,6 +23,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Views\PhpRenderer;
+use SlimSession\Helper;
 
 class FrontViewController
 {
@@ -37,6 +40,10 @@ class FrontViewController
      * @var QuestionService
      */
     private $questionService;
+    /**
+     * @var Helper
+     */
+    private $session;
 
     /**
      * ViewController constructor.
@@ -48,6 +55,7 @@ class FrontViewController
         $this->container = $container;
         $this->view = $container['renderer'];
         $this->questionService = new QuestionService($container->get(EntityManager::class));
+        $this->session = $container['session'];
     }
 
     public function userFeedback(ServerRequestInterface $request, ResponseInterface $response, array $args)
@@ -226,15 +234,26 @@ class FrontViewController
      * @throws \Interop\Container\Exception\ContainerException
      */
     public function myWorks(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        $wxOpenId = null;
+        if($wxUser = $this->session->get(SessionConstant::WECHAT_USER)){
+            $wxOpenId = $wxUser['id'];
+        }
+
+
         /** @var Request $request */
         $id = $request->getParam('id');
 
+        ValidationHelper::checkIsNull($wxOpenId,'wxOpenId');
         ValidationHelper::checkIsNull($id,'id');
 
         $em = $this->container->get(EntityManager::class);
-
+        $voteService = new VoteService($em);
         $workService = new WorkService($em);
         $workImageService = new WorkImageService($em);
+
+        $vote = $voteService->findByWxOpenId($wxOpenId);
+
+        ValidationHelper::checkIsTrue($vote,'sign in please!');
 
         $myWork = $workService->findById($id);
         $myWorkImage = $workImageService->findByWorkNo($id);
