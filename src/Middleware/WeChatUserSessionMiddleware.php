@@ -58,8 +58,9 @@ class WeChatUserSessionMiddleware
         /** @var Request  $request */
         $uri = $request->getUri();
         $path = $uri->getPath();
+        $query = $uri->getQuery();
 
-        $this->session->set(SessionConstant::WECHAT_TARGET_URL,$path);
+        $this->session->set(SessionConstant::WECHAT_TARGET_URL,join('?',[$path,$query]));
 
         $weChatUser = $this->session->get(SessionConstant::WECHAT_USER);
 
