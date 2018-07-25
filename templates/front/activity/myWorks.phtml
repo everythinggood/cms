@@ -41,8 +41,8 @@
             <div class="card-body">
                 <p class="card-text">第<?php echo $myWorkVote->position; ?>名 <?php echo $myWorkVote->voteNum; ?>票</p>
                 <p class="card-text">编号：<span class="underline"><?php echo $myWorkVote->id; ?></span></p>
-                <p class="card-text">作品名称：<span class="underline"><?php echo $myWorkVote->workName; ?></span></p>
-                <p class="card-text">作品描述：<span class="underline"><?php echo $myWorkVote->workDescription; ?></span></p>
+                <p class="card-text">作品名称：<span class="underline"><?php echo $myWorkVote->name; ?></span></p>
+                <p class="card-text">作品描述：<span class="underline"><?php echo $myWorkVote->description; ?></span></p>
                 <div class="text-center">
                     <input type="hidden" id="myWorkId" value="<?php echo $myWorkVote->id; ?>">
                     <button id="vote" class="btn btn-dark" style="background-color: #0b2e13;" disabled="<?php echo $voteFlag?true:false;?>" >&nbsp;<?php echo $voteFlag?'你已投票':'为我投票'?></button>

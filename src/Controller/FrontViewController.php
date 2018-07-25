@@ -307,10 +307,13 @@ class FrontViewController
             $work = $workService->findById($id);
             $workImage = $workImageService->findByWorkNo($id);
             $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work, $workImage, $position, $voteNum);
+
+            $this->logger->addInfo(FrontViewController::class,(array)$workVote);
             $resultTop[] = $workVote;
         }
 
         $this->logger->addInfo(FrontViewController::class,(array)$myWorkVote);
+        $this->logger->addInfo(FrontViewController::class,(array)$resultTop);
 
         return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag'));
     }
