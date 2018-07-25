@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>智谷科技</title>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		
+		<link rel="stylesheet" href="/plugins/bootstrap-4.1.1-dist/css/bootstrap.min.css"/>
+	    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.css"/>
+	    <script src="/plugins/jquery/jquery.min.js"></script>
+	    <script src="/plugins/bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+	    <script src="/static/js/index.js"></script>
+	</head>
+	
+	<style>
+        img, body {
+            padding: 0px;
+            margin: 0px;
+        }
+        a{color:white;}
+        a:hover{color:white;text-decoration: none;}
+
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        .navSelect {
+            background-color: #6502F6;
+            display: inline-block;
+            border-radius: 3px;
+        }
+
+        /*.navbar-nav a{
+            background-color: #000;
+            opacity: 1;
+            z-index: 4;
+        }*/
+        .nav-item span:hover {
+            background-color: #6502F6;
+            display: inline-block;
+            border-radius: 3px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #6502F6;
+        }
+
+        .fa-angle:hover {
+            background-color: #999 !important;
+            color: #fff !important;
+        }
+
+        .transparent {
+            background-color: rgba(0, 0, 0, 0.4); /* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+        }
+        .operation{
+        	width: 20%;position: relative;
+        }
+        .operation_text{
+        	position: absolute;bottom: 0;left:0;
+        }
+        .operation_font_150{
+        	font-size: 150%;
+        }
+        .div_img{height:100px;width: 100%;height:100%;background-size: 100% 100%;}
+        .div_img:hover{
+        	border-color: rgba(82, 168, 236, 1);
+    		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 1);
+    		color: darkseagreen;
+        }
+        .text_gray{opacity: 0.8;}
+
+        @media \0screen\,screen\9 {
+            /* 只支持IE6、7、8 */
+            .transparent {
+                background-color: #000000;
+                filter: Alpha(opacity=40);
+                position: static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+                *zoom: 1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+            }
+
+            .nav-link {
+                position: relative; /* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+            .angle_l, .angle_r {
+                display: none !important;
+            }
+           .d-inline-block{width : 100%;}
+        }
+
+        @media screen and (min-width: 550px) {
+            .angle_l, .angle_r {
+                display: inline-block !important;
+            }
+           .d-inline-block{width : 19%;}
+          .div_imgs{width: 16%;}
+        }
+        @media screen and (min-width: 1400px) {
+        	.dropdown-menu{left: 53% !important;}
+        }
+    </style>
+	<body onscroll="scroll()" style="font-size: 70%;">
+
+<nav id="header_2" class="navbar navbar-light bg-faded pb-0 transparent"
+     style="display:none;position: fixed;z-index: 3;width: 100%;top:0;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation" style="margin:0 auto;">
+        <span>
+            <i class="fa fa-bars text-white"></i>
+        </span>
+    </button>
+    <div class="collapse justify-content-center navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav text-center" style="font-size: 100%">
+            <a href="/front/view/index" class="nav-item nav-link text-white">
+                <span class="pl-1 pr-1">首页</span>
+            </a>
+            <a href="/front/view/" class="nav-item nav-link text-white">
+                <span class="pl-1 pr-1">品牌动态</span>
+            </a>
+            <a onclick="tips()" class="nav-item nav-link text-white">
+                <span class="pl-1 pr-1 navSelect">商务合作</span>
+            </a>
+            <a href="/front/view/successList" class="nav-item nav-link text-white">
+                <span class="pl-1 pr-1">成功案例</span>
+            </a>
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown12" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="pl-1 pr-1">团队资讯</span>
+				</a>
+				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown12" style="opacity: 0.7;">
+					<a href="/front/view/team" class="dropdown-item text-light text-center" href="#" style="font-size: 80%;">关于我们</a>
+					<a href="/front/view/jobInfo" class="dropdown-item text-light text-center" href="#" style="font-size: 80%;">人才招聘</a>
+				</div>
+            <a href="/front/view/contact" class="nav-item nav-link text-white">
+                <span class="pl-1 pr-1">联系我们</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+		<!-- 导航 -->
+<div id="header" style="background-image: url('/static/img/bg/header-bg.png');background-position-y: 100px;">
+    <div class="transparent">
+        <div class="text-center pt-3">
+            <img src="/static/img/index/logo.png" class="img-responsive center-block" style="width:5rem;"/>
+        </div>
+        <nav class=" navbar navbar-expand-sm navbar-toggler-md navbar-light pb-0 transparent" style="background: none;">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation" style="margin:0 auto;">
+			    	<span>
+			    		<i class="fa fa-bars text-white"></i>
+			    	</span>
+            </button>
+            <div class="collapse justify-content-center navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav text-center" style="font-size: 100%">
+                    <a href="/front/view/index" class="nav-item nav-link text-white " >
+                        <span class="pl-1 pr-1 <?php echo $active == 'index'?'navSelect':'';?>">首页</span>
+                    </a>
+					<a href="/front/view/adIntentionLook" class="nav-item nav-link text-white">
+						<span class="pl-1 pr-1">广告合作</span>
+					</a>
+					<a href="/front/view/deviceInfo" class="nav-item nav-link text-white">
+						<span class="pl-1 pr-1 navSelect">产品展示</span>
+					</a>
+                    <a href="/front/view/successList" class="nav-item nav-link text-white" >
+                        <span class="pl-1 pr-1 <?php echo $active == 'success'?'navSelect':'';?>">成功案例</span>
+                    </a>
+                    <!--<a class="nav-item nav-link text-white dropdown">-->
+                                <!--<span class="pl-1 pr-1 navSelect">团队资讯</span>-->
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						        	<span class="pl-1 pr-1">团队资讯</span>
+						        </a>
+						        <div class="dropdown-menu badge-dark pt-0" aria-labelledby="navbarDropdown1" style="position: absolute;left:52% !important;opacity: 0.6;">
+						          	<div style="height:4px; background-color: #6502F6;"></div>
+						          	<div class="pl-1 pr-1">
+							          	<a href="/front/view/team" class="dropdown-item text-light border-bottom pb-2 pl-0 pr-0 text-center" href="#" style="font-size: 60%;">关于我们</a>
+							          	<a href="/front/view/jobInfo" class="dropdown-item text-light pt-2 pl-0 pr-0 text-center" href="#" style="font-size: 60%;">人才招聘</a>
+						          	</div>
+						        </div>
+                            <!--</a>-->
+                    <a href="/front/view/contact" class="nav-item nav-link text-white" >
+                        <span class="pl-1 pr-1 <?php echo $active == 'contact'?'navSelect':'';?>">联系我们</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="container-fluid pt-5">
+	<div class="row">
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+		<div class="col-sm-4 col-lg-4 col-xl-4 pl-5 pr-4">
+			<div class="pt-3 pb-5">
+				<div>
+					<img src="/static/img/advertises/Artboard Copy 4.png" class="img-responsive center-block w-100" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-2 col-lg-2 col-xl-2 pt-5 pl-3">
+			<div class="pb-5 pt-5">
+			  	<img src="/static/img/advertises/Bitmap Copy.png" class="img-responsive center-block w-25"/>
+			  	<div class="d-inline-block pl-4 align-middle">
+				  	<span class="font-weight-bold d-block pb-2" style="width: 100px;">二维码</span>
+				  	<span class="text_gray">10.5cm*10.5cm</span>
+			  	</div>
+		  	</div>
+		  	<div class="pb-5">
+			  	<img src="/static/img/advertises/Bitmap Copy 2.png" class="img-responsive center-block w-25"/>
+			  	<div class="d-inline-block pl-4 align-middle">
+				  	<span class="font-weight-bold d-block pb-2" style="width: 100px;">出纸口</span>
+				  	<span class="text_gray">28cm*7.5cm</span>
+			  	</div>
+		  	</div>
+		  	<div class="pb-5">
+			  	<img src="/static/img/advertises/Bitmap Copy 3.png" class="img-responsive center-block w-25"/>
+			  	<div class="d-inline-block pl-4 align-middle">
+				  	<span class="font-weight-bold d-block pb-2" style="width: 100px;">设备厚度</span>
+				  	<span class="text_gray">13.6cm</span>
+			  	</div>
+		  	</div>
+		</div>
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+		<div class="col-sm-6 col-lg-6 col-xl-6">
+			<div class="font-weight-bold fa-2x pb-2">
+		    	<span>纸色 · 是一种承诺</span>
+		    </div>
+		    <div style="color: #999;">
+		    	<span>纸色应用实时响应的后台监控程序，密切关注着每一台纸色免费纸巾机的运行状态。不论是故障报修，还是纸巾补充，再远
+				的路，只要用户/商家需要，我们就会马上出发。“随时随地的方便，每时每刻的关心”，这是纸色的职责，更是纸色对广大
+				民众的承诺。</span>
+		    </div>
+	    </div>
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+	</div>
+	<div class="row pt-5">
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+		<div class="col-sm-2 col-lg-2 col-xl-2 pt-5 pl-3">
+			<div class="pb-5 pt-5">
+			  	<img src="/static/img/advertises/Bitmap Copy 4.png" class="img-responsive center-block w-25"/>
+			  	<div class="d-inline-block pl-4 align-middle">
+				  	<span class="font-weight-bold d-block pb-2" style="width: 100px;">液晶屏幕</span>
+				  	<span class="text_gray">23cm*36.8cm</span>
+			  	</div>
+		  	</div>
+		  	<div class="pb-5">
+			  	<img src="/static/img/advertises/Bitmap Copy 5.png" class="img-responsive center-block w-25"/>
+			  	<div class="d-inline-block pl-4 align-middle">
+				  	<span class="font-weight-bold d-block pb-2" style="width: 100px;">设备容量</span>
+				  	<span class="text_gray d-inline-block" style="width: 100px;">120包</span>
+			  	</div>
+		  	</div>
+		  	<div class="pb-5">
+			  	<img src="/static/img/advertises/Bitmap Copy 6.png" class="img-responsive center-block w-25"/>
+			  	<div class="d-inline-block pl-4 align-middle">
+				  	<span class="font-weight-bold d-block pb-2" style="width: 100px;">液晶屏幕</span>
+				  	<span class="text_gray">23cm*36.8cm</span>
+			  	</div>
+		  	</div>
+		</div>
+		<div class="col-sm-4 col-lg-4 col-xl-4 pl-5 pr-4">
+			<div class="pt-3 pb-5">
+				<img src="/static/img/advertises/Bitmap5.png" class="img-responsive center-block w-100"/>
+			</div>
+		</div>
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+		<div class="col-sm-6 col-lg-6 col-xl-6">
+			<div style="color: #666;">
+				<span>Zhise, a kind of promise.</span><br />
+	    		<span>Zhise adopts real-time-responding system reflecting our close attention to the running condition of our facility. Whether to fix fault , or to replenish tissue, we always set off right away as long as you need us. ”Immediate Convenience, All-time Concern”, this is not only our responsibility, but also our promise to the public .</span>
+	    	</div>
+		</div>
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+		<div class="col-sm-3 col-lg-3 col-xl-3">
+			<img src="/static/img/advertises/Bitmap.png" class="img-responsive center-block w-100"/>
+		</div>
+		<div class="col-sm-3 col-lg-3 col-xl-3 pl-5 pt-3">
+			<div class="pl-2">
+				<span class="font-weight-bold d-block pt-5">纸巾规格</span>
+				<span class="text-center text_gray">维达手帕纸·3层 8张</span><br />
+				<span class="text-center text_gray">7cm*5cm</span>
+			</div>
+			<span class="font-weight-bold d-block pb-3 pt-4 pl-2">領纸流程</span>
+			<div class="row">
+    			<div class="col-sm-4 pb-5 pl-1 pr-1">
+					<div class="pl-4 pr-4 w-100 pb-2 pt-1">
+						<img src="/static/img/advertises/Page 12.png" class="img-responsive center-block w-100"/>
+					</div>
+    				<div class="text-center pb-4 text_gray"><span>微信扫码</span></div>
+    			</div>
+    			<div class="col-sm-4 pb-5 pl-1 pr-1">
+					<div class="pl-4 pr-4 w-100 pb-2">
+						<img src="/static/img/advertises/finger.png" class="img-responsive center-block w-100"/>
+					</div>
+    				<div class="text-center pb-4 text_gray"><span>长按二维码</span></div>
+    			</div>
+    			<div class="col-sm-4 pb-5 pl-1 pr-1">
+					<div class="pl-4 pr-4 w-100 pb-2">
+						<img src="/static/img/advertises/click.png" class="img-responsive center-block w-100"/>
+					</div>
+    				<div class="text-center text_gray"><span>点击领取纸巾</span></div>
+    			</div>
+			</div>
+		</div>
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+	</div>
+    <div class="row pb-5 mb-3">
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+		<div class="col-sm-6 col-lg-6 col-xl-6">
+			<img src="/static/img/advertises/Page 1.png" class="img-responsive center-block w-100"/>
+		</div>
+		<div class="col-sm-3 col-lg-3 col-xl-3"></div>
+    </div>
+</div>
+
+<div class="pb-5" style="font-size: 100%;background-color: rgb(101,2,246);">
+    <div class="container pl-5 pr-5 pt-5 text-white">
+        <div class="row">
+            <div class="col-6 border-right border-white pr-lg-4">
+                <div class="float-lg-right">
+                    <div class="row pb-1">
+                        <span>全国咨询热线：</span>
+                        <span>400-1399-330</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>地址：</span>
+                        <span>广州市海珠区黄埔古港历史文化景观区石基路528-2号首层</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>商业咨询邮件：</span>
+                        <span>IQGOGO@yeah.net</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>客服热线：</span>
+                        <span>180-2713-3575</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>公司名称：</span>
+                        <span>广州智谷科技有限责任公司</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>工商登记号码：</span>
+                        <span>563-81-00723</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 pl-lg-3">
+                <div class="float-left pl-2">
+                    <div class="row pb-1">
+                        <span>Service hotline: </span>
+                        <span>400-1399-330</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>Address: </span>
+                        <span>G/F, No.528-2, SHI JI Road, Haizhu district, Guangzhou</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>E-mail: </span>
+                        <span>IQgogo@yeah.net</span>
+                    </div>
+                    <div class="row pb-1">
+                        <span>Company: </span>
+                        <span>IQgogo Technology Co., Ltd</span>
+                    </div>
+                    <div class="row pt-2">
+                        <i class="fa fa-weibo pr-2" style="font-size: 180%;"></i>
+                        <i class="fa fa-qq pr-2" style="font-size: 180%;"></i>
+                        <i class="fa fa-weixin" style="font-size: 180%;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="text-center text-white pt-5 pb-3" style="font-size: 8px;">
+            <span>Copyright 广州智谷科技有限公司All rights reserved. 粤ICP备16059531号-1</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="tips">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <i class="fa fa-smile-o text-danger fa-3x"></i>温馨提示
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body text-center">
+                小猿正在努力开发中... ...
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+function scroll() {
+    console.log('scroll');
+    var top = $(document.body).scrollTop();
+    let h = $("#header").height() / 7;
+    let headerD = $("#header").css("display");
+    let header2D = $("#header_2").css("display");
+    console.log("top:"+top);
+    console.log("h:"+h);
+    if (top > h) {
+        if (headerD != "none") {
+            $("#header").slideUp();
+        }
+        if (header2D == "none") {
+            $("#header_2").fadeIn();
+        }
+    } else if (top < h) {
+        if (header2D != "none") {
+            $("#header_2").slideUp();
+        }
+        if (headerD == "none") {
+            $("#header").fadeIn();
+        }
+    }
+};
+
+</script>
+
+	</body>
+</html>

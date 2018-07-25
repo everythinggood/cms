@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">-->
+
+
+    <link rel="stylesheet" href="/plugins/bootstrap-4.1.1-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.css"/>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+	<script src="/plugins/bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+    <script src="/static/js/index.js"></script>
+
+    <title>智谷科技</title>
+    <style>
+        img, body {
+            padding: 0px;
+            margin: 0px;
+        }
+        a{color:white;}
+        a:hover{color:white;text-decoration: none;}
+
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        .navSelect {
+            background-color: #6502F6;
+            display: inline-block;
+            border-radius: 3px;
+        }
+
+        /*.navbar-nav a{
+            background-color: #000;
+            opacity: 1;
+            z-index: 4;
+        }*/
+        .nav-item span:hover {
+            background-color: #6502F6;
+            display: inline-block;
+            border-radius: 3px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #6502F6;
+        }
+
+        .fa-angle:hover {
+            background-color: #999 !important;
+            color: #fff !important;
+        }
+
+        .transparent {
+            background-color: rgba(0, 0, 0, 0.4); /* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+        }
+        .operation{
+        	width: 20%;position: relative;
+        }
+        .operation_text{
+        	position: absolute;bottom: 0;left:0;
+        }
+        .operation_font_150{
+        	font-size: 150%;
+        }
+        .div_img{height:100px;width: 100%;height:100%;background-size: 100% 100%;}
+        .div_img:hover{
+        	border-color: rgba(82, 168, 236, 1);
+    		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 1);
+    		color: darkseagreen;
+        }
+        .text_gray{opacity: 0.8;}
+
+        @media \0screen\,screen\9 {
+            /* 只支持IE6、7、8 */
+            .transparent {
+                background-color: #000000;
+                filter: Alpha(opacity=40);
+                position: static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+                *zoom: 1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+            }
+
+            .nav-link {
+                position: relative; /* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+            .angle_l, .angle_r {
+                display: none !important;
+            }
+           .d-inline-block{width : 100%;}
+        }
+
+        @media screen and (min-width: 550px) {
+            .angle_l, .angle_r {
+                display: inline-block !important;
+            }
+           .d-inline-block{width : 19%;}
+          .div_imgs{width: 16%;}
+        }
+        @media screen and (min-width: 1400px) {
+        }
+    </style>
+</head>
+<body onscroll="scroll()" style="font-size: 70%;">
+
+<nav id="header_2" class="navbar  navbar-light bg-faded pb-0 transparent "
+     style="display:none;position: fixed;z-index: 3;width: 100%;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation" style="margin:0 auto;">
+        <span>
+            <i class="fa fa-bars text-white"></i>
+        </span>
+    </button>
+    <div class="collapse justify-content-center navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav text-center" style="font-size: 100%">
+            <a href="/front/view/index" class="nav-item nav-link text-white">
+				<span class="pl-1 pr-1">首页</span>
+			</a>
+			<a href="/front/view/adIntentionLook" class="nav-item nav-link text-white">
+				<span class="pl-1 pr-1">广告合作</span>
+			</a>
+			<a href="/front/view/deviceInfo" class="nav-item nav-link text-white">
+				<span class="pl-1 pr-1">产品展示</span>
+			</a>
+			<a href="/front/view/successList" class="nav-item nav-link text-white">
+				<span class="pl-1 pr-1">成功案例</span>
+			</a>
+            <!--<a href="/front/view/team" class="nav-item nav-link text-white">-->
+                <!--<span class="pl-1 pr-1 navSelect">团队资讯</span>-->
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown12" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="pl-1 pr-1 navSelect">团队资讯</span>
+				</a>
+				<div class="dropdown-menu badge-dark pt-0" aria-labelledby="navbarDropdown1" style="position: absolute;left:52%;opacity: 0.6;">
+					<div style="height:4px; background-color: #6502F6;"></div>
+					<div class="pl-1 pr-1">
+						<a href="/front/view/team" class="dropdown-item text-light border-bottom pb-2 pl-0 pr-0 text-center" href="#" style="font-size: 60%;">关于我们</a>
+						<a href="/front/view/jobInfo" class="dropdown-item text-light pt-2 pl-0 pr-0 text-center" href="#" style="font-size: 60%;">人才招聘</a>
+					</div>
+				</div>
+            <!--</a>-->
+            <a href="/front/view/contact" class="nav-item nav-link text-white">
+                <span class="pl-1 pr-1">联系我们</span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div style="position: relative;">
+    <!-- 导航栏 -->
+    <div id="header" class="text-center pt-3 transparent" style="position: absolute;z-index: 2;width:100%;">
+        <div>
+            <img src="/static/img/index/logo.png" class="img-responsive center-block" style="width:5rem;"/>
+        </div>
+        <div class="row m-0">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-sm navbar-toggler-md navbar-light bg-faded pb-0">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            data-target="#navbarNavAltMarkup1" aria-controls="navbarNavAltMarkup1" aria-expanded="false"
+                            aria-label="Toggle navigation" style="margin:0 auto;">
+					    	<span>
+					    		<i class="fa fa-bars text-white"></i>
+					    	</span>
+                    </button>
+                    <div class="collapse justify-content-center navbar-collapse " id="navbarNavAltMarkup1">
+                        <div class="navbar-nav text-center" style="font-size: 100%">
+                            <a href="/front/view/index" class="nav-item nav-link text-white">
+								<span class="pl-1 pr-1">首页</span>
+							</a>
+							<a href="/front/view/adIntentionLook" class="nav-item nav-link text-white">
+								<span class="pl-1 pr-1">广告合作</span>
+							</a>
+							<a href="/front/view/deviceInfo" class="nav-item nav-link text-white">
+								<span class="pl-1 pr-1">产品展示</span>
+							</a>
+							<a href="/front/view/successList" class="nav-item nav-link text-white">
+								<span class="pl-1 pr-1">成功案例</span>
+							</a>
+                            <!--<a class="nav-item nav-link text-white dropdown">-->
+                                <!--<span class="pl-1 pr-1 navSelect">团队资讯</span>-->
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown12" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						        	<span class="pl-1 pr-1 navSelect">团队资讯</span>
+						        </a>
+						        <div class="dropdown-menu badge-dark pt-0" aria-labelledby="navbarDropdown1" style="position: absolute;left:52%;opacity: 0.6;">
+						          	<div style="height:4px; background-color: #6502F6;"></div>
+						          	<div class="pl-1 pr-1">
+							          	<a href="/front/view/team" class="dropdown-item text-light border-bottom pb-2 pl-0 pr-0 text-center" href="#" style="font-size: 60%;">关于我们</a>
+							          	<a href="/front/view/jobInfo" class="dropdown-item text-light pt-2 pl-0 pr-0 text-center" href="#" style="font-size: 60%;">人才招聘</a>
+						          	</div>
+						        </div>
+                            <!--</a>-->
+                            <a href="/front/view/contact" class="nav-item nav-link text-white" >
+                                <span class="pl-1 pr-1">联系我们</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- 图片切换 -->
+    <div id="main_content">
+        <img class="w-100" src="/static/img/team-employ/bg-employ.png">
+    </div>
+    <div class="container-fluid pt-5 pb-3">
+    	<div class="row">
+    		<div class="col-sm-2 col-lg-2 col-xl-2"></div>
+    		<div class="col-sm-2 col-lg-2 col-xl-2 text-center">
+    			<div class="pb-3" style="color: #6502F6;font-family:'微软雅黑';font-size: 230%;">加入我们</div>
+    			<div class="text-white pt-4 pb-4" style="background-color: rgb(101,2,246);font-size: 160%;">
+	    			<div class="pl-2 pr-2"><a style="background-color: #31E076;" id="online" href="#" class="jobA d-block pt-4 pb-4 h-100 border-bottom">在线客服专员</a></div>
+	    			<div class="pl-2 pr-2"><a id="customer" href="#" class="jobA d-block pt-4 pb-4 border-bottom h-100">客情维护员</a></div>
+	    			<div class="pl-2 pr-2"><a id="service" href="#" class="jobA d-block pt-4 pb-4 border-bottom h-100">服务体验师</a></div>
+	    			<div class="pl-2 pr-2"><a id="ui" href="#" class="jobA d-block pt-4 pb-4 h-100 text-center">UI设计师</a></div>
+    			</div>
+    		</div>
+    		<div class="col-sm-6 col-lg-6 col-xl-6">
+    			<div class="fa-3x pb-3 text-right pr-5" style="color: #6502F6;font-family:'微软雅黑';font-size: 230%;">WE WANT YOU</div>
+    			<div class="pl-5 pr-5">
+    				<div id="smileImg" class="jobImg border-top pt-2" style="border-width: 1px !important;">
+    					<img class="w-100" src="/static/img/team-employ/smile.png">
+    				</div>
+					<div id="customerImg" class="jobImg border-top pt-2" style="border-width: 1px !important;display: none;">
+    					<img class="w-100" src="/static/img/team-employ/customer.png">
+    				</div>
+					<div id="serviceImg" class="jobImg border-top pt-2" style="border-width: 1px !important;display: none;">
+    					<img class="w-100" src="/static/img/team-employ/service.png">
+    				</div>
+					<div id="uiImg" class="jobImg border-top pt-2" style="border-width: 1px !important;display: none;">
+    					<img class="w-100" src="/static/img/team-employ/ui.png">
+    				</div>
+    				<div id="onlineCustomerService" class="job pb-2 border-bottom pt-3" style="color:#999;border-width: 1px !important;">
+    					及时整理商户、用户反馈信息，跟进问题解决情况
+    				</div>
+    				<div id="customerKeep" class="job pb-2 border-bottom pt-3" style="color:#999;border-width: 1px !important;display: none;">
+    					实地考察设备点位情况，设备定期维护，商户情况跟踪
+    				</div>
+    				<div id="serviceExprience" class="job pb-2 border-bottom pt-3" style="color:#999;border-width: 1px !important;display: none;">
+    					以用户角度体验、反馈服务流程相关问题
+    				</div>
+    				<div id="uiDesign" class="job pb-2 border-bottom pt-3" style="color:#999;border-width: 1px !important;display: none;">
+    					APP、小程序、公众号等交互体验设计
+    				</div>
+    			</div>
+    		</div>
+    		<div class="col-sm-2 col-lg-2 col-xl-2"></div>
+    	</div>
+    	<div class="row pt-5 pb-2">
+    		<div class="col-sm-2 col-lg-2 col-xl-2"></div>
+    		<div class="col-sm-2 col-lg-2 col-xl-2 text-center">
+    			<div style="color: #6502F6;font-family:'微软雅黑';font-size: 230%;">简历审核流程</div>
+    		</div>
+    		<div class="col-sm-6 col-lg-6 col-xl-6 text-right pt-3 pr-5">
+    			<a class="pt-1 pb-1 pl-2 pr-2 text-white" style="background-color: #31E076 ;border-radius: 3px;">简历投至：eris77@dingtalk.com</a>
+    		</div>
+    		<div class="col-sm-2 col-lg-2 col-xl-2"></div>
+    	</div>
+    	<div class="row pb-5">
+    		<div class="col-sm-2 col-lg-2 col-xl-2"></div>
+    		<div class="col-sm-8 col-lg-8 col-xl-8">
+    			<div class="row border-top border-bottom pt-5 pb-5 text-center pl-5" style="border-width: 1px !important;">
+    				<div class="col-sm-2 col-lg-2 col-xl-2">
+    					<div class="pl-3 pr-3">
+    						<img class="w-100" src="/static/img/team-employ/employ-step1.png">
+    					</div>
+    					<div class="font-weight-bold text-center pt-2 pb-2">简历提交成功</div>
+    					<div style="color: #999;">请确保简历信息完整、详细、真实，以便我们更全面地了您。</div>
+    				</div>
+    				<div class="col-sm-1 col-lg-1 col-xl-1 pt-5">
+    					<div class="pt-3">
+    						<i class="fa fa-caret-right fa-3x d-block"></i>
+    					</div>
+    				</div>
+    				<div class="col-sm-2 col-lg-2 col-xl-2">
+    					<div class="pl-3 pr-3">
+    						<img class="w-100" src="/static/img/team-employ/employ-step2.png">
+    					</div>
+    					<div class="font-weight-bold text-center pt-2 pb-2">人力资源部审核</div>
+    					<div style="color: #999;">简历初审、筛选、转交</div>
+    				</div>
+    				<div class="col-sm-1 col-lg-1 col-xl-1 pt-5">
+    					<div class="pt-3">
+    						<i class="fa fa-caret-right fa-3x d-block"></i>
+    					</div>
+    				</div>
+    				<div class="col-sm-2 col-lg-2 col-xl-2">
+    					<div class="pl-3 pr-3">
+    						<img class="w-100" src="/static/img/team-employ/employ-step3.png">
+    					</div>
+    					<div class="font-weight-bold text-center pt-2 pb-2">岗位所属部门审核</div>
+    					<div style="color: #999;">简历初审、筛选、转交</div>
+    				</div>
+    				<div class="col-sm-1 col-lg-1 col-xl-1 pt-5">
+    					<div class="pt-3">
+    						<i class="fa fa-caret-right fa-3x d-block"></i>
+    					</div>
+    				</div>
+    				<div class="col-sm-2 col-lg-2 col-xl-2">
+    					<div class="pl-3 pr-3">
+    						<img class="w-100" src="/static/img/team-employ/employ-step4.png">
+    					</div>
+    					<div class="font-weight-bold text-center pt-2 pb-2">邀请面试</div>
+    					<div class="text-left" style="color: #999;">电话方式邀请面试</div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="col-sm-2 col-lg-2 col-xl-2"></div>
+    	</div>
+    </div>
+</div>
+
+<div class="modal fade" id="tips">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <i class="fa fa-smile-o text-danger fa-3x"></i>温馨提示
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body text-center">
+                小猿正在努力开发中... ...
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <?php include __DIR__.'/../ex/page_footer.phtml';?>
+
+    <script type="application/javascript" src="/static/js/main.js"></script>
+	
+	<script>
+		$(function(){
+			var job = -1;
+			$(".jobA").hover(function(){
+				$(".jobA").css("background-color","rgb(101,2,246)");
+				$(".jobImg").css("display","none");
+				$(this).css("background-color","#31E076");
+				switch(this.id){
+					case "online":
+					if(job != 0){
+						job = 0;
+						$(".job").css("display","none");
+						$("#onlineCustomerService").css("display","block");
+						$("#smileImg").css("display","block");
+					}
+					break;
+					case "customer":
+					if(job != 1){
+						job = 1;
+						$(".job").css("display","none");
+						$("#customerKeep").css("display","block");
+						$("#customerImg").css("display","block");
+					}
+					break;
+					case "service":
+					if(job != 2){
+						job = 2;
+						$(".job").css("display","none");
+						$("#serviceExprience").css("display","block");
+						$("#serviceImg").css("display","block");
+					}
+					break;
+					case "ui":
+					if(job != 3){
+						job = 3;
+						$(".job").css("display","none");
+						$("#uiDesign").css("display","block");
+						$("#uiImg").css("display","block");
+					}
+					break;
+				}
+			});
+			$(".jobA").mouseleave(function(){
+				$(".jobA").css("background-color","rgb(101,2,246)");
+				$(".jobImg").css("display","none");
+				switch(job){
+					case 0:
+					$("#online").css("background-color","#31E076");
+					$("#smileImg").css("display","block");
+					break;
+					case 1:
+					$("#customer").css("background-color","#31E076");
+					$("#customerImg").css("display","block");
+					break;
+					case 2:
+					$("#service").css("background-color","#31E076");
+					$("#serviceImg").css("display","block");
+					break;
+					case 3:
+					$("#ui").css("background-color","#31E076");
+					$("#uiImg").css("display","block");
+					break;
+				}
+			});
+			$(".jobA").click(function(){
+				console.log("hello... ...");
+			});
+		});
+	</script>
+</body>
+</html>

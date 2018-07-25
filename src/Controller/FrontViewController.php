@@ -172,6 +172,19 @@ class FrontViewController
         return $this->view->render($response,'/front/pages/team.phtml',compact('active'));
     }
 
+    public function adIntentionLook(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'adIntentionLook';
+        return $this->view->render($response,'/front/pages/adIntention.phtml',compact('active'));
+    }
+    public function deviceInfo(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'deviceInfo';
+        return $this->view->render($response,'/front/pages/deviceInfo.phtml',compact('active'));
+    }
+    public function jobInfo(ServerRequestInterface $request,ResponseInterface $response,array $args){
+        $active = 'jobInfo';
+        return $this->view->render($response,'/front/pages/jobInfo.phtml',compact('active'));
+    }
+
     public function upWorks(ServerRequestInterface $request,ResponseInterface $response,array $args){
         return $this->view->render($response,'/front/activity/upWorks.phtml');
     }

@@ -148,12 +148,18 @@ $app->group('/front/view', function () {
     $this->get('/question/{id}', \Cms\Controller\FrontViewController::class . ":question");
     $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
     $this->get('/paper', \Cms\Controller\FrontViewController::class . ":paper");
+    //官网
     $this->get('/index',\Cms\Controller\FrontViewController::class.':index');
     $this->get('/successList',\Cms\Controller\FrontViewController::class.':successList');
     $this->get('/contact',\Cms\Controller\FrontViewController::class.':contact');
     $this->get('/team',\Cms\Controller\FrontViewController::class.':team');
+    $this->get('/adIntentionLook',\Cms\Controller\FrontViewController::class.':adIntentionLook');
+    $this->get('/deviceInfo',\Cms\Controller\FrontViewController::class.':deviceInfo');
+    $this->get('/jobInfo',\Cms\Controller\FrontViewController::class.':jobInfo');
 
 });
+
+$app->get('/',\Cms\Controller\FrontViewController::class.':index');
 
 $app->group('/activity',function (){
 
