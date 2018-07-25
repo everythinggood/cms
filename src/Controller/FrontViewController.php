@@ -259,6 +259,8 @@ class FrontViewController
 
             if($id = $myWork->id){
                 $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork,$myWorkImage,$position,$voteNum);
+            }else{
+                $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork,$myWorkImage,1,0);
             }
 
             $work = $workService->findById($id);
