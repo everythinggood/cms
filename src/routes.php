@@ -10,6 +10,7 @@
 //    return $this->renderer->render($response, 'index.phtml', $args);
 //});
 
+$container = $app->getContainer();
 
 $app->get('/view/login', \Cms\Controller\ViewController::class . ":login");
 
@@ -132,7 +133,7 @@ $app->group('/view', function () {
 
     $this->get('/metadata/editor/{id}',\Cms\Controller\ViewController::class.':metadataEditor');
 
-})->add($app->getContainer()['sessionMiddleware']);
+})->add($container['sessionMiddleware']);
 
 $app->group('/front/view', function () {
 
@@ -156,3 +157,13 @@ $app->group('/front/view', function () {
     $this->get('/myWorks',\Cms\Controller\FrontViewController::class.':myWorks');
 
 });
+
+$app->group('/activity',function (){
+
+    $this->post('/work/add',\Cms\Controller\WorkController::class.':add');
+    $this->post('/vote/add',\Cms\Controller\VoteController::class.':add');
+    $this->get('/charts/top100',\Cms\Controller\ChartsController::class.':top100');
+
+})->add($container['weChatUserSessionMiddleware']);
+
+$app->any('/oauth/callback',\Cms\Wechat\OauthCallback::class.':officialAccount');

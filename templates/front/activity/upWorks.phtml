@@ -12,7 +12,7 @@
 <body class="container"
       style="background-image: url('http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: rgb(255, 255, 255);background-attachment:fixed;">
 
-<div class="card m-2" style="opacity: 0.9;">
+<div class="card m-lg-5 m-sm-2 m-md-2 m-xl-2" style="opacity: 0.9;">
     <div class="card-header text-center" style="color: #0b2e13;">
         <h5>纸色嘉年华</h5>
         <h5>"我纸钟意你，发现最美纸色瞬间"</h5>
@@ -20,15 +20,15 @@
     </div>
     <div class="card-body">
 
-        <form action="/front/view/submitWorks">
+        <form id="addWork">
             <div class="form-group">
-                <label for="name">姓名<i class="text-danger">*</i></label>
+                <label for="author">姓名<i class="text-danger">*</i></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><span class="fa fa-fw fa-user" style="color: #0b2e13;"></span>
                         </div>
                     </div>
-                    <input type="text" name="name" class="form-control" aria-describedby="nameHelp"
+                    <input type="text" name="author" class="form-control" aria-describedby="nameHelp"
                            placeholder="请输入你的姓名">
                 </div>
             </div>
@@ -48,14 +48,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="wechat">微信<i class="text-danger">*</i></label>
+                <label for="weixin">微信<i class="text-danger">*</i></label>
                 <small class="form-text text-muted">请如实填写，以便发放奖品。</small>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><span class="fa fa-fw fa-weixin"
                                                             style="color: #0b2e13;"></span></div>
                     </div>
-                    <input type="text" name="wechat" id="wechat" class="form-control" placeholder="请输入你的微信号">
+                    <input type="text" name="weixin" id="weixin" class="form-control" placeholder="请输入你的微信号">
                 </div>
             </div>
             <div class="form-group">
@@ -70,19 +70,57 @@
             <div class="form-group">
                 <label for="uploadPicture">上传作品<i class="text-danger">*</i></label>
                 <small class="form-text text-muted">上传的作品只支持jpg,png,gif,bmp,psd,tiff的格式</small>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="uploadPicture" name="uploadFile"
-                           placeholder="请上传你的作品">
-                    <label class="custom-file-label" for="uploadPicture">上传你的作品</label>
-                </div>
+                <input type="file" id="singeFile" name="singeFile" accept=".jpg,.png,.gif,.bmp,.psd,.tiff">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-dark" style="background-color: #0b2e13;">提&nbsp;&nbsp;交</button>
+                <button type="button" id="upWorks" class="btn btn-dark" style="background-color: #0b2e13;">提&nbsp;&nbsp;交</button>
             </div>
         </form>
 
     </div>
 </div>
+
+<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+
+<script>
+
+
+    $('#upWorks').click(function () {
+
+        var loading = weui.loading('loading');
+
+        $.ajax({
+            url: '/activity/work/add',
+            type: 'POST',
+            data: getJsonData(),
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                loading.hide();
+                console.log(result);
+                var id = result.work.id;
+                weui.toast(id,2000);
+                window.location.href = '/front/view/submitWorks'+'?id='+id;
+            },
+            error: function (result) {
+                loading.hide();
+                console.log(result);
+                var exception = result.responseJSON.exception;
+                if(exception){
+                    weui.alert(exception);
+                }
+            }
+        })
+
+    });
+
+    function getJsonData(){
+        return new FormData($('#addWork')[0]);
+    }
+
+</script>
 
 
 </body>

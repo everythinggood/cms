@@ -1,0 +1,74 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ycy
+ * Date: 7/25/18
+ * Time: 11:44 AM
+ */
+
+namespace Cms\Service;
+
+
+use Cms\Entity\WeChatUser;
+use Cms\Helper\ValidationHelper;
+use Doctrine\ORM\EntityManager;
+
+class WeChatUserService
+{
+    /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
+     * WeChatUserService constructor.
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
+     * @param array $data
+     * @return WeChatUser|null|object
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function createWeChatUser(array $data){
+
+        $weChatUser = $this->findByOpenId($data['openid']);
+
+        if($weChatUser) return $weChatUser;
+
+        $weChatUser = $this->initWeChatUser($data);
+
+        $this->em->persist($weChatUser);
+        $this->em->flush();
+
+        return $weChatUser;
+
+    }
+
+    private function initWeChatUser(array $data){
+        $weChatUser = new WeChatUser();
+        $weChatUser->setCreateTime(new \DateTime());
+        $weChatUser->setUpdateTime(new \DateTime());
+        $weChatUser->setCity($data['city']);
+        $weChatUser->setCountry($data['country']);
+        $weChatUser->setHeadImgUrl($data['headimgurl']);
+        $weChatUser->setNickname($data['nickname']);
+        $weChatUser->setOpenid($data['openid']);
+        $weChatUser->setProvince($data['province']);
+        $weChatUser->setSex($data['sex']);
+        $weChatUser->setUnionId($data['unionid']);
+
+        return $weChatUser;
+    }
+
+    public function findByOpenId($openid){
+        return $this->em->getRepository(WeChatUser::class)->findOneBy(['openid'=>$openid]);
+    }
+
+
+}

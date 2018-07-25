@@ -1,14 +1,14 @@
 <?php
 
-$env = new Dotenv\Dotenv(__DIR__.'/../');
+$env = new Dotenv\Dotenv(__DIR__ . '/../');
 $env->load();
 
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
-        'debug'=>$_ENV['slim_debug'],
-        'routerCacheFile'=>false,
+        'debug' => $_ENV['slim_debug'],
+        'routerCacheFile' => false,
 
         // Renderer settings
         'renderer' => [
@@ -44,6 +44,20 @@ return [
             ]
         ],
 
-        'upload_file_directory'=> __DIR__ . '/../public/uploads'
+        'upload_file_directory' => __DIR__ . '/../public/uploads',
+
+        'wx_officialAccount_config' => [
+            'app_id' => $_ENV['officialAccount_app_id'],
+            'secret' => $_ENV['officialAccount_app_secret'],
+            'response_type' => 'array',
+            'log' => [
+                'level' => 'debug',
+                'file' => __DIR__ . '/../logs/wechat.log'
+            ],
+            'oauth'=>[
+                'scopes'=>['snsapi_userinfo'],
+                'callback'=>'/oauth/callback'
+            ]
+        ]
     ],
 ];

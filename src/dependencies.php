@@ -43,8 +43,8 @@ $container[\Doctrine\ORM\EntityManager::class] = function (\Slim\Container $cont
     );
 
     $platform = $em->getConnection()->getDatabasePlatform();
-    $platform->registerDoctrineTypeMapping('enum','string');
-    $platform->registerDoctrineTypeMapping('set','string');
+    $platform->registerDoctrineTypeMapping('enum', 'string');
+    $platform->registerDoctrineTypeMapping('set', 'string');
 
     return $em;
 };
@@ -53,25 +53,41 @@ $container[\Doctrine\ORM\EntityManager::class] = function (\Slim\Container $cont
  * @param \Psr\Container\ContainerInterface $container
  * @return \SlimSession\Helper
  */
-$container['session'] = function (\Psr\Container\ContainerInterface $container){
+$container['session'] = function (\Psr\Container\ContainerInterface $container) {
     return new \SlimSession\Helper();
 };
 
-$container['errorHandler'] = function (\Psr\Container\ContainerInterface $container){
-    $handler =  new \Cms\Handler\ErrorHandler();
+$container['errorHandler'] = function (\Psr\Container\ContainerInterface $container) {
+    $handler = new \Cms\Handler\ErrorHandler();
     $handler->setLogger($container->get('logger'));
     return $handler;
 };
 
-$container['flash'] = function (\Psr\Container\ContainerInterface $container){
+$container['flash'] = function (\Psr\Container\ContainerInterface $container) {
     return new \Slim\Flash\Messages();
 };
 
-$container['sessionMiddleware'] = function (\Psr\Container\ContainerInterface $container){
+$container['sessionMiddleware'] = function (\Psr\Container\ContainerInterface $container) {
 
     $logger = $container->get('logger');
     $session = $container->get('session');
     $userService = new \Cms\Service\UserService($container->get(\Doctrine\ORM\EntityManager::class));
 
-    return new \Cms\Middleware\SessionMiddleware($session,$userService,$logger);
+    return new \Cms\Middleware\SessionMiddleware($session, $userService, $logger);
+};
+
+$container['officialAccount'] = function (\Psr\Container\ContainerInterface $container) {
+    $config = $container->get('settings')['wx_officialAccount_config'];
+
+    $app = \EasyWeChat\Factory::officialAccount($config);
+
+    return $app;
+};
+
+$container['weChatUserSessionMiddleware'] = function (\Psr\Container\ContainerInterface $container){
+    $logger = $container->get('logger');
+    $session = $container->get('session');
+    $app = $container['officialAccount'];
+
+    return new \Cms\Middleware\WeChatUserSessionMiddleware($session,$app,$logger);
 };

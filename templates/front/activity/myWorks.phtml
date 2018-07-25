@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \Cms\View\WorkVote $myWorkVote
+ * @var array $resultTop
+ */
+?>
 <html>
 
 <head lang="en">
@@ -8,15 +14,16 @@
     <link rel="stylesheet" href="/plugins/bootstrap-4.1.1-dist/css/bootstrap.min.css">
     <script src="/plugins/jquery/jquery.min.js"></script>
     <style>
-        .underline{
+        .underline {
             text-decoration: underline;
         }
     </style>
 </head>
 
-<body class="container" style="background-image: url('http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: rgb(255, 255, 255);background-attachment:fixed;">
+<body class="container"
+      style="background-image: url('http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: rgb(255, 255, 255);background-attachment:fixed;">
 
-<div class="card m-2" style="opacity: 0.9;">
+<div class="card m-lg-5 m-sm-2 m-md-2 m-xl-2" style="opacity: 0.9;">
     <div class="card-header text-center bg-white">
         <h5>纸色嘉年华</h5>
         <h5>"我纸钟意你,发现最美纸色瞬间"</h5>
@@ -29,42 +36,74 @@
             <div class="col-3"></div>
         </div>
         <div class="card" id="myCard">
-            <img class="card-img-top" src="http://img5.iqilu.com/c/u/2016/0504/1462326320241.jpg" alt="作品图片">
+            <img class="card-img-top" src="/uploads/<?php echo $myWorkVote->imageUrl; ?>" alt="作品图片">
             <div class="card-body">
-                <p class="card-text">第一名 5000票</p>
-                <p class="card-text">编号：<span class="underline">a_20180723</span></p>
-                <p class="card-text">作品名称：<span class="underline">城市喧哗下的纸巾机</span></p>
-                <p class="card-text">作品描述：<span class="underline">城市喧哗中的纸巾机,位落天河城中万达广场中央,依傍美丽的广州塔。</span></p>
+                <p class="card-text">第<?php echo $myWorkVote->position; ?>名 <?php echo $myWorkVote->voteNum; ?>票</p>
+                <p class="card-text">编号：<span class="underline"><?php echo $myWorkVote->id; ?></span></p>
+                <p class="card-text">作品名称：<span class="underline"><?php echo $myWorkVote->workName; ?></span></p>
+                <p class="card-text">作品描述：<span class="underline"><?php echo $myWorkVote->workDescription; ?></span></p>
                 <div class="text-center">
-                    <button id="poll" class="btn btn-dark" style="background-color: #0b2e13;">&nbsp;为我投票&nbsp;</button>
+                    <input type="hidden" id="myWorkId" value="<?php echo $myWorkVote->id; ?>">
+                    <button id="vote" class="btn btn-dark" style="background-color: #0b2e13;">&nbsp;为我投票&nbsp;</button>
                 </div>
             </div>
         </div>
 
         <hr>
         <h5 class="text-center">
-           排行榜
+            排行榜
         </h5>
 
-        <div class="card mt-3">
-            <img class="card-img-top" src="http://img5.iqilu.com/c/u/2016/0504/1462326320241.jpg" alt="作品图片">
-            <div class="card-body">
-                <p class="card-text">第一名 5000票</p>
-                <p class="card-text">编号：<span class="underline">a_20180723</span></p>
-                <p class="card-text">作品名称：<span class="underline">城市喧哗下的纸巾机</span></p>
-                <p class="card-text">作品描述：<span class="underline">城市喧哗中的纸巾机,位落天河城中万达广场中央,依傍美丽的广州塔。</span></p>
+        <?php
+        /** @var \Cms\View\WorkVote $workVote */
+        foreach ($resultTop as $workVote) {
+            ?>
+            <div class="card mt-3">
+                <img class="card-img-top" src="/uploads/<?php echo $workVote->imageUrl;?>" alt="作品图片">
+                <div class="card-body">
+                    <p class="card-text">第<?php echo $workVote->position; ?>名 <?php echo $workVote->voteNum;?>票</p>
+                    <p class="card-text">编号：<span class="underline"><?php echo $workVote->id;?></span></p>
+                    <p class="card-text">作品名称：<span class="underline"><?php echo $workVote->name;?></span></p>
+                    <p class="card-text">作品描述：<span class="underline"><?php echo $workVote->description;?></span></p>
+                </div>
             </div>
-        </div>
+            <?php
+        }
+        ?>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
 
 </body>
 <script>
 
     $(function () {
-       $("#poll").click(function () {
-          window.location.href = "/front/view/upWorks";
-       });
+        $("#vote").click(function () {
+            var btn = $(this);
+            var id = $('#myWorkId').val();
+            if (!btn.attr('disabled')) {
+
+                $.ajax({
+                    url: '/activity/vote/add',
+                    type: 'POST',
+                    data: {'id': id},
+                    dataTye: 'json',
+                    success: function (result) {
+                        weui.toast('投票成功！');
+                        btn.text("你已投票");
+                        btn.attr("disabled", true);
+                    },
+                    error: function (result) {
+                        var exception = result.responseJSON.exception;
+                        weui.alert('投票失败！' + exception);
+                        btn.text('为我投票');
+                        btn.attr('disabled', false);
+                    }
+                });
+            }
+        });
     });
 
 </script>

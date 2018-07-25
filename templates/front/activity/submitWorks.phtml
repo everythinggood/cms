@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \Cms\Entity\Work $work
+ * @var \Cms\Entity\WorkImage $workImage
+ */
+?>
 <html>
 
 <head lang="en">
@@ -16,31 +22,53 @@
 
 <body class="container" style="background-image: url('http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: rgb(255, 255, 255);background-attachment:fixed;">
 
-    <div class="card m-2" style="opacity: 0.9;">
+    <div class="card m-lg-5 m-sm-2 m-md-2 m-xl-2" style="opacity: 0.9;">
         <div class="card-header text-center bg-white" style="color: #0b2e13;">
             <h5>提交成功！</h5>
             <h5>投票已开放，快为您的作品拉拉票吧！</h5>
         </div>
         <div class="card-body">
-            <h6>作品编号：<span class="underline">a_20180723</span></h6>
-            <h6>作品名称：<span class="underline">城市喧哗中的纸巾机</span></h6>
-            <h6>作品描述：<span class="underline">城市喧哗中的纸巾机,位落天河城中万达广场中央,依傍美丽的广州塔。</span></h6>
+            <h6>作品编号：<span class="underline"><?php echo $work->id; ?></span></h6>
+            <h6>作品名称：<span class="underline"><?php echo $work->workName?></span></h6>
+            <h6>作品描述：<span class="underline"><?php echo $work->workDescription?></span></h6>
         </div>
         <div class="card-footer border-0">
-            <img class="card-img-bottom" src="http://img5.iqilu.com/c/u/2016/0504/1462326320241.jpg" alt="美丽的港口" >
+            <img class="card-img-bottom" src="/uploads/<?php echo $workImage->imageUrl;?>" alt="美丽的港口" >
             <div class="text-center mt-3">
-                <button id="relay" class="btn btn-dark" style="background-color: #0b2e13;">转发给好友为我投票</button>
+                <button id="relay" class="btn btn-dark" style="background-color: #0b2e13;" data-clipboard-text="http://localhost:8100/front/view/myWorks?id=<?php echo $work->id;?>">转发给好友为我投票</button>
             </div>
         </div>
     </div>
 
 </body>
+
+<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
 <script>
-    $(function () {
-       $("#relay").click(function () {
-           window.location.href="/front/view/myWorks";
-       }) ;
+    var clipboard = new ClipboardJS('#relay');
+
+    clipboard.on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+
+        e.clearSelection();
+
+        weui.toast('复制链接地址成功！');
     });
+
+    clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        weui.toast('复制链接地址失败！');
+    });
+    // $(function () {
+    //    $("#relay").click(function () {
+    //        window.location.href="/front/view/myWorks";
+    //    }) ;
+    // });
 </script>
 
 </html>

@@ -9,7 +9,12 @@
 namespace Cms\Controller;
 
 
+use Cms\Helper\ValidationHelper;
+use Cms\Service\ChartsService;
 use Cms\Service\QuestionService;
+use Cms\Service\WorkImageService;
+use Cms\Service\WorkService;
+use Cms\View\WorkVote;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -171,12 +176,86 @@ class FrontViewController
         return $this->view->render($response,'/front/activity/upWorks.phtml');
     }
 
-    public function submitWorks(ServerRequestInterface $request,ResponseInterface $response,array  $args){
-        return $this->view->render($response,'/front/activity/submitWorks.phtml');
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return ResponseInterface
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function submitWorks(ServerRequestInterface $request, ResponseInterface $response, array  $args){
+        /** @var Request $request */
+        $id = $request->getParam('id');
+
+        ValidationHelper::checkIsNull($id,'id');
+
+        $em = $this->container->get(EntityManager::class);
+
+        $workService = new WorkService($em);
+        $workImageService = new WorkImageService($em);
+
+        $work = $workService->findById($id);
+        $workImage = $workImageService->findByWorkNo($id);
+
+        ValidationHelper::checkIsTrue($work,'work can not be found!');
+        ValidationHelper::checkIsTrue($workImage,'workImage can not be found!');
+
+        return $this->view->render($response,'/front/activity/submitWorks.phtml',compact('work','workImage'));
     }
 
-    public function myWorks(ServerRequestInterface $request,ResponseInterface $response,array $args){
-        return $this->view->render($response,'/front/activity/myWorks.phtml');
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return ResponseInterface
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function myWorks(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        /** @var Request $request */
+        $id = $request->getParam('id');
+
+        ValidationHelper::checkIsNull($id,'id');
+
+        $em = $this->container->get(EntityManager::class);
+
+        $workService = new WorkService($em);
+        $workImageService = new WorkImageService($em);
+
+        $myWork = $workService->findById($id);
+        $myWorkImage = $workImageService->findByWorkNo($id);
+
+        ValidationHelper::checkIsTrue($myWork,'my work can not be found!');
+        ValidationHelper::checkIsTrue($myWorkImage,'my workImage can not be found!');
+        //排行榜
+        $chartsService = new ChartsService($em);
+
+        $top = $chartsService->getTop100();
+
+        ValidationHelper::checkIsTrue($top,'can not found top100');
+
+        $myWorkVote = null;
+
+        $resultTop = [];
+        foreach ($top as $position=>$topItem){
+            $id = $topItem['workNo'];
+            $voteNum = $topItem['voteNum'];
+
+            $position = $position+1;
+
+            if($id = $myWork->id){
+                $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork,$myWorkImage,$position,$voteNum);
+            }
+
+            $work = $workService->findById($id);
+            $workImage = $workImageService->findByWorkNo($id);
+            $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work,$workImage,$position,$voteNum);
+            $resultTop[] = $workVote;
+        }
+
+
+        return $this->view->render($response,'/front/activity/myWorks.phtml',compact('myWorkVote','resultTop'));
     }
 
 
