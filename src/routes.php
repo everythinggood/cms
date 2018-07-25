@@ -152,13 +152,14 @@ $app->group('/front/view', function () {
     $this->get('/successList',\Cms\Controller\FrontViewController::class.':successList');
     $this->get('/contact',\Cms\Controller\FrontViewController::class.':contact');
     $this->get('/team',\Cms\Controller\FrontViewController::class.':team');
-    $this->get('/upWorks',\Cms\Controller\FrontViewController::class.':upWorks');
-    $this->get('/submitWorks',\Cms\Controller\FrontViewController::class.':submitWorks');
-    $this->get('/myWorks',\Cms\Controller\FrontViewController::class.':myWorks');
 
 });
 
 $app->group('/activity',function (){
+
+    $this->get('/upWorks',\Cms\Controller\FrontViewController::class.':upWorks');
+    $this->get('/submitWorks',\Cms\Controller\FrontViewController::class.':submitWorks');
+    $this->get('/myWorks',\Cms\Controller\FrontViewController::class.':myWorks');
 
     $this->post('/work/add',\Cms\Controller\WorkController::class.':add');
     $this->post('/vote/add',\Cms\Controller\VoteController::class.':add');
