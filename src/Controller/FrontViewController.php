@@ -300,7 +300,7 @@ class FrontViewController
 
             $position = $position + 1;
 
-            if ($id = $myWork->id) {
+            if ($id == $myWork->id) {
                 $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork, $myWorkImage, $position, $voteNum);
             }
 

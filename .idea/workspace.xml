@@ -4,7 +4,6 @@
     <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FrontViewController.php" afterPath="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
-      <change beforePath="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -105,8 +104,8 @@
       <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="315" column="77" lean-forward="false" selection-start-line="315" selection-start-column="77" selection-end-line="315" selection-end-column="77" />
+            <state relative-caret-position="281">
+              <caret line="302" column="22" lean-forward="false" selection-start-line="302" selection-start-column="22" selection-end-line="302" selection-end-column="22" />
               <folding>
                 <element signature="e#114#147#0#PHP" expanded="true" />
               </folding>
@@ -545,7 +544,7 @@
       <workItem from="1532394523463" duration="5363000" />
       <workItem from="1532413018446" duration="15471000" />
       <workItem from="1532482334553" duration="10771000" />
-      <workItem from="1532506151669" duration="11213000" />
+      <workItem from="1532506151669" duration="11274000" />
     </task>
     <task id="LOCAL-00001" summary="takePaper.jpg">
       <created>1527859527635</created>
@@ -757,11 +756,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532517809241</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="[HotFix]fix">
+      <created>1532518027736</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1532518027736</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277763000" />
+    <option name="totallyTimeSpent" value="277824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="310" width="1366" height="770" extended-state="6" />
@@ -1261,8 +1267,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="315" column="77" lean-forward="false" selection-start-line="315" selection-start-column="77" selection-end-line="315" selection-end-column="77" />
+        <state relative-caret-position="281">
+          <caret line="302" column="22" lean-forward="false" selection-start-line="302" selection-start-column="22" selection-end-line="302" selection-end-column="22" />
           <folding>
             <element signature="e#114#147#0#PHP" expanded="true" />
           </folding>
