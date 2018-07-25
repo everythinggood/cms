@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="[HotFix]fix">
+    <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FrontViewController.php" afterPath="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
-      <change beforePath="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myWorks.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="myWorks.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/front/activity/myWorks.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="47" column="135" lean-forward="false" selection-start-line="47" selection-start-column="135" selection-end-line="47" selection-end-column="135" />
+            <state relative-caret-position="270">
+              <caret line="54" column="15" lean-forward="true" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
               <folding>
                 <element signature="e#6#103#0#PHP" expanded="true" />
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -68,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="294" column="119" lean-forward="false" selection-start-line="294" selection-start-column="119" selection-end-line="294" selection-end-column="119" />
+            <state relative-caret-position="267">
+              <caret line="272" column="30" lean-forward="false" selection-start-line="272" selection-start-column="30" selection-end-line="272" selection-end-column="30" />
               <folding>
                 <element signature="e#114#147#0#PHP" expanded="true" />
               </folding>
@@ -227,8 +226,8 @@
         <option value="$PROJECT_DIR$/src/Service/WorkService.php" />
         <option value="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" />
         <option value="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
-        <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
         <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
+        <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
       </list>
     </option>
   </component>
@@ -511,7 +510,7 @@
       <workItem from="1532394523463" duration="5363000" />
       <workItem from="1532413018446" duration="15471000" />
       <workItem from="1532482334553" duration="10771000" />
-      <workItem from="1532506151669" duration="8927000" />
+      <workItem from="1532506151669" duration="9901000" />
     </task>
     <task id="LOCAL-00001" summary="takePaper.jpg">
       <created>1527859527635</created>
@@ -695,11 +694,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532515482984</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="[HotFix]fix">
+      <created>1532515741930</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1532515741930</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275477000" />
+    <option name="totallyTimeSpent" value="276451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="310" width="1366" height="770" extended-state="6" />
@@ -1075,7 +1081,7 @@
         <state relative-caret-position="407">
           <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding>
-            <element signature="e#115#148#0#PHP" expanded="true" />
+            <element signature="e#115#148#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1183,20 +1189,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="294" column="119" lean-forward="false" selection-start-line="294" selection-start-column="119" selection-end-line="294" selection-end-column="119" />
-          <folding>
-            <element signature="e#114#147#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/activity/myWorks.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="47" column="135" lean-forward="false" selection-start-line="47" selection-start-column="135" selection-end-line="47" selection-end-column="135" />
+        <state relative-caret-position="270">
+          <caret line="54" column="15" lean-forward="true" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
           <folding>
             <element signature="e#6#103#0#PHP" expanded="true" />
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1205,6 +1201,16 @@
             <marker date="1532515734987" expanded="true" signature="2632:3269" ph="..." />
             <marker date="1532515734987" expanded="true" signature="2775:3250" ph="..." />
             <marker date="1532515734987" expanded="true" signature="3536:3651" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="272" column="30" lean-forward="false" selection-start-line="272" selection-start-column="30" selection-end-line="272" selection-end-column="30" />
+          <folding>
+            <element signature="e#114#147#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

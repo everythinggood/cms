@@ -90,9 +90,9 @@ class FrontViewController
         /** @var Request $request */
         $category = $request->getParam('category');
 
-        $questions = $this->questionService->findByCategory($category,'seller');
+        $questions = $this->questionService->findByCategory($category, 'seller');
 
-        return $this->view->render($response, '/front/Q&A/sellerQuestions.phtml',compact('questions'));
+        return $this->view->render($response, '/front/Q&A/sellerQuestions.phtml', compact('questions'));
     }
 
     public function userQuestions(ServerRequestInterface $request, ResponseInterface $response, array $args)
@@ -100,7 +100,7 @@ class FrontViewController
 
         $questions = $this->questionService->getUserQuestions();
 
-        return $this->view->render($response, '/front/Q&A/userQuestions.phtml',compact('questions'));
+        return $this->view->render($response, '/front/Q&A/userQuestions.phtml', compact('questions'));
     }
 
     /**
@@ -114,11 +114,11 @@ class FrontViewController
     {
 
         /** @var Request $request */
-        $type = $args['type']?:'seller';
+        $type = $args['type'] ?: 'seller';
 
         $topQuestions = $this->questionService->getTopQuestions($type);
 
-        return $this->view->render($response, '/front/Q&A/sellerTopQuestions.phtml',compact('topQuestions'));
+        return $this->view->render($response, '/front/Q&A/sellerTopQuestions.phtml', compact('topQuestions'));
     }
 
     /**
@@ -133,7 +133,7 @@ class FrontViewController
 
         $categorys = $this->questionService->getCategorys();
 
-        return $this->view->render($response, '/front/Q&A/sellerQuestionCategorys.phtml',compact('categorys'));
+        return $this->view->render($response, '/front/Q&A/sellerQuestionCategorys.phtml', compact('categorys'));
     }
 
     /**
@@ -149,52 +149,64 @@ class FrontViewController
     {
         $question = $this->questionService->findById($args['id']);
 
-        return $this->view->render($response, '/front/Q&A/question.phtml',compact('question'));
+        return $this->view->render($response, '/front/Q&A/question.phtml', compact('question'));
     }
 
-    public function success(ServerRequestInterface $request,ResponseInterface $response,array $args){
-        return $this->view->render($response,'/front/common/success.phtml');
+    public function success(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        return $this->view->render($response, '/front/common/success.phtml');
     }
 
-    public function paper(ServerRequestInterface $request,ResponseInterface $response,array $args){
-        return $this->view->render($response,'/front/common/paper.phtml');
+    public function paper(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        return $this->view->render($response, '/front/common/paper.phtml');
     }
 
-    public function index(ServerRequestInterface $request,ResponseInterface $response,array $args){
+    public function index(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         $active = 'index';
-        return $this->view->render($response,'/front/pages/index.phtml',compact('active'));
+        return $this->view->render($response, '/front/pages/index.phtml', compact('active'));
     }
 
-    public function successList(ServerRequestInterface $request,ResponseInterface $response,array $args){
+    public function successList(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         $active = 'success';
-        return $this->view->render($response,'/front/pages/success.phtml',compact('active'));
+        return $this->view->render($response, '/front/pages/success.phtml', compact('active'));
     }
 
-    public function contact(ServerRequestInterface $request,ResponseInterface $response,array $args){
+    public function contact(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         $active = 'contact';
-        return $this->view->render($response,'/front/pages/contact.phtml',compact('active'));
+        return $this->view->render($response, '/front/pages/contact.phtml', compact('active'));
     }
 
-    public function team(ServerRequestInterface $request,ResponseInterface $response,array $args){
+    public function team(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         $active = 'team';
-        return $this->view->render($response,'/front/pages/team.phtml',compact('active'));
+        return $this->view->render($response, '/front/pages/team.phtml', compact('active'));
     }
 
-    public function adIntentionLook(ServerRequestInterface $request,ResponseInterface $response,array $args){
+    public function adIntentionLook(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         $active = 'adIntentionLook';
-        return $this->view->render($response,'/front/pages/adIntention.phtml',compact('active'));
-    }
-    public function deviceInfo(ServerRequestInterface $request,ResponseInterface $response,array $args){
-        $active = 'deviceInfo';
-        return $this->view->render($response,'/front/pages/deviceInfo.phtml',compact('active'));
-    }
-    public function jobInfo(ServerRequestInterface $request,ResponseInterface $response,array $args){
-        $active = 'jobInfo';
-        return $this->view->render($response,'/front/pages/jobInfo.phtml',compact('active'));
+        return $this->view->render($response, '/front/pages/adIntention.phtml', compact('active'));
     }
 
-    public function upWorks(ServerRequestInterface $request,ResponseInterface $response,array $args){
-        return $this->view->render($response,'/front/activity/upWorks.phtml');
+    public function deviceInfo(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $active = 'deviceInfo';
+        return $this->view->render($response, '/front/pages/deviceInfo.phtml', compact('active'));
+    }
+
+    public function jobInfo(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $active = 'jobInfo';
+        return $this->view->render($response, '/front/pages/jobInfo.phtml', compact('active'));
+    }
+
+    public function upWorks(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        return $this->view->render($response, '/front/activity/upWorks.phtml');
     }
 
     /**
@@ -205,11 +217,12 @@ class FrontViewController
      * @throws \Exception
      * @throws \Interop\Container\Exception\ContainerException
      */
-    public function submitWorks(ServerRequestInterface $request, ResponseInterface $response, array  $args){
+    public function submitWorks(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         /** @var Request $request */
         $id = $request->getParam('id');
 
-        ValidationHelper::checkIsNull($id,'id');
+        ValidationHelper::checkIsNull($id, 'id');
 
         $em = $this->container->get(EntityManager::class);
 
@@ -219,10 +232,10 @@ class FrontViewController
         $work = $workService->findById($id);
         $workImage = $workImageService->findByWorkNo($id);
 
-        ValidationHelper::checkIsTrue($work,'work can not be found!');
-        ValidationHelper::checkIsTrue($workImage,'workImage can not be found!');
+        ValidationHelper::checkIsTrue($work, 'work can not be found!');
+        ValidationHelper::checkIsTrue($workImage, 'workImage can not be found!');
 
-        return $this->view->render($response,'/front/activity/submitWorks.phtml',compact('work','workImage'));
+        return $this->view->render($response, '/front/activity/submitWorks.phtml', compact('work', 'workImage'));
     }
 
     /**
@@ -233,9 +246,10 @@ class FrontViewController
      * @throws \Exception
      * @throws \Interop\Container\Exception\ContainerException
      */
-    public function myWorks(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function myWorks(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         $wxOpenId = null;
-        if($wxUser = $this->session->get(SessionConstant::WECHAT_USER)){
+        if ($wxUser = $this->session->get(SessionConstant::WECHAT_USER)) {
             $wxOpenId = $wxUser['id'];
         }
 
@@ -243,8 +257,8 @@ class FrontViewController
         /** @var Request $request */
         $id = $request->getParam('id');
 
-        ValidationHelper::checkIsNull($wxOpenId,'wxOpenId');
-        ValidationHelper::checkIsNull($id,'id');
+        ValidationHelper::checkIsNull($wxOpenId, 'wxOpenId');
+        ValidationHelper::checkIsNull($id, 'id');
 
         $em = $this->container->get(EntityManager::class);
         $voteService = new VoteService($em);
@@ -253,14 +267,17 @@ class FrontViewController
 
         $vote = $voteService->findByWxOpenId($wxOpenId);
 
-        ValidationHelper::checkIsTrue($vote,'sign in please!');
-        $voteFlag =true;
+        if ($vote) {
+            $voteFlag = true;
+        } else {
+            $voteFlag = false;
+        }
 
         $myWork = $workService->findById($id);
         $myWorkImage = $workImageService->findByWorkNo($id);
 
-        ValidationHelper::checkIsTrue($myWork,'my work can not be found!');
-        ValidationHelper::checkIsTrue($myWorkImage,'my workImage can not be found!');
+        ValidationHelper::checkIsTrue($myWork, 'my work can not be found!');
+        ValidationHelper::checkIsTrue($myWorkImage, 'my workImage can not be found!');
         //排行榜
         $chartsService = new ChartsService($em);
 
@@ -271,30 +288,29 @@ class FrontViewController
         $myWorkVote = null;
 
         $resultTop = [];
-        foreach ($top as $position=>$topItem){
+        foreach ($top as $position => $topItem) {
             $id = $topItem['workNo'];
             $voteNum = $topItem['voteNum'];
 
-            $position = $position+1;
+            $position = $position + 1;
 
-            if($id = $myWork->id){
-                $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork,$myWorkImage,$position,$voteNum);
+            if ($id = $myWork->id) {
+                $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork, $myWorkImage, $position, $voteNum);
             }
 
             $work = $workService->findById($id);
             $workImage = $workImageService->findByWorkNo($id);
-            $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work,$workImage,$position,$voteNum);
+            $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work, $workImage, $position, $voteNum);
             $resultTop[] = $workVote;
         }
 
-        if(count($top) < 1){
-            $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork,$myWorkImage,1,0);
+        if (count($top) < 1) {
+            $myWorkVote = WorkVote::convertByWorkAndWorkImageAndVote($myWork, $myWorkImage, 1, 0);
         }
 
 
-        return $this->view->render($response,'/front/activity/myWorks.phtml',compact('myWorkVote','resultTop','voteFlag'));
+        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag'));
     }
-
 
 
 }
