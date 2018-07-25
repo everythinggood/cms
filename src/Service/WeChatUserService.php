@@ -37,7 +37,7 @@ class WeChatUserService
      */
     public function createWeChatUser(array $data){
 
-        $weChatUser = $this->findByOpenId($data['openid']);
+        $weChatUser = $this->findByOpenId($data['id']);
 
         if($weChatUser) return $weChatUser;
 
@@ -51,6 +51,7 @@ class WeChatUserService
     }
 
     private function initWeChatUser(array $data){
+        $data = $data['original'];
         $weChatUser = new WeChatUser();
         $weChatUser->setCreateTime(new \DateTime());
         $weChatUser->setUpdateTime(new \DateTime());

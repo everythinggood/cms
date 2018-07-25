@@ -72,6 +72,10 @@ class OauthCallback
         $targetUrl = $this->session->get('wechat_target_url') ?: '/activity/work/add';
 
         $weChatUser = $this->session->get('wechat_user');
+
+        $this->logger->addInfo(OauthCallback::class,(array)$targetUrl);
+        $this->logger->addInfo(OauthCallback::class,$weChatUser);
+
         if (!$weChatUser) {
             /** @var User $wxUser */
             $wxUser = $this->app->oauth->user();

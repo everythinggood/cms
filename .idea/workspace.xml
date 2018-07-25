@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WeChatUserService.php" afterPath="$PROJECT_DIR$/src/Service/WeChatUserService.php" />
       <change beforePath="$PROJECT_DIR$/src/Wechat/OauthCallback.php" afterPath="$PROJECT_DIR$/src/Wechat/OauthCallback.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +35,18 @@
       <file leaf-file-name="OauthCallback.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Wechat/OauthCallback.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="78" column="91" lean-forward="false" selection-start-line="78" selection-start-column="91" selection-end-line="78" selection-end-column="91" />
+            <state relative-caret-position="270">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeChatUserService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Service/WeChatUserService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -165,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/Middleware/WeChatUserSeesionMiddleware.php" />
         <option value="$PROJECT_DIR$/src/Middleware/WeChatUserSessionMiddleware.php" />
         <option value="$PROJECT_DIR$/src/Entity/WeChatUser.php" />
-        <option value="$PROJECT_DIR$/src/Service/WeChatUserService.php" />
         <option value="$PROJECT_DIR$/src/dependencies.php" />
         <option value="$PROJECT_DIR$/src/Service/WorkService.php" />
         <option value="$PROJECT_DIR$/src/Service/WorkImageService.php" />
@@ -182,6 +192,7 @@
         <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
         <option value="$PROJECT_DIR$/src/routes.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/Service/WeChatUserService.php" />
         <option value="$PROJECT_DIR$/src/Wechat/OauthCallback.php" />
       </list>
     </option>
@@ -453,7 +464,7 @@
       <workItem from="1532394523463" duration="5363000" />
       <workItem from="1532413018446" duration="15471000" />
       <workItem from="1532482334553" duration="10771000" />
-      <workItem from="1532506151669" duration="4356000" />
+      <workItem from="1532506151669" duration="4803000" />
     </task>
     <task id="LOCAL-00001" summary="takePaper.jpg">
       <created>1527859527635</created>
@@ -553,11 +564,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532507692541</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="[test]">
+      <created>1532511181287</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1532511181287</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270906000" />
+    <option name="totallyTimeSpent" value="271353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="310" width="1366" height="770" extended-state="6" />
@@ -631,7 +649,8 @@
     <MESSAGE value="[dev]update .gitignore" />
     <MESSAGE value="[dev]move websites on this" />
     <MESSAGE value="[dev]move website imgs on this" />
-    <option name="LAST_COMMIT_MESSAGE" value="[dev]move website imgs on this" />
+    <MESSAGE value="[test]" />
+    <option name="LAST_COMMIT_MESSAGE" value="[test]" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -644,6 +663,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="180" column="30" lean-forward="false" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -794,15 +814,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WeChatUserService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#112#138#0#PHP" expanded="false" />
+            <element signature="e#109#132#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1030,10 +1043,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WeChatUserService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Wechat/OauthCallback.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="78" column="91" lean-forward="false" selection-start-line="78" selection-start-column="91" selection-end-line="78" selection-end-column="91" />
+        <state relative-caret-position="270">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
         </state>
       </provider>
