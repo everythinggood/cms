@@ -18,6 +18,7 @@ use Cms\Service\WorkImageService;
 use Cms\Service\WorkService;
 use Cms\View\WorkVote;
 use Doctrine\ORM\EntityManager;
+use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
@@ -44,6 +45,10 @@ class FrontViewController
      * @var Helper
      */
     private $session;
+    /**
+     * @var Logger
+     */
+    private $logger;
 
     /**
      * ViewController constructor.
@@ -56,6 +61,7 @@ class FrontViewController
         $this->view = $container['renderer'];
         $this->questionService = new QuestionService($container->get(EntityManager::class));
         $this->session = $container['session'];
+        $this->logger = $container['logger'];
     }
 
     public function userFeedback(ServerRequestInterface $request, ResponseInterface $response, array $args)
@@ -283,6 +289,8 @@ class FrontViewController
 
         $top = $chartsService->getTop100();
 
+        $this->logger->addInfo(FrontViewController::class,(array)$top);
+
         $myWorkVote = null;
 
         $resultTop = [];
@@ -302,6 +310,7 @@ class FrontViewController
             $resultTop[] = $workVote;
         }
 
+        $this->logger->addInfo(FrontViewController::class,(array)$myWorkVote);
 
         return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag'));
     }
