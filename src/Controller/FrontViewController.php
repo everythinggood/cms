@@ -23,6 +23,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
 use Slim\Http\Request;
+use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use SlimSession\Helper;
 
@@ -210,8 +211,32 @@ class FrontViewController
         return $this->view->render($response, '/front/pages/jobInfo.phtml', compact('active'));
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return ResponseInterface
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
     public function upWorks(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
+        $wxOpenId = null;
+        if ($wxUser = $this->session->get(SessionConstant::WECHAT_USER)) {
+            $wxOpenId = $wxUser['id'];
+        }
+
+        ValidationHelper::checkIsNull($wxOpenId,'wxOpenId');
+
+        $em = $this->container->get(EntityManager::class);
+
+        $workService = new WorkService($em);
+
+        $work = $workService->findByWxOpenId($wxOpenId);
+
+        /** @var Response $response */
+        if(!$work) return $response->withRedirect('/activity/submitWorks?id='.$work->id);
+
         return $this->view->render($response, '/front/activity/upWorks.phtml');
     }
 
@@ -258,7 +283,6 @@ class FrontViewController
         if ($wxUser = $this->session->get(SessionConstant::WECHAT_USER)) {
             $wxOpenId = $wxUser['id'];
         }
-
 
         /** @var Request $request */
         $id = $request->getParam('id');

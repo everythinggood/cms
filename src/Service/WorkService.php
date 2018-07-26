@@ -78,5 +78,10 @@ class WorkService
             ->getResult();
     }
 
+    public function findByWxOpenId($wxOpenId)
+    {
+        if($wxOpenId == null) return null;
+        return $this->em->getRepository(Work::class)->findOneBy(['wxOpenId'=>$wxOpenId]);
+    }
 
 }
