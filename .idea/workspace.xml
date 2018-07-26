@@ -4,6 +4,7 @@
     <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
+      <change beforePath="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="upWorks.phtml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="upWorks.phtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="151" column="7" lean-forward="true" selection-start-line="131" selection-start-column="3" selection-end-line="151" selection-end-column="7" />
+            <state relative-caret-position="290">
+              <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding>
                 <element signature="e#6#66#0#PHP" expanded="true" />
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -62,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="submitWorks.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="submitWorks.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/front/activity/submitWorks.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+            <state relative-caret-position="180">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="e#6#138#0#PHP" expanded="true" />
               </folding>
@@ -184,8 +185,8 @@
         <option value="$PROJECT_DIR$/src/Helper/ValidationHelper.php" />
         <option value="$PROJECT_DIR$/src/Controller/WorkController.php" />
         <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
-        <option value="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" />
         <option value="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
+        <option value="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" />
       </list>
     </option>
   </component>
@@ -444,7 +445,7 @@
       <workItem from="1532482334553" duration="10771000" />
       <workItem from="1532506151669" duration="12205000" />
       <workItem from="1532567198807" duration="2412000" />
-      <workItem from="1532574136569" duration="1245000" />
+      <workItem from="1532574136569" duration="1778000" />
     </task>
     <task id="LOCAL-00001" summary="takePaper.jpg">
       <created>1527859527635</created>
@@ -747,11 +748,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532575096641</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="[test]">
+      <created>1532575389295</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1532575389295</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282412000" />
+    <option name="totallyTimeSpent" value="282945000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="310" width="1299" height="743" extended-state="6" />
@@ -1208,23 +1216,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
+    <entry file="file://$PROJECT_DIR$/templates/front/activity/submitWorks.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="151" column="7" lean-forward="true" selection-start-line="131" selection-start-column="3" selection-end-line="151" selection-end-column="7" />
+        <state relative-caret-position="180">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#6#66#0#PHP" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#6#138#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/activity/submitWorks.phtml">
+    <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+        <state relative-caret-position="290">
+          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
-            <element signature="e#6#138#0#PHP" expanded="true" />
+            <element signature="e#6#66#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
