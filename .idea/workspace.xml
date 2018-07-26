@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontViewController.php" afterPath="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
-      <change beforePath="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" />
+      <change beforePath="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" afterPath="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="upWorks.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upWorks.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="140" column="22" lean-forward="true" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+            <state relative-caret-position="540">
+              <caret line="151" column="7" lean-forward="true" selection-start-line="131" selection-start-column="3" selection-end-line="151" selection-end-column="7" />
               <folding>
                 <element signature="e#6#66#0#PHP" expanded="true" />
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -59,6 +58,18 @@
             <state relative-caret-position="18">
               <caret line="55" column="68" lean-forward="false" selection-start-line="55" selection-start-column="68" selection-end-line="55" selection-end-column="68" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitWorks.phtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/front/activity/submitWorks.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+              <folding>
+                <element signature="e#6#138#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/Constant/SessionConstant.php" />
         <option value="$PROJECT_DIR$/src/Controller/VoteController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Work.php" />
-        <option value="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
         <option value="$PROJECT_DIR$/src/Middleware/WeChatUserSessionMiddleware.php" />
         <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
         <option value="$PROJECT_DIR$/src/Service/WorkService.php" />
@@ -175,6 +185,7 @@
         <option value="$PROJECT_DIR$/src/Controller/WorkController.php" />
         <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
         <option value="$PROJECT_DIR$/templates/front/activity/upWorks.phtml" />
+        <option value="$PROJECT_DIR$/templates/front/activity/submitWorks.phtml" />
       </list>
     </option>
   </component>
@@ -433,7 +444,7 @@
       <workItem from="1532482334553" duration="10771000" />
       <workItem from="1532506151669" duration="12205000" />
       <workItem from="1532567198807" duration="2412000" />
-      <workItem from="1532574136569" duration="946000" />
+      <workItem from="1532574136569" duration="1245000" />
     </task>
     <task id="LOCAL-00001" summary="takePaper.jpg">
       <created>1527859527635</created>
@@ -729,11 +740,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532569973041</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="[test]">
+      <created>1532575096641</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1532575096641</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282113000" />
+    <option name="totallyTimeSpent" value="282412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="310" width="1299" height="743" extended-state="6" />
@@ -807,14 +825,14 @@
     <MESSAGE value="[dev]update .gitignore" />
     <MESSAGE value="[dev]move websites on this" />
     <MESSAGE value="[dev]move website imgs on this" />
-    <MESSAGE value="[test]" />
     <MESSAGE value="[fit]fit controller on activity" />
     <MESSAGE value="[HotFix]fix input file accept on phone" />
     <MESSAGE value="[HotFix]fix" />
     <MESSAGE value="[HotFix]work is exists by wxOpenId redirect to submitWorks?id=[workId]" />
     <MESSAGE value="[HotFix]fix upWorks on input validate" />
     <MESSAGE value="[HotFix]match phone on workController" />
-    <option name="LAST_COMMIT_MESSAGE" value="[HotFix]match phone on workController" />
+    <MESSAGE value="[test]" />
+    <option name="LAST_COMMIT_MESSAGE" value="[test]" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1142,14 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/activity/submitWorks.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="73" column="7" lean-forward="false" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Helper/TemplateHelper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1200,11 +1210,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="140" column="22" lean-forward="true" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+        <state relative-caret-position="540">
+          <caret line="151" column="7" lean-forward="true" selection-start-line="131" selection-start-column="3" selection-end-line="151" selection-end-column="7" />
           <folding>
             <element signature="e#6#66#0#PHP" expanded="true" />
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/front/activity/submitWorks.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+          <folding>
+            <element signature="e#6#138#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
