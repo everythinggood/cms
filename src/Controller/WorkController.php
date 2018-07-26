@@ -11,6 +11,7 @@ namespace Cms\Controller;
 
 use Cms\Constant\SessionConstant;
 use Cms\Helper\FileHelper;
+use Cms\Helper\MatchHelper;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\VoteService;
 use Cms\Service\WorkImageService;
@@ -92,6 +93,9 @@ class WorkController
         ValidationHelper::checkIsNull($name,'name');
         ValidationHelper::checkIsNull($description,'description');
         ValidationHelper::checkIsNull($singeFile,'singeFile');
+
+        ValidationHelper::checkIsTrue(MatchHelper::isPhone($phone),'phone is vail!');
+
 
         /** @var EntityManager $em */
         $em = $this->container->get(EntityManager::class);
