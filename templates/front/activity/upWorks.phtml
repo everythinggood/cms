@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var \EasyWeChat\BasicService\Jssdk\Client $jsSdk
+ */
+?>
 <html>
 <head lang="en">
     <title>我纸钟意你，发现最美纸色瞬间</title>
@@ -34,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="city">城市<i class="text-danger">*</i></label>
-                <input type="text" name="city" class="form-control" aria-describedby="cityHelp" placeholder="请输入你的城市" >
+                <input type="text" name="city" class="form-control" aria-describedby="cityHelp" placeholder="请输入你的城市">
             </div>
             <div class="form-group">
                 <label for="phone">手机<i class="text-danger">*</i></label>
@@ -72,7 +77,8 @@
             <div class="form-group">
                 <label for="uploadPicture">上传作品<i class="text-danger">*</i></label>
                 <small class="form-text text-muted">上传的作品只支持jpg,png,gif,bmp,psd,tiff的格式</small>
-                <input type="file" id="singeFile" name="singeFile" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff">
+                <input type="file" id="singeFile" name="singeFile"
+                       accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff">
             </div>
             <div class="text-center">
                 <button type="button" id="upWorks" class="btn btn-dark" style="background-color: #0b2e13;">提&nbsp;&nbsp;交</button>
@@ -84,6 +90,7 @@
 
 <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
 <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 
 <script>
 
@@ -103,14 +110,14 @@
                 loading.hide();
                 console.log(result);
                 var id = result.work.id;
-                weui.toast(id,2000);
-                window.location.href = '/activity/submitWorks'+'?id='+id;
+                weui.toast(id, 2000);
+                window.location.href = '/activity/submitWorks' + '?id=' + id;
             },
             error: function (result) {
                 loading.hide();
                 console.log(result);
                 var exception = result.responseJSON.exception;
-                if(exception){
+                if (exception) {
                     weui.alert(exception);
                 }
             }
@@ -118,9 +125,31 @@
 
     });
 
-    function getJsonData(){
+    function getJsonData() {
         return new FormData($('#addWork')[0]);
     }
+
+    wx.config(<?php echo $jsSdk->buildConfig(['onMenuShareAppMessage'], true);?>);
+
+    wx.ready(function () {
+        wx.onMenuShareAppMessage({
+            title: '我纸钟意你，发现最美纸色瞬间', // 分享标题
+            desc: '我纸钟意你，发现最美纸色瞬间', // 分享描述
+            link: 'http://toiqgogo.com/activity/upWorks', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://pcdn.mikecrm.com/images/formTemplate/92_Bg.jpg', // 分享图标
+            type: 'link', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户点击了分享后执行的回调函数
+            }
+        });
+
+    });
+
+    wx.error(function(res){
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+    });
 
 </script>
 

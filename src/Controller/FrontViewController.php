@@ -18,6 +18,7 @@ use Cms\Service\WorkImageService;
 use Cms\Service\WorkService;
 use Cms\View\WorkVote;
 use Doctrine\ORM\EntityManager;
+use EasyWeChat\OfficialAccount\Application;
 use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -50,6 +51,10 @@ class FrontViewController
      * @var Logger
      */
     private $logger;
+    /**
+     * @var Application
+     */
+    private $app;
 
     /**
      * ViewController constructor.
@@ -63,6 +68,7 @@ class FrontViewController
         $this->questionService = new QuestionService($container->get(EntityManager::class));
         $this->session = $container['session'];
         $this->logger = $container['logger'];
+        $this->app = $container['officialAccount'];
     }
 
     public function userFeedback(ServerRequestInterface $request, ResponseInterface $response, array $args)
@@ -237,7 +243,9 @@ class FrontViewController
         /** @var Response $response */
         if($work) return $response->withRedirect('/activity/submitWorks?id='.$work->id);
 
-        return $this->view->render($response, '/front/activity/upWorks.phtml');
+        $jsSdk = $this->app->jssdk;
+
+        return $this->view->render($response, '/front/activity/upWorks.phtml',compact('jsSdk'));
     }
 
     /**
@@ -266,7 +274,9 @@ class FrontViewController
         ValidationHelper::checkIsTrue($work, 'work can not be found!');
         ValidationHelper::checkIsTrue($workImage, 'workImage can not be found!');
 
-        return $this->view->render($response, '/front/activity/submitWorks.phtml', compact('work', 'workImage'));
+        $jsSdk = $this->app->jssdk;
+
+        return $this->view->render($response, '/front/activity/submitWorks.phtml', compact('work', 'workImage','jsSdk'));
     }
 
     /**
@@ -341,7 +351,9 @@ class FrontViewController
         $this->logger->addInfo(FrontViewController::class,(array)$myWorkVote);
         $this->logger->addInfo(FrontViewController::class,(array)$resultTop);
 
-        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag'));
+        $jsSdk = $this->app->jssdk;
+
+        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag','jsSdk'));
     }
 
 
