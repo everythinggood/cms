@@ -305,6 +305,8 @@ class FrontViewController
         $workService = new WorkService($em);
         $workImageService = new WorkImageService($em);
 
+        $this->logger->addInfo(FrontViewController::class,(array)$wxOpenId);
+
         $vote = $voteService->findByWxOpenId($wxOpenId);
 
         if ($vote) {
