@@ -36,7 +36,8 @@
         <div class="card-footer border-0">
             <img class="card-img-bottom" src="/uploads/<?php echo $workImage->imageUrl;?>" alt="美丽的港口" >
             <div class="text-center mt-3">
-                <button id="relay" class="btn btn-dark" style="background-color: #0b2e13;" data-clipboard-text="http://toiqgogo.com/activity/myWorks?id=<?php echo $work->id;?>">转发给好友为我投票</button>
+<!--                <button id="relay" class="btn btn-dark" style="background-color: #0b2e13;" data-clipboard-text="http://toiqgogo.com/activity/myWorks?id=--><?php //echo $work->id;?><!--">转发给好友为我投票</button>-->
+                <a href="http://toiqgogo.com/activity/myWorks?id=<?php echo $work->id?>" class="btn btn-dark">转发给好友为我投票</a>
             </div>
         </div>
     </div>
@@ -45,28 +46,29 @@
 
 <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
 <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>-->
 <!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>-->
 
 <script>
-   // var localtion = <?php echo "http://toiqgogo.com/activity/submitWorks?id=".$work->id;?>;
-    var clipboard = new ClipboardJS('#relay');
 
-    clipboard.on('success', function(e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
 
-        e.clearSelection();
+    // var clipboard = new ClipboardJS('#relay');
 
-        weui.toast('复制链接地址成功！');
-    });
-
-    clipboard.on('error', function(e) {
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
-        weui.toast('复制链接地址失败！');
-    });
+    // clipboard.on('success', function(e) {
+    //     console.info('Action:', e.action);
+    //     console.info('Text:', e.text);
+    //     console.info('Trigger:', e.trigger);
+    //
+    //     e.clearSelection();
+    //
+    //     weui.toast('复制链接地址成功！');
+    // });
+    //
+    // clipboard.on('error', function(e) {
+    //     console.error('Action:', e.action);
+    //     console.error('Trigger:', e.trigger);
+    //     weui.toast('复制链接地址失败！');
+    // });
 
     //wx.config(<?php //echo $jsSdk->buildConfig(['onMenuShareAppMessage'], true);?>//);
     //
