@@ -31,6 +31,7 @@ class VoteService
     }
 
     /**
+     * 防止反复投票
      * @param $workNo
      * @param $wxOpenId
      * @return Vote
@@ -40,6 +41,24 @@ class VoteService
     public function createVote($workNo, $wxOpenId){
 
         if($vote = $this->findByWxOpenId($wxOpenId)) return null;
+
+        $vote = $this->initVote($workNo,$wxOpenId);
+
+        $this->em->persist($vote);
+        $this->em->flush();
+
+        return $vote;
+    }
+
+    /**
+     * 此函数使用于作品作者在已投票时，无论怎么样都可以为自己投票
+     * @param $workNo
+     * @param $wxOpenId
+     * @return Vote
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function createVoteNoLimit($workNo,$wxOpenId){
 
         $vote = $this->initVote($workNo,$wxOpenId);
 

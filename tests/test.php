@@ -1,25 +1,18 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ycy
- * Date: 5/31/18
- * Time: 10:16 AM
- */
+##[slim-application]
+slim_debug=true
+router_cache=true
 
-require __DIR__ . '/../vendor/autoload.php';
+##[doctrine]
+dev_mode=true
+connect_driver=pdo_mysql
+connect_host=172.18.214.122
+connect_port=3399
+connect_dbname=cms
+connect_user=root
+connect_password=ycy
+charset=utf8
 
-// Instantiate the app
-$settings = require __DIR__ . '/../src/settings.php';
-$app = new \Slim\App($settings);
-
-// Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
-
-$questionService = new \Cms\Service\QuestionService($app->getContainer()->get(\Doctrine\ORM\EntityManager::class));
-
-$questions = $questionService->findByCategory('default');
-
-var_dump($questions);
-
-//113.395728,23.093301
-//广州智谷科技有限责任公司
+##微信公众平台
+##[wx-officialAccount]
+officialAccount_app_id=wx4d96b113c023de32
+officialAccount_app_secret=265e6bf4f46f81855f13773c61d94c59

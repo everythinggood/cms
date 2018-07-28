@@ -106,7 +106,11 @@ class WorkController
 
         $work = $workService->createWork(compact('author','city','phone','weixin','name','description','wxOpenId'));
         $workImages = $workImageService->createWorkImages($work->id,compact('singeFile'));
-        $vote = $voteService->createVote($work->id,$wxOpenId);
+
+        ValidationHelper::checkIsTrue($work,'work is null');
+        ValidationHelper::checkIsTrue($workImages,'workImages is null');
+
+        $vote = $voteService->createVoteNoLimit($work->id,$wxOpenId);
 
         /** @var Response $response */
         return $response->withJson([
