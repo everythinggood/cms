@@ -1,7 +1,129 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ycy
- * Date: 7/28/18
- * Time: 11:07 AM
- */
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Charts</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <?php include __DIR__.'/ex/alertMessage.phtml';?>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <table id="table" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>WorkId</th>
+                        <th>VoteNum</th>
+                        <th>Author</th>
+                        <th>Phone</th>
+                        <th>WeiXin</th>
+                        <th>City</th>
+                        <th>name</th>
+                        <th>description</th>
+                        <th>ImageUrl</th>
+                        <th>OpenId</th>
+                        <th>NickName</th>
+                        <th>Avatar</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Position</th>
+                        <th>WorkId</th>
+                        <th>VoteNum</th>
+                        <th>Author</th>
+                        <th>Phone</th>
+                        <th>WeiXin</th>
+                        <th>City</th>
+                        <th>name</th>
+                        <th>description</th>
+                        <th>ImageUrl</th>
+                        <th>OpenId</th>
+                        <th>NickName</th>
+                        <th>Avatar</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var table = $('#table').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/admin/chartsTops",
+                "columns": [
+                    {"data": "position"},
+                    {"data": "id"},
+                    {"data": "voteNum"},
+                    {"data": "author"},
+                    {"data": "phone"},
+                    {"data": "weixin"},
+                    {"data": "city"},
+                    {"data": "name"},
+                    {"data": "description"},
+                    {"data": "imageUrl"},
+                    {"data": "wxOpenId"},
+                    {"data": "nickName"},
+                    {"data": "avatar"},
+                ],
+                "columnDefs": [
+                    {
+                        "targets":9,
+                        "render":function (data, type, full, meta) {
+
+                            return "<image src='/uploads/"+data+"' height='150px'>";
+
+                        }
+                    },
+                    {
+                        "targets":12,
+                        "render":function (data, type, full, meta) {
+
+                            return "<image src='"+data+"'>";
+
+                        }
+                    }
+
+                ]
+            }
+        );
+
+
+    });
+</script>
+
+</body>
+</html>

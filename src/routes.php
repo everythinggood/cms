@@ -81,6 +81,11 @@ $app->group('/admin', function () {
     $this->get('/navigation/arr', \Cms\Controller\NavigationController::class . ':navigationArr');
 
     $this->get('/navigation/list',\Cms\Controller\NavigationController::class.':navigationList');
+
+    $this->get('/wechatUsers',\Cms\Controller\WeChatUserController::class.':users');
+
+    $this->get('/chartsTops',\Cms\Controller\ChartsController::class.':tops');
+
 });
 
 $app->group('/front', function () {
@@ -132,6 +137,10 @@ $app->group('/view', function () {
     $this->get('/metadata/create',\Cms\Controller\ViewController::class.':metadataCreate');
 
     $this->get('/metadata/editor/{id}',\Cms\Controller\ViewController::class.':metadataEditor');
+
+    $this->get('/topCharts',\Cms\Controller\ViewController::class.':topCharts');
+
+    $this->get('/wechatUsers',\Cms\Controller\ViewController::class.':weChatUsers');
 
 })->add($container['sessionMiddleware']);
 

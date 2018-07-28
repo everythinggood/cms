@@ -41,5 +41,15 @@ class ChartsService
             ->setMaxResults(100)
             ->getResult();
     }
+    /**
+     * @return mixed
+     */
+    public function getTops(){
+        $dql = "select v.workNo ,count(v.wxOpenId) as voteNum from Cms\\Entity\\Work w join Cms\\Entity\\Vote v 
+          where w.id = v.workNo group by v.workNo order by voteNum desc";
+
+        return $this->em->createQuery($dql)
+            ->getResult();
+    }
 
 }

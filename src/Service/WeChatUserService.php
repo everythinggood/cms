@@ -71,5 +71,10 @@ class WeChatUserService
         return $this->em->getRepository(WeChatUser::class)->findOneBy(['openid'=>$openid]);
     }
 
+    public function findAll()
+    {
+        return $this->em->getRepository(WeChatUser::class)->findAll();
+    }
+
 
 }

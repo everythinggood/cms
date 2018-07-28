@@ -25,7 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link <?php echo $header == 'customer_service'?'active':'';?>">
+                    <a href="#" class="nav-link <?php echo $header == 'customer_service' ? 'active' : ''; ?>">
                         <i class="nav-icon fa fa-file"></i>
                         <p>
                             Customer Service
@@ -34,31 +34,36 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/view/questions" class="nav-link <?php echo $asider=='questions'?'active':""?>">
+                            <a href="/view/questions"
+                               class="nav-link <?php echo $asider == 'questions' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Question&Answer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/view/adIntentions" class="nav-link <?php echo $asider=='adIntentions'?'active':""?>">
+                            <a href="/view/adIntentions"
+                               class="nav-link <?php echo $asider == 'adIntentions' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>AdIntention</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/view/sellerIntentions" class="nav-link <?php echo $asider=='sellerIntentions'?'active':""?>">
+                            <a href="/view/sellerIntentions"
+                               class="nav-link <?php echo $asider == 'sellerIntentions' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>SellerIntention</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/view/sellerFeedbacks" class="nav-link <?php echo $asider=='sellerFeedbacks'?'active':""?>">
+                            <a href="/view/sellerFeedbacks"
+                               class="nav-link <?php echo $asider == 'sellerFeedbacks' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>SellerFeedback</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/view/userFeedbacks" class="nav-link <?php echo $asider=='userFeedbacks'?'active':""?>">
+                            <a href="/view/userFeedbacks"
+                               class="nav-link <?php echo $asider == 'userFeedbacks' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>UserFeedback</p>
                             </a>
@@ -66,7 +71,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link <?php echo $header == 'official_website_service'?'active':'';?>">
+                    <a href="#" class="nav-link <?php echo $header == 'official_website_service' ? 'active' : ''; ?>">
                         <i class="nav-icon fa fa-file "></i>
                         <p>
                             Official Website Service
@@ -75,35 +80,63 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/view/articles" class="nav-link <?php echo $asider=='articles'?'active':""?>">
+                            <a href="/view/articles"
+                               class="nav-link <?php echo $asider == 'articles' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Articles</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/view/navigations" class="nav-link <?php echo $asider=='navigations'?'active':""?>">
+                            <a href="/view/navigations"
+                               class="nav-link <?php echo $asider == 'navigations' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Navigations</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/view/metadatas" class="nav-link <?php echo $asider=='metadatas'?'active':""?>">
+                            <a href="/view/metadatas"
+                               class="nav-link <?php echo $asider == 'metadatas' ? 'active' : "" ?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Metadatas</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-<!--                <li class="nav-header">EXAMPLES</li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a href="pages/calendar.html" class="nav-link">-->
-<!--                        <i class="nav-icon fa fa-calendar"></i>-->
-<!--                        <p>-->
-<!--                            Calendar-->
-<!--                            <span class="badge badge-info right">2</span>-->
-<!--                        </p>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <li class="nav-item has-treeview menu-open">
+                    <a href="#" class="nav-link <?php echo $header == 'activity_service' ? 'active' : ''; ?>">
+                        <i class="nav-icon fa fa-file "></i>
+                        <p>
+                            Activity Service
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/view/topCharts"
+                               class="nav-link <?php echo $asider == 'topCharts' ? 'active' : "" ?>">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>TopCharts</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/view/wechatUsers"
+                               class="nav-link <?php echo $asider == 'wechatUsers' ? 'active' : "" ?>">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>WechatUsers</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--                <li class="nav-header">EXAMPLES</li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a href="pages/calendar.html" class="nav-link">-->
+                <!--                        <i class="nav-icon fa fa-calendar"></i>-->
+                <!--                        <p>-->
+                <!--                            Calendar-->
+                <!--                            <span class="badge badge-info right">2</span>-->
+                <!--                        </p>-->
+                <!--                    </a>-->
+                <!--                </li>-->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

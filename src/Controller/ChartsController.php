@@ -10,9 +10,11 @@ namespace Cms\Controller;
 
 use Cms\Helper\ValidationHelper;
 use Cms\Service\ChartsService;
+use Cms\Service\WeChatUserService;
 use Cms\Service\WorkImageService;
 use Cms\Service\WorkService;
 use Cms\View\WorkVote;
+use Cms\View\WorkVoteAndUser;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -59,23 +61,65 @@ class ChartsController
 
         $top = $chartsService->getTop100();
 
-        ValidationHelper::checkIsTrue($top,'can not found top100');
+        ValidationHelper::checkIsTrue($top, 'can not found top100');
 
         $resultTop = [];
-        foreach ($top as $topItem){
+        foreach ($top as $position => $topItem) {
+            $position = $position + 1;
             $id = $topItem['workNo'];
             $voteNum = $topItem['voteNum'];
             $work = $workService->findById($id);
             $workImage = $workImageService->findByWorkNo($id);
-            $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work,$workImage,$voteNum);
+            $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work, $workImage, $position, $voteNum);
             $resultTop[] = $workVote;
         }
 
         /** @var Response $response */
         return $response->withJson([
-            'top'=>$resultTop
+            'top' => $resultTop
         ]);
 
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return Response
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function tops(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+
+        /** @var EntityManager $em */
+        $em = $this->container->get(EntityManager::class);
+
+        $chartsService = new ChartsService($em);
+        $workService = new WorkService($em);
+        $workImageService = new WorkImageService($em);
+        $wechatUserService = new WeChatUserService($em);
+
+        $top = $chartsService->getTops();
+
+        ValidationHelper::checkIsTrue($top, 'can not found tops');
+
+        $resultTop = [];
+        foreach ($top as $position => $topItem) {
+            $position = $position + 1;
+            $id = $topItem['workNo'];
+            $voteNum = $topItem['voteNum'];
+            $work = $workService->findById($id);
+            $workImage = $workImageService->findByWorkNo($id);
+            $user = $wechatUserService->findByOpenId($work->wxOpenId);
+            $workVote = WorkVoteAndUser::convertByWorkAndWorkImageAndVoteAndUser($work, $workImage, $position, $voteNum,$user);
+            $resultTop[] = $workVote;
+        }
+
+        /** @var Response $response */
+        return $response->withJson([
+            'data' => $resultTop
+        ]);
     }
 
 

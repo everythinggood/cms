@@ -15,6 +15,7 @@ use Cms\Service\ArticleService;
 use Cms\Service\MetaDataService;
 use Cms\Service\NavigationService;
 use Cms\Service\QuestionService;
+use Cms\Service\WeChatUserService;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -263,6 +264,29 @@ class ViewController
         $metadata = $metadataService->findById($id);
 
         return $this->view->render($response, '/admin/metadataEditor.phtml', compact('header', 'asider', 'metadata'));
+    }
+
+    public function topCharts(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $header = 'activity_service';
+        $asider = 'topCharts';
+
+        return $this->view->render($response, '/admin/topCharts.phtml',compact('header','asider'));
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return ResponseInterface
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function wechatUsers(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $header = 'activity_service';
+        $asider = 'wechatUsers';
+
+        return $this->view->render($response, '/admin/wechatUsers.phtml',compact('header','asider','users'));
     }
 
 
