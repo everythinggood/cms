@@ -326,7 +326,7 @@ class FrontViewController
         if(!$workService->isHandle($myWork)){
             $title = '上传成功';
             $error = '感谢您的支持,待作品审核通过会展示于此页面';
-            return $this->view->render($response,'/front/ex/error.phtml',compact('error','title'));
+            return $this->view->render($response,'/front/common/error.phtml',compact('error','title'));
         }
 
         //排行榜

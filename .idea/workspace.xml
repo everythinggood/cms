@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="[fix]fix frontViewController on myWorks">
-      <change beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
+    <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FrontViewController.php" afterPath="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
-      <change beforePath="$PROJECT_DIR$/tests/test.php" afterPath="$PROJECT_DIR$/tests/test.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -119,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="325" column="12" lean-forward="false" selection-start-line="325" selection-start-column="12" selection-end-line="325" selection-end-column="12" />
+            <state relative-caret-position="150">
+              <caret line="328" column="63" lean-forward="false" selection-start-line="328" selection-start-column="63" selection-end-line="328" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -254,8 +252,8 @@
         <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
         <option value="$PROJECT_DIR$/src/Service/ChartsService.php" />
         <option value="$PROJECT_DIR$/tests/test.php" />
-        <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
       </list>
     </option>
   </component>
@@ -535,14 +533,7 @@
       <workItem from="1532742600673" duration="7896000" />
       <workItem from="1532765372553" duration="2029000" />
       <workItem from="1532775899399" duration="22000" />
-      <workItem from="1532846907728" duration="5165000" />
-    </task>
-    <task id="LOCAL-00002" summary="fix paper.phtml">
-      <created>1527915912117</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1527915912117</updated>
+      <workItem from="1532846907728" duration="5265000" />
     </task>
     <task id="LOCAL-00003" summary="[dev]add filter on userFeedback and sellerFeedback">
       <created>1528857673983</created>
@@ -880,11 +871,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532851141579</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="[fix]fix frontViewController on myWorks">
+      <created>1532852082057</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1532852082057</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="299256000" />
+    <option name="totallyTimeSpent" value="299356000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1930" y="306" width="1299" height="743" extended-state="6" />
@@ -944,7 +942,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix paper.phtml" />
     <MESSAGE value="[dev]add filter on userFeedback and sellerFeedback" />
     <MESSAGE value="[dev]add article , metadata , navigation function and page" />
     <MESSAGE value="[dev]set forala editor uploadImage on my own image server,remove forala editor testing image server(Test on questionEditor.phtml)" />
@@ -969,7 +966,8 @@
     <MESSAGE value="[fix]fix WorkController add function bug" />
     <MESSAGE value="[fix]fix submitWorks.phtml" />
     <MESSAGE value="[dev]work add verify function and change some related function" />
-    <option name="LAST_COMMIT_MESSAGE" value="[dev]work add verify function and change some related function" />
+    <MESSAGE value="[fix]fix frontViewController on myWorks" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fix]fix frontViewController on myWorks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1345,14 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="325" column="12" lean-forward="false" selection-start-line="325" selection-start-column="12" selection-end-line="325" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -1364,7 +1354,15 @@
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="328" column="63" lean-forward="false" selection-start-line="328" selection-start-column="63" selection-end-line="328" selection-end-column="63" />
           <folding />
         </state>
       </provider>
