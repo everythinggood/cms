@@ -4,7 +4,7 @@
     <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/templates/front/common/error.phtml" afterPath="$PROJECT_DIR$/templates/front/common/error.phtml" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FrontViewController.php" afterPath="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +30,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="error.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/front/common/error.phtml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -122,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FrontViewController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="524">
-              <caret line="252" column="37" lean-forward="true" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
+              <caret line="341" column="0" lean-forward="true" selection-start-line="341" selection-start-column="0" selection-end-line="341" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -257,8 +257,8 @@
         <option value="$PROJECT_DIR$/tests/test.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
-        <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
         <option value="$PROJECT_DIR$/templates/front/common/error.phtml" />
+        <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
       </list>
     </option>
   </component>
@@ -556,14 +556,7 @@
       <workItem from="1532742600673" duration="7896000" />
       <workItem from="1532765372553" duration="2029000" />
       <workItem from="1532775899399" duration="22000" />
-      <workItem from="1532846907728" duration="7632000" />
-    </task>
-    <task id="LOCAL-00006" summary="[fix]fix some warning">
-      <created>1529566418628</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1529566418628</updated>
+      <workItem from="1532846907728" duration="7839000" />
     </task>
     <task id="LOCAL-00007" summary="[dev]sellerIntention add exportCsv function and route">
       <created>1531382304878</created>
@@ -901,11 +894,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532853734720</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="[fix]fix">
+      <created>1532854577169</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1532854577169</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301723000" />
+    <option name="totallyTimeSpent" value="301930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1930" y="306" width="1299" height="743" extended-state="6" />
@@ -1359,14 +1359,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="252" column="37" lean-forward="true" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/ex/page_footer.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1392,6 +1384,14 @@
           <folding>
             <element signature="e#6#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/FrontViewController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="341" column="0" lean-forward="true" selection-start-line="341" selection-start-column="0" selection-end-line="341" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

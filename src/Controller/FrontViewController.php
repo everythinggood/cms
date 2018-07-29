@@ -241,7 +241,7 @@ class FrontViewController
         $work = $workService->findByWxOpenId($wxOpenId);
 
         /** @var Response $response */
-        if($work) return $response->withRedirect('/activity/submitWorks?id='.$work->id);
+        if($work) return $response->withRedirect('/activity/myWorks?id='.$work->id);
 
         $jsSdk = $this->app->jssdk;
 
