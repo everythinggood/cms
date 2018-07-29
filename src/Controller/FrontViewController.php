@@ -274,6 +274,12 @@ class FrontViewController
         ValidationHelper::checkIsTrue($work, 'work can not be found!');
         ValidationHelper::checkIsTrue($workImage, 'workImage can not be found!');
 
+        if(!$workService->isHandle($work)){
+            $title = '上传成功';
+            $error = '感谢您的支持,待作品审核通过会展示于此页面';
+            return $this->view->render($response,'/front/common/error.phtml',compact('error','title'));
+        }
+
         $jsSdk = $this->app->jssdk;
 
         return $this->view->render($response, '/front/activity/submitWorks.phtml', compact('work', 'workImage','jsSdk'));
