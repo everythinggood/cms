@@ -130,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
-              <caret line="80" column="66" lean-forward="true" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
+              <caret line="80" column="16" lean-forward="false" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -548,14 +548,7 @@
       <workItem from="1532742600673" duration="7896000" />
       <workItem from="1532765372553" duration="2029000" />
       <workItem from="1532775899399" duration="22000" />
-      <workItem from="1532846907728" duration="8754000" />
-    </task>
-    <task id="LOCAL-00010" summary="[dev]add vote-activity on wechat">
-      <created>1532499895226</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1532499895226</updated>
+      <workItem from="1532846907728" duration="8813000" />
     </task>
     <task id="LOCAL-00011" summary="[fix]fix route add wechatusersessionmiddleware">
       <created>1532501003834</created>
@@ -893,11 +886,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532855374554</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="[fix]fix">
+      <created>1532855700759</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1532855700759</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302845000" />
+    <option name="totallyTimeSpent" value="302904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1930" y="306" width="1299" height="743" extended-state="6" />
@@ -1384,7 +1384,7 @@
     <entry file="file://$PROJECT_DIR$/templates/front/activity/upWorks.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="80" column="66" lean-forward="true" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
+          <caret line="80" column="16" lean-forward="false" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
           <folding />
         </state>
       </provider>
