@@ -42,6 +42,8 @@
                         <th>OpenId</th>
                         <th>NickName</th>
                         <th>Avatar</th>
+                        <th>IsHandle</th>
+                        <th>Options</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -59,6 +61,8 @@
                         <th>OpenId</th>
                         <th>NickName</th>
                         <th>Avatar</th>
+                        <th>IsHandle</th>
+                        <th>Options</th>
                     </tr>
                     </tfoot>
 
@@ -98,8 +102,30 @@
                     {"data": "wxOpenId"},
                     {"data": "nickName"},
                     {"data": "avatar"},
+                    {"data": "isHandle"},
+                    {"data": "isHandle"},
                 ],
                 "columnDefs": [
+                    {
+                        "targets": -1,
+                        "render": function (data, type, full, meta) {
+                            // console.log(type);
+                            // console.log(full);
+                            // console.log(full.id);
+                            var id = full.id;
+                            var isHandle = full.isHandle;
+
+                            if(isHandle == 'pending'){
+
+                                return "<button type='button' class='pass ui button primary' id='" + id + "'>pass</button>"
+                            }
+                            if(isHandle == 'done'){
+                                return "<button type='button' class='notPass ui button red' id='" + id + "'>not pass</button>"
+                            }
+
+                            return "";
+                        }
+                    },
                     {
                         "targets":9,
                         "render":function (data, type, full, meta) {
@@ -115,11 +141,97 @@
                             return "<image src='"+data+"'>";
 
                         }
+                    },
+                    {
+                        "targets":13,
+                        "render":function (data, type, full, meta) {
+
+                            if(data == 'done'){
+                                return "<div class='bg-primary-gradient text-center'>done<i class='fa fa-thumbs-o-up fa-fw'></i></div>";
+                            }
+
+                            if(data == 'pending'){
+                                return "<div class='bg-warning-gradient text-center'>pending<i class='fa fa-warning fa-fw'></i></div>";
+                            }
+
+                            return data;
+
+                        }
                     }
 
                 ]
             }
         );
+
+        $('#table').find('tbody').on('click', '.pass', function () {
+            var data = table.row(this).data();
+            var id = $(this).attr('id');
+
+            var btn = $(this);
+            if (btn.hasClass('loading')) {
+
+                alert('handling ...');
+
+            } else {
+                btn.addClass('loading');
+                $.ajax({
+                    url: "/admin/work/handle",
+                    type: "POST",
+                    dataType: "json",
+                    data: {'id': id,'isHandle':'done'},
+                    success: function (result) {
+                        btn.removeClass('loading');
+                        btn.addClass('disabled');
+                        table.ajax.reload();
+                    },
+                    error: function (result) {
+                        btn.removeClass('loading');
+                        var exception = result.responseJSON.exception;
+                        if(exception){
+                            $('#alert-message').append(exception);
+                            $('#alert-message').removeClass('hidden');
+                            $('#alert-message').addClass('show');
+                        }
+                    }
+                });
+            }
+
+        });
+
+        $('#table').find('tbody').on('click', '.notPass', function () {
+            var data = table.row(this).data();
+            var id = $(this).attr('id');
+
+            var btn = $(this);
+            if (btn.hasClass('loading')) {
+
+                alert('handling ...');
+
+            } else {
+                btn.addClass('loading');
+                $.ajax({
+                    url: "/admin/work/handle",
+                    type: "POST",
+                    dataType: "json",
+                    data: {'id': id,'isHandle':'pending'},
+                    success: function (result) {
+                        btn.removeClass('loading');
+                        btn.addClass('disabled');
+                        table.ajax.reload();
+                    },
+                    error: function (result) {
+                        btn.removeClass('loading');
+                        var exception = result.responseJSON.exception;
+                        if(exception){
+                            $('#alert-message').append(exception);
+                            $('#alert-message').removeClass('hidden');
+                            $('#alert-message').addClass('show');
+                        }
+                    }
+                });
+            }
+
+        });
 
 
     });

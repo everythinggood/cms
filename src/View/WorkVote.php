@@ -22,6 +22,7 @@ class WorkVote
     public $name;
     public $description;
     public $imageUrl;
+    public $isHandle;
     /**
      * 票数
      * @var
@@ -43,6 +44,7 @@ class WorkVote
         $workVote->name = $work->workName;
         $workVote->city = $work->city;
         $workVote->author = $work->author;
+        $workVote->isHandle = $work->isHandle;
         $workVote->voteNum = $voteNum;
         $workVote->position = $position;
         return $workVote;

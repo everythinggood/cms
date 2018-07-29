@@ -21,10 +21,10 @@ $em = $app->getContainer()->get(\Doctrine\ORM\EntityManager::class);
 $workService = new \Cms\Service\WorkService($em);
 
 $data = [
-    'author' => 'ycy',
+    'author' => 'ycy1',
     'city' => '广州',
     'phone' => '13751821625',
-    'weixin' => 'ycy',
+    'weixin' => 'ycy1',
     'name' => 'test',
     'description' => 'test',
     'wxOpenId' => 'o0xto1NmaRm3ESdgiAiA0NaNg3WM'

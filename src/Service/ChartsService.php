@@ -35,7 +35,7 @@ class ChartsService
      */
     public function getTop100(){
         $dql = "select v.workNo ,count(v.wxOpenId) as voteNum from Cms\\Entity\\Work w join Cms\\Entity\\Vote v 
-          where w.id = v.workNo group by v.workNo order by voteNum desc";
+          where w.id = v.workNo and w.isHandle = 'done' group by v.workNo order by voteNum desc";
 
         return $this->em->createQuery($dql)
             ->setMaxResults(100)

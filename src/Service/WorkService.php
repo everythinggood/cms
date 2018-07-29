@@ -51,6 +51,7 @@ class WorkService
         $work->setWorkDescription($data['description']);
         $work->setWorkName($data['name']);
         $work->setWxOpenId($data['wxOpenId']);
+        $work->setIsHandle(Work::$pending);
 
         $this->em->persist($work);
         $this->em->flush();
@@ -83,5 +84,32 @@ class WorkService
         if($wxOpenId == null) return null;
         return $this->em->getRepository(Work::class)->findOneBy(['wxOpenId'=>$wxOpenId]);
     }
+
+    public function isHandle(Work $work){
+        if($work->isHandle == Work::$done) return true;
+        return false;
+    }
+
+    /**
+     * @param $id
+     * @param $isHandle
+     * @return bool
+     * @throws ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function handle($id, $isHandle)
+    {
+        $work = $this->findById($id);
+
+        if(!$work) return false;
+
+        $work->setIsHandle($isHandle);
+
+        $this->em->persist($work);
+        $this->em->flush();
+
+        return true;
+    }
+
 
 }

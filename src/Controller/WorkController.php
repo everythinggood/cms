@@ -132,5 +132,36 @@ class WorkController
 
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return Response
+     * @throws \Exception
+     * @throws \Interop\Container\Exception\ContainerException
+     */
+    public function handle(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        /** @var Request $request */
+        $id = $request->getParam('id');
+        $isHandle = $request->getParam('isHandle');
+
+        ValidationHelper::checkIsNull($id,'id');
+        ValidationHelper::checkIsNull($isHandle,'isHandle');
+
+        if(!in_array($isHandle,['pending','done'])) throw new \Exception('isHandle is vail!');
+
+        /** @var EntityManager $em */
+        $em = $this->container->get(EntityManager::class);
+
+        $workService = new WorkService($em);
+
+        $isHandle = $workService->handle($id,$isHandle);
+
+        /** @var Response $response */
+        return $response->withJson([
+            'isHandle'=>$isHandle
+        ]);
+    }
+
 
 }

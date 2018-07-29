@@ -86,6 +86,8 @@ $app->group('/admin', function () {
 
     $this->get('/chartsTops',\Cms\Controller\ChartsController::class.':tops');
 
+    $this->post('/work/handle',\Cms\Controller\WorkController::class.':handle');
+
 });
 
 $app->group('/front', function () {

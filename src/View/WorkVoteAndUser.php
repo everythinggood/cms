@@ -33,6 +33,7 @@ class WorkVoteAndUser extends WorkVote
         $workVoteAndUser->author = $work->author;
         $workVoteAndUser->voteNum = $voteNum;
         $workVoteAndUser->position = $position;
+        $workVoteAndUser->isHandle = $work->isHandle;
         $workVoteAndUser->wxOpenId = $user->openid;
         $workVoteAndUser->nickName = $user->nickname;
         $workVoteAndUser->avatar = $user->headImgUrl;

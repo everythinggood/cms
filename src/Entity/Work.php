@@ -8,6 +8,7 @@
 
 namespace Cms\Entity;
 use Cms\Entity\ex\Base;
+use Cms\Entity\ex\BaseProperty;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Work
 {
-    use Base;
+    use BaseProperty;
 
     /**
      * @var string
