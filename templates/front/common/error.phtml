@@ -18,10 +18,23 @@
         <div><i class="fa fa-check fa-5x "></i></div>
         <div class="mt-4"><label for="" class="text-bold"><?php echo $title;?></label></div>
         <div class="m-2"><?php echo $error;?></div>
-        <div class="mt-4"><a id="close" class="btn btn-lg btn-outline-light col-6" href="javascript:window.opener=null;window.close();">确定</a></div>
+        <div class="mt-4"><button id="close" class="btn btn-lg btn-outline-light col-6" >确定</button></div>
     </div>
 
 </div>
 
+<script src="/plugins/jquery/jquery.min.js"></script>
+
+<script>
+    $('#close').click(function () {
+        WeixinJSBridge.invoke('closeWindow',{},function(res){
+
+            //alert(res.err_msg);
+
+        });
+        window.close();
+    });
+
+</script>
 
 </html>
