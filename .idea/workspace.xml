@@ -4,7 +4,7 @@
     <list default="true" id="5bc41a9a-79fd-4826-9f1d-7bebc770b5d4" name="Default" comment="[fix]fix">
       <change beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/templates/front/common/error.phtml" afterPath="$PROJECT_DIR$/templates/front/common/error.phtml" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/WorkController.php" afterPath="$PROJECT_DIR$/src/Controller/WorkController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,14 +30,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="error.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/front/common/error.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+            <state relative-caret-position="218">
+              <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
               <folding>
                 <element signature="e#6#57#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/WorkController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,16 +79,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
               <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChartsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ChartsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="102" column="34" lean-forward="false" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -250,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/View/WorkVote.php" />
         <option value="$PROJECT_DIR$/src/View/WorkVoteAndUser.php" />
         <option value="$PROJECT_DIR$/src/Service/WorkService.php" />
-        <option value="$PROJECT_DIR$/src/Controller/WorkController.php" />
         <option value="$PROJECT_DIR$/src/routes.php" />
         <option value="$PROJECT_DIR$/templates/admin/topCharts.phtml" />
         <option value="$PROJECT_DIR$/src/Service/ChartsService.php" />
@@ -259,6 +258,7 @@
         <option value="$PROJECT_DIR$/templates/front/activity/myWorks.phtml" />
         <option value="$PROJECT_DIR$/src/Controller/FrontViewController.php" />
         <option value="$PROJECT_DIR$/templates/front/common/error.phtml" />
+        <option value="$PROJECT_DIR$/src/Controller/WorkController.php" />
       </list>
     </option>
   </component>
@@ -556,14 +556,7 @@
       <workItem from="1532742600673" duration="7896000" />
       <workItem from="1532765372553" duration="2029000" />
       <workItem from="1532775899399" duration="22000" />
-      <workItem from="1532846907728" duration="8085000" />
-    </task>
-    <task id="LOCAL-00008" summary="[dev]add front/activity three pages&#10;[fix]set download sellerIntention filename">
-      <created>1532338475853</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1532338475853</updated>
+      <workItem from="1532846907728" duration="8427000" />
     </task>
     <task id="LOCAL-00009" summary="[dev]update git ignore">
       <created>1532499664976</created>
@@ -901,11 +894,18 @@
       <option name="project" value="LOCAL" />
       <updated>1532854783523</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="[fix]fix">
+      <created>1532855033127</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1532855033128</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302176000" />
+    <option name="totallyTimeSpent" value="302518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1930" y="306" width="1299" height="743" extended-state="6" />
@@ -1248,14 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/WorkController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1226">
-          <caret line="141" column="7" lean-forward="false" selection-start-line="141" selection-start-column="7" selection-end-line="141" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/ex/error.module">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1387,11 +1379,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/common/error.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        <state relative-caret-position="218">
+          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
           <folding>
             <element signature="e#6#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/WorkController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
