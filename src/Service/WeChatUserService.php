@@ -10,6 +10,7 @@ namespace Cms\Service;
 
 
 use Cms\Entity\WeChatUser;
+use Cms\Helper\ReplaceHelper;
 use Cms\Helper\ValidationHelper;
 use Doctrine\ORM\EntityManager;
 
@@ -52,13 +53,14 @@ class WeChatUserService
 
     private function initWeChatUser(array $data){
         $data = $data['original'];
+        $nickname = ReplaceHelper::replaceWechatEmoil($data['nickname']);
         $weChatUser = new WeChatUser();
         $weChatUser->setCreateTime(new \DateTime());
         $weChatUser->setUpdateTime(new \DateTime());
         $weChatUser->setCity($data['city']);
         $weChatUser->setCountry($data['country']);
         $weChatUser->setHeadImgUrl($data['headimgurl']);
-        $weChatUser->setNickname($data['nickname']);
+        $weChatUser->setNickname($nickname);
         $weChatUser->setOpenid($data['openid']);
         $weChatUser->setProvince($data['province']);
         $weChatUser->setSex($data['sex']);
