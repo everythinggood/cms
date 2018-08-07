@@ -28,9 +28,9 @@ $app->group('/admin', function () {
 
     $this->get('/sellerIntentions', \Cms\Controller\SellerIntentionController::class . ":findAll");
 
-    $this->post('/sellerIntention/handle',\Cms\Controller\SellerIntentionController::class.':handle');
+    $this->post('/sellerIntention/handle', \Cms\Controller\SellerIntentionController::class . ':handle');
 
-    $this->get('/sellerIntention/exportCsv',\Cms\Controller\SellerIntentionController::class.':exportCsv');
+    $this->get('/sellerIntention/exportCsv', \Cms\Controller\SellerIntentionController::class . ':exportCsv');
 
     $this->get('/sellerFeedbacks', \Cms\Controller\SellerFeedBackController::class . ":findAll");
 
@@ -62,7 +62,7 @@ $app->group('/admin', function () {
 
     $this->post('/metadata/remove', \Cms\Controller\MetaDataController::class . ':remove');
 
-    $this->post('/metadata/upload',\Cms\Controller\MetaDataController::class.':upload');
+    $this->post('/metadata/upload', \Cms\Controller\MetaDataController::class . ':upload');
 
     $this->get('/metadata/{id:[0-9]+}', \Cms\Controller\MetaDataController::class . ':find');
 
@@ -80,13 +80,13 @@ $app->group('/admin', function () {
 
     $this->get('/navigation/arr', \Cms\Controller\NavigationController::class . ':navigationArr');
 
-    $this->get('/navigation/list',\Cms\Controller\NavigationController::class.':navigationList');
+    $this->get('/navigation/list', \Cms\Controller\NavigationController::class . ':navigationList');
 
-    $this->get('/wechatUsers',\Cms\Controller\WeChatUserController::class.':users');
+    $this->get('/wechatUsers', \Cms\Controller\WeChatUserController::class . ':users');
 
-    $this->get('/chartsTops',\Cms\Controller\ChartsController::class.':tops');
+    $this->get('/chartsTops', \Cms\Controller\ChartsController::class . ':tops');
 
-    $this->post('/work/handle',\Cms\Controller\WorkController::class.':handle');
+    $this->post('/work/handle', \Cms\Controller\WorkController::class . ':handle');
 
 });
 
@@ -124,25 +124,25 @@ $app->group('/view', function () {
 
     $this->get('/articles', \Cms\Controller\ViewController::class . ':articles');
 
-    $this->get('/article/create',\Cms\Controller\ViewController::class.':articleCreate');
+    $this->get('/article/create', \Cms\Controller\ViewController::class . ':articleCreate');
 
-    $this->get('/article/editor/{id}',\Cms\Controller\ViewController::class.':articleEditor');
+    $this->get('/article/editor/{id}', \Cms\Controller\ViewController::class . ':articleEditor');
 
-    $this->get('/navigations',\Cms\Controller\ViewController::class.':navigations');
+    $this->get('/navigations', \Cms\Controller\ViewController::class . ':navigations');
 
-    $this->get('/navigation/create',\Cms\Controller\ViewController::class.':navigationCreate');
+    $this->get('/navigation/create', \Cms\Controller\ViewController::class . ':navigationCreate');
 
-    $this->get('/navigation/editor/{id}',\Cms\Controller\ViewController::class.':navigationEditor');
+    $this->get('/navigation/editor/{id}', \Cms\Controller\ViewController::class . ':navigationEditor');
 
-    $this->get('/metadatas',\Cms\Controller\ViewController::class.':metadatas');
+    $this->get('/metadatas', \Cms\Controller\ViewController::class . ':metadatas');
 
-    $this->get('/metadata/create',\Cms\Controller\ViewController::class.':metadataCreate');
+    $this->get('/metadata/create', \Cms\Controller\ViewController::class . ':metadataCreate');
 
-    $this->get('/metadata/editor/{id}',\Cms\Controller\ViewController::class.':metadataEditor');
+    $this->get('/metadata/editor/{id}', \Cms\Controller\ViewController::class . ':metadataEditor');
 
-    $this->get('/topCharts',\Cms\Controller\ViewController::class.':topCharts');
+    $this->get('/topCharts', \Cms\Controller\ViewController::class . ':topCharts');
 
-    $this->get('/wechatUsers',\Cms\Controller\ViewController::class.':weChatUsers');
+    $this->get('/wechatUsers', \Cms\Controller\ViewController::class . ':weChatUsers');
 
 })->add($container['sessionMiddleware']);
 
@@ -160,28 +160,34 @@ $app->group('/front/view', function () {
     $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
     $this->get('/paper', \Cms\Controller\FrontViewController::class . ":paper");
     //官网
-    $this->get('/index',\Cms\Controller\FrontViewController::class.':index');
-    $this->get('/successList',\Cms\Controller\FrontViewController::class.':successList');
-    $this->get('/contact',\Cms\Controller\FrontViewController::class.':contact');
-    $this->get('/team',\Cms\Controller\FrontViewController::class.':team');
-    $this->get('/adIntentionLook',\Cms\Controller\FrontViewController::class.':adIntentionLook');
-    $this->get('/deviceInfo',\Cms\Controller\FrontViewController::class.':deviceInfo');
-    $this->get('/jobInfo',\Cms\Controller\FrontViewController::class.':jobInfo');
+    $this->get('/index', \Cms\Controller\FrontViewController::class . ':index');
+    $this->get('/successList', \Cms\Controller\FrontViewController::class . ':successList');
+    $this->get('/contact', \Cms\Controller\FrontViewController::class . ':contact');
+    $this->get('/team', \Cms\Controller\FrontViewController::class . ':team');
+    $this->get('/adIntentionLook', \Cms\Controller\FrontViewController::class . ':adIntentionLook');
+    $this->get('/deviceInfo', \Cms\Controller\FrontViewController::class . ':deviceInfo');
+    $this->get('/jobInfo', \Cms\Controller\FrontViewController::class . ':jobInfo');
 
 });
 
-$app->get('/',\Cms\Controller\FrontViewController::class.':index');
+$app->get('/', \Cms\Controller\FrontViewController::class . ':index');
 
-$app->group('/activity',function (){
+$app->group('/activity', function () {
 
-    $this->get('/upWorks',\Cms\Controller\FrontViewController::class.':upWorks');
-    $this->get('/submitWorks',\Cms\Controller\FrontViewController::class.':submitWorks');
-    $this->get('/myWorks',\Cms\Controller\FrontViewController::class.':myWorks');
+    $this->get('/upWorks', \Cms\Controller\FrontViewController::class . ':upWorks');
+    $this->get('/submitWorks', \Cms\Controller\FrontViewController::class . ':submitWorks');
+    $this->get('/myWorks', \Cms\Controller\FrontViewController::class . ':myWorks');
 
-    $this->post('/work/add',\Cms\Controller\WorkController::class.':add');
-    $this->post('/vote/add',\Cms\Controller\VoteController::class.':add');
-    $this->get('/charts/top100',\Cms\Controller\ChartsController::class.':top100');
+    $this->post('/work/add', \Cms\Controller\WorkController::class . ':add');
+    $this->post('/vote/add', \Cms\Controller\VoteController::class . ':add');
+    $this->get('/charts/top100', \Cms\Controller\ChartsController::class . ':top100');
 
 })->add($container['weChatUserSessionMiddleware']);
 
-$app->any('/oauth/callback',\Cms\Wechat\OauthCallback::class.':officialAccount');
+$app->any('/oauth/callback', \Cms\Wechat\OauthCallback::class . ':officialAccount');
+
+$app->group('/uploads', function () {
+
+    $this->get('/thumb/{path}', \Cms\Controller\ImageController::class . ':thumb');
+
+});
