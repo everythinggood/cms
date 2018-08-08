@@ -3,6 +3,7 @@
  * @var \Cms\View\WorkVote $myWorkVote
  * @var array $resultTop
  * @var boolean $voteFlag
+ * @var boolean $activity
  */
 ?>
 <html>
@@ -29,7 +30,11 @@
         <h5>纸色嘉年华</h5>
         <h5>"我纸钟意你,发现最美纸色瞬间"</h5>
         <h5 class="text-muted">摄影作品展</h5>
+        <?php
+            if($activity){
+        ?>
         <h6 class="text-danger"><a href="/activity/upWorks">我也要参加>></a></h6>
+        <?php }?>
     </div>
     <div class="card-body">
         <div id="myCardHeader" class="row">
@@ -46,7 +51,11 @@
                 <p class="card-text">作品描述：<span class="underline"><?php echo $myWorkVote->description; ?></span></p>
                 <div class="text-center">
                     <input type="hidden" id="myWorkId" value="<?php echo $myWorkVote->id; ?>">
-                    <button id="vote" class="btn btn-dark" style="background-color: #0b2e13;" <?php echo $voteFlag?'':"disabled='disabled'";?>" >&nbsp;<?php echo $voteFlag?'为我投票':'你已投票';?></button>
+                    <?php if($activity){ ?>
+                        <button id="vote" class="btn btn-dark" style="background-color: #0b2e13;" <?php echo $voteFlag?'':"disabled='disabled'";?>" >&nbsp;<?php echo $voteFlag?'为我投票':'你已投票';?></button>
+                    <?php }else{ ?>
+                        <button class="btn btn-dark" style="background-color: red;" disabled="disabled" >投票已结束</button>
+                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ namespace Cms\Controller;
 
 
 use Cms\Constant\SessionConstant;
+use Cms\Helper\DateHelper;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\ChartsService;
 use Cms\Service\QuestionService;
@@ -175,6 +176,13 @@ class FrontViewController
         return $this->view->render($response, '/front/common/paper.phtml');
     }
 
+    public function info(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $title = '纸色嘉年华';
+        $info = '活动已结束<br>敬请下一期活动,谢谢您的支持';
+        return $this->view->render($response, '/front/common/info.phtml',compact('title','info'));
+    }
+
     public function index(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $active = 'index';
@@ -227,6 +235,13 @@ class FrontViewController
      */
     public function upWorks(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
+
+        if(!DateHelper::isEarly(date('Y-m-d H:i:s'),'2018-08-08 23:59:59')){
+            $title = '纸色嘉年华';
+            $info = '活动已结束<br>敬请下一期活动,谢谢您的支持';
+            return $this->view->render($response,'/front/common/info.phtml',compact('title','info'));
+        }
+
         $wxOpenId = null;
         if ($wxUser = $this->session->get(SessionConstant::WECHAT_USER)) {
             $wxOpenId = $wxUser['id'];
@@ -368,7 +383,11 @@ class FrontViewController
 
         $jsSdk = $this->app->jssdk;
 
-        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag','jsSdk'));
+        $activity = true;
+        if(!DateHelper::isEarly(date('Y-m-d H:i:s'),'2018-08-08 23:59:59')){
+            $activity = false;
+        }
+        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag','jsSdk','activity'));
     }
 
 

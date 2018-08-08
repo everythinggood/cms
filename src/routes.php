@@ -159,6 +159,7 @@ $app->group('/front/view', function () {
     $this->get('/question/{id}', \Cms\Controller\FrontViewController::class . ":question");
     $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
     $this->get('/paper', \Cms\Controller\FrontViewController::class . ":paper");
+    $this->get('/info', \Cms\Controller\FrontViewController::class . ":info");
     //官网
     $this->get('/index', \Cms\Controller\FrontViewController::class . ':index');
     $this->get('/successList', \Cms\Controller\FrontViewController::class . ':successList');
