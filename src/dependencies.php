@@ -92,6 +92,6 @@ $container['weChatUserSessionMiddleware'] = function (\Psr\Container\ContainerIn
     return new \Cms\Middleware\WeChatUserSessionMiddleware($session,$app,$logger);
 };
 
-$container['imageManager'] = function(\Psr\Container\ContainerInterface $container){
-  return new \Intervention\Image\ImageManager(['driver'=>'imagick']);
-};
+//$container['imageManager'] = function(\Psr\Container\ContainerInterface $container){
+//  return new \Intervention\Image\ImageManager(['driver'=>'imagick']);
+//};

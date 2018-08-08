@@ -186,8 +186,14 @@ $app->group('/activity', function () {
 
 $app->any('/oauth/callback', \Cms\Wechat\OauthCallback::class . ':officialAccount');
 
-$app->group('/uploads', function () {
+$app->group('/shell',function (){
 
-    $this->get('/thumb/{path}', \Cms\Controller\ImageController::class . ':thumb');
+    $this->get('/vote/add',\Cms\ShellController\VoteController::class.':multiAdd');
 
 });
+
+//$app->group('/uploads', function () {
+//
+//    $this->get('/thumb/{path}', \Cms\Controller\ImageController::class . ':thumb');
+//
+//});
