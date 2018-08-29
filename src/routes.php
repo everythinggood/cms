@@ -36,11 +36,15 @@ $app->group('/admin', function () {
 
     $this->get('/userFeedbacks', \Cms\Controller\UserFeedBackController::class . ":findAll");
 
+    $this->get('/tipOffFeedbacks',\Cms\Controller\TipOffController::class.':findAll');
+
     $this->post('/question/pushTop', \Cms\Controller\QuestionController::class . ":pushTop");
 
     $this->post('/userFeedback/handle', \Cms\Controller\UserFeedBackController::class . ":handle");
 
     $this->post('/sellerFeedback/handle', \Cms\Controller\SellerFeedBackController::class . ':handle');
+
+    $this->post('/tipOffFeedback/handle', \Cms\Controller\TipOffController::class . ':handle');
 
     $this->post('/article/add', \Cms\Controller\ArticleController::class . ':add');
 
@@ -104,6 +108,8 @@ $app->group('/front', function () {
 
     $this->post('/tag/add', \Cms\Controller\TagController::class . ':add');
 
+    $this->post('/tipOff/add', \Cms\Controller\TipOffController::class . ':add');
+
 });
 
 $app->group('/view', function () {
@@ -121,6 +127,8 @@ $app->group('/view', function () {
     $this->get('/userFeedbacks', \Cms\Controller\ViewController::class . ':userFeedbacks');
 
     $this->get('/sellerFeedbacks', \Cms\Controller\ViewController::class . ':sellerFeedbacks');
+
+    $this->get('/tipOffFeedbacks', \Cms\Controller\ViewController::class . ':tipOffFeedbacks');
 
     $this->get('/articles', \Cms\Controller\ViewController::class . ':articles');
 
@@ -160,6 +168,7 @@ $app->group('/front/view', function () {
     $this->get('/success', \Cms\Controller\FrontViewController::class . ":success");
     $this->get('/paper', \Cms\Controller\FrontViewController::class . ":paper");
     $this->get('/info', \Cms\Controller\FrontViewController::class . ":info");
+    $this->get('/tipOffFeedback', \Cms\Controller\FrontViewController::class . ":tipOffFeedback");
     //官网
     $this->get('/index', \Cms\Controller\FrontViewController::class . ':index');
     $this->get('/successList', \Cms\Controller\FrontViewController::class . ':successList');
@@ -187,9 +196,9 @@ $app->group('/activity', function () {
 
 $app->any('/oauth/callback', \Cms\Wechat\OauthCallback::class . ':officialAccount');
 
-$app->group('/shell',function (){
+$app->group('/shell', function () {
 
-    $this->get('/vote/add',\Cms\ShellController\VoteController::class.':multiAdd');
+    $this->get('/vote/add', \Cms\ShellController\VoteController::class . ':multiAdd');
 
 });
 

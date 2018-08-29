@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/../ex/head.phtml'; ?>
+<body style="background-color: rgb(84,53,146);">
+<div class="container-fluid">
+    <div style="display: flex;flex-direction: column;justify-content: center;align-content: center;">
+        <div style="text-align: center;">
+            <img src="/static/img/bg/logo.jpg" alt="标志" width="20%">
+        </div>
+        <div style="color: #ffc107;text-align: center;font-size: 30px;font-weight: bolder; font-family: 'PT Sans';">
+            <label style="display: block;" for="">纸色免费纸巾</label>
+            <label style="display: block;" for="">不规范行为反馈表</label>
+        </div>
+        <div style="flex-wrap: wrap;color: white;">
+            为了提升纸色服务质量，我们开通了本反馈渠道，请如实填写，我们将会对您高质量的反馈行为，进行不定量的现金奖励。
+        </div>
+    </div>
+    <form class="mt-2" id="tipOffForm">
+        <div class="form-group">
+            <label for="userName" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                填表人<i style="color: red;">*</i>
+            </label>
+            <input type="text" class="form-control" name="userName" id="userName" placeholder="陈 X X" >
+        </div>
+        <div class="form-group">
+            <label for="phone" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                联系电话<i style="color: red;">*</i>
+            </label>
+            <input type="number" class="form-control" name="phone" id="phone" placeholder="请如实填写，以便反馈奖金的发放" >
+        </div>
+        <div class="form-group">
+            <label for="wxId" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                微信ID<i style="color: red;">*</i>
+            </label>
+            <input type="text" class="form-control" name="wxId" id="wxId" placeholder="请如实填写，以便反馈奖金的发放" >
+        </div>
+        <div class="form-group">
+            <label for="Province" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                设备位置<i style="color: red;">*</i>
+            </label>
+            <br/>
+            <select style="display: inline-block;width:50%;" class="form-control" name="province" id="Province" onchange="changeCity()" >
+                <option>省份</option>
+            </select>
+            <select style="display: inline-block;width:40%;" class="form-control" name="city" id="city">
+                <option>城市</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="machineCode" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                设备唯一码<i style="color: red;">*</i>
+            </label>
+            <input type="text" class="form-control" name="machineCode" id="machineCode" placeholder="请填写设备二维码下方的代码，格式为【1+纯数字】" >
+        </div>
+        <div class="form-group">
+            <label for="detail" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                不规范行为描述<i style="color: red;">*</i>
+            </label>
+            <select name="detail" class="form-control" id="detail" onchange="changeDetail()" >
+                <option value="商户刷单问题">商户刷单问题</option>
+                <option value="商户刷单问题">设备上有非纸色官方宣传内容，如广告贴纸</option>
+                <option value="设备被恶意转让、变卖等">设备被恶意转让、变卖等</option>
+                <option value="设备二维码被调换">设备二维码被调换</option>
+                <option value="设备机身损坏">设备机身损坏</option>
+                <option value="其他">其他</option>
+            </select>
+        </div>
+        <div class="form-group" style="display: none;" id="otherDetailGroup">
+            <label for="otherDetail" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                其他不规范行为<i style="color: red;">*</i>
+            </label>
+            <input type="text" class="form-control" id="otherDetail" name="otherDetail"/>
+        </div>
+        <div class="form-group">
+            <label for="photo" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                请上传照片凭证<i style="color: red;">*</i>
+            </label>
+            <input type="file" id="photo" class="form-control" name="singeFile"
+                   accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff" >
+        </div>
+        <div class="form-group">
+            <label for="advise" class="text-white p-1">
+                <i class="fa fa-pencil fa-fw"></i>
+                其他意见
+            </label>
+            <input type="text" class="form-control" id="advise" name="advise">
+        </div>
+        <div class="form-group text-center">
+            <button onclick="tipOffFeedBack()" type="button" class="btn btn-primary btn-lg"
+                    style="font-weight: bolder; font-size: large;background-color: #ffc107;color: #0c0c0c;border-radius: 40px;">
+                &nbsp;&nbsp;谢啦！&nbsp;&nbsp;
+            </button>
+        </div>
+    </form>
+</div>
+
+<script src="/static/jquery-3.2.1.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+<script src="/static/koJS/knockout-3.4.2.js"></script>
+<script src="/static/koJS/knockout.mapping.js"></script>
+<script type="text/javascript" src="/dist/js/customerService/questions.js"></script>
+<script type="text/javascript" src="/static/cityName/city.json"></script>
+<script src="/dist/js/customerService/city.js"></script>
+<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+
+<script >
+
+    function tipOffFeedBack() {
+
+        var loading = weui.loading('loading');
+
+        $.ajax({
+            url: '/front/tipOff/add',
+            type: 'POST',
+            data: getJsonData(),
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                loading.hide();
+                console.log(result);
+                weui.toast("成功", 2000);
+                window.location.href = '/front/view/success';
+            },
+            error: function (result) {
+                loading.hide();
+                console.log(result);
+                var exception = result.responseJSON.exception;
+                if (exception) {
+                    weui.alert(exception);
+                }
+            }
+        })
+    }
+
+    function getJsonData(){
+        return new FormData($("#tipOffForm")[0]);
+    }
+
+    function changeDetail(){
+        let detail = document.getElementById('detail');
+        let selectedValue = detail.options[detail.selectedIndex].value;
+        let otherDetailGroup = document.getElementById("otherDetailGroup");
+        if(selectedValue == '其他'){
+            console.log("selectedValue is 其他");
+            otherDetailGroup.style.cssText = "display:block;";
+        }else{
+            console.log("selectedValue is not 其他");
+            otherDetailGroup.style.cssText = "display:none;";
+        }
+    }
+
+
+</script>
+</body>
+</html>

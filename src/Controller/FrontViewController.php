@@ -180,7 +180,7 @@ class FrontViewController
     {
         $title = '纸色嘉年华';
         $info = '活动已结束<br>敬请下一期活动,谢谢您的支持';
-        return $this->view->render($response, '/front/common/info.phtml',compact('title','info'));
+        return $this->view->render($response, '/front/common/info.phtml', compact('title', 'info'));
     }
 
     public function index(ServerRequestInterface $request, ResponseInterface $response, array $args)
@@ -225,6 +225,12 @@ class FrontViewController
         return $this->view->render($response, '/front/pages/jobInfo.phtml', compact('active'));
     }
 
+    public function tipOffFeedback(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $active = 'tipOffFeedback';
+        return $this->view->render($response, '/front/Q&A/tipOffFeedback.phtml', compact('active'));
+    }
+
     /**
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
@@ -236,10 +242,10 @@ class FrontViewController
     public function upWorks(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
 
-        if(!DateHelper::isEarly(date('Y-m-d H:i:s'),'2018-08-08 23:59:59')){
+        if (!DateHelper::isEarly(date('Y-m-d H:i:s'), '2018-08-08 23:59:59')) {
             $title = '纸色嘉年华';
             $info = '活动已结束<br>敬请下一期活动,谢谢您的支持';
-            return $this->view->render($response,'/front/common/info.phtml',compact('title','info'));
+            return $this->view->render($response, '/front/common/info.phtml', compact('title', 'info'));
         }
 
         $wxOpenId = null;
@@ -247,7 +253,7 @@ class FrontViewController
             $wxOpenId = $wxUser['id'];
         }
 
-        ValidationHelper::checkIsNull($wxOpenId,'wxOpenId');
+        ValidationHelper::checkIsNull($wxOpenId, 'wxOpenId');
 
         $em = $this->container->get(EntityManager::class);
 
@@ -256,11 +262,11 @@ class FrontViewController
         $work = $workService->findByWxOpenId($wxOpenId);
 
         /** @var Response $response */
-        if($work) return $response->withRedirect('/activity/myWorks?id='.$work->id);
+        if ($work) return $response->withRedirect('/activity/myWorks?id=' . $work->id);
 
         $jsSdk = $this->app->jssdk;
 
-        return $this->view->render($response, '/front/activity/upWorks.phtml',compact('jsSdk'));
+        return $this->view->render($response, '/front/activity/upWorks.phtml', compact('jsSdk'));
     }
 
     /**
@@ -289,15 +295,15 @@ class FrontViewController
         ValidationHelper::checkIsTrue($work, 'work can not be found!');
         ValidationHelper::checkIsTrue($workImage, 'workImage can not be found!');
 
-        if(!$workService->isHandle($work)){
+        if (!$workService->isHandle($work)) {
             $title = '上传成功';
             $error = '感谢您的支持,待作品审核通过会展示于此页面';
-            return $this->view->render($response,'/front/common/error.phtml',compact('error','title'));
+            return $this->view->render($response, '/front/common/error.phtml', compact('error', 'title'));
         }
 
         $jsSdk = $this->app->jssdk;
 
-        return $this->view->render($response, '/front/activity/submitWorks.phtml', compact('work', 'workImage','jsSdk'));
+        return $this->view->render($response, '/front/activity/submitWorks.phtml', compact('work', 'workImage', 'jsSdk'));
     }
 
     /**
@@ -326,7 +332,7 @@ class FrontViewController
         $workService = new WorkService($em);
         $workImageService = new WorkImageService($em);
 
-        $this->logger->addInfo(FrontViewController::class,(array)$wxOpenId);
+        $this->logger->addInfo(FrontViewController::class, (array)$wxOpenId);
 
         $vote = $voteService->findByWxOpenId($wxOpenId);
 
@@ -336,7 +342,7 @@ class FrontViewController
             $voteFlag = true;
         }
 
-        $this->logger->addInfo(FrontViewController::class,(array)$voteFlag);
+        $this->logger->addInfo(FrontViewController::class, (array)$voteFlag);
 
         $myWork = $workService->findById($id);
         $myWorkImage = $workImageService->findByWorkNo($id);
@@ -344,10 +350,10 @@ class FrontViewController
         ValidationHelper::checkIsTrue($myWork, 'my work can not be found!');
         ValidationHelper::checkIsTrue($myWorkImage, 'my workImage can not be found!');
 
-        if(!$workService->isHandle($myWork)){
+        if (!$workService->isHandle($myWork)) {
             $title = '上传成功';
             $error = '感谢您的支持,待作品审核通过会展示于此页面';
-            return $this->view->render($response,'/front/common/error.phtml',compact('error','title'));
+            return $this->view->render($response, '/front/common/error.phtml', compact('error', 'title'));
         }
 
         //排行榜
@@ -355,7 +361,7 @@ class FrontViewController
 
         $top = $chartsService->getTop100();
 
-        $this->logger->addInfo(FrontViewController::class,(array)$top);
+        $this->logger->addInfo(FrontViewController::class, (array)$top);
 
         $myWorkVote = null;
 
@@ -374,20 +380,20 @@ class FrontViewController
             $workImage = $workImageService->findByWorkNo($id);
             $workVote = WorkVote::convertByWorkAndWorkImageAndVote($work, $workImage, $position, $voteNum);
 
-            $this->logger->addInfo(FrontViewController::class,(array)$workVote);
+            $this->logger->addInfo(FrontViewController::class, (array)$workVote);
             $resultTop[] = $workVote;
         }
 
-        $this->logger->addInfo(FrontViewController::class,(array)$myWorkVote);
-        $this->logger->addInfo(FrontViewController::class,(array)$resultTop);
+        $this->logger->addInfo(FrontViewController::class, (array)$myWorkVote);
+        $this->logger->addInfo(FrontViewController::class, (array)$resultTop);
 
         $jsSdk = $this->app->jssdk;
 
         $activity = true;
-        if(!DateHelper::isEarly(date('Y-m-d H:i:s'),'2018-08-08 23:59:59')){
+        if (!DateHelper::isEarly(date('Y-m-d H:i:s'), '2018-08-08 23:59:59')) {
             $activity = false;
         }
-        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag','jsSdk','activity'));
+        return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag', 'jsSdk', 'activity'));
     }
 
 

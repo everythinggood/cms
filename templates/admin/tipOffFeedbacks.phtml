@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/ex/header.phtml'; ?>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <?php include __DIR__ . '/ex/navbar.phtml'; ?>
+
+    <?php include __DIR__ . '/ex/asider.phtml'; ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">TipOffFeedbacks</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <table id="table" class="ui celled table hover cell-border" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Phone</th>
+                        <th>WxId</th>
+                        <th>MachineCode</th>
+                        <th>Province</th>
+                        <th>City</th>
+                        <th>Picture</th>
+                        <th>Detail</th>
+                        <th>OtherDetail</th>
+                        <th>Advise</th>
+                        <th>IsHandle</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Phone</th>
+                        <th>WxId</th>
+                        <th>MachineCode</th>
+                        <th>Province</th>
+                        <th>City</th>
+                        <th>Picture</th>
+                        <th>Detail</th>
+                        <th>OtherDetail</th>
+                        <th>Advise</th>
+                        <th>IsHandle</th>
+                        <th>CreateTime</th>
+                        <th>UpdateTime</th>
+                        <th>Options</th>
+                    </tr>
+                    </tfoot>
+
+                </table>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <?php include __DIR__ . '/ex/footer.phtml'; ?>
+</div>
+<!-- ./wrapper -->
+
+<?php include __DIR__ . '/ex/scripts.phtml'; ?>
+
+<script>
+    $(document).ready(function () {
+
+        var table = $('#table').DataTable(
+            {
+                "scrollY": false,
+                "scrollX": true,
+                "ajax": "/admin/tipOffFeedbacks",
+                "columns": [
+                    {"data": "id"},
+                    {"data": "userName"},
+                    {"data": "phone"},
+                    {"data": "wxId"},
+                    {"data": "machineCode"},
+                    {"data": "province"},
+                    {"data": "city"},
+                    {"data": "picture"},
+                    {"data": "detail"},
+                    {"data": "otherDetail"},
+                    {"data": "advise"},
+                    {"data": "isHandle"},
+                    {"data": "createTime.date"},
+                    {"data": "updateTime.date"},
+                    {"data": "updateTime.date"}
+                ],
+                "columnDefs": [
+                    {
+                        "targets": -1,
+                        "render": function (data, type, full, meta) {
+                            // console.log(type);
+                            // console.log(full);
+                            // console.log(full.id);
+                            var id = full.id;
+                            var isHandle = full.isHandle;
+
+                            if(isHandle == 'pending'){
+
+                                return "<button type='button' class='handle ui button primary' id='" + id + "'>handle</button>"
+                            }
+
+                            return "";
+                        }
+                    },
+                    {
+                        "targets":11,
+                        "render":function (data, type, full, meta) {
+
+                            if(data == 'done'){
+                                return "<div class='bg-primary-gradient text-center'>done<i class='fa fa-thumbs-o-up fa-fw'></i></div>";
+                            }
+
+                            if(data == 'pending'){
+                                return "<div class='bg-warning-gradient text-center'>pending<i class='fa fa-warning fa-fw'></i></div>";
+                            }
+
+                            return data;
+
+                        }
+                    },
+                    {
+                        "targets":7,
+                        "render":function (data,type,full,meta) {
+                            return "<img src='/uploads/"+data+"'>";
+                        }
+                    }
+                ]
+            }
+        );
+
+
+        $('#table').find('tbody').on('click', '.handle', function () {
+            var data = table.row(this).data();
+            var id = $(this).attr('id');
+
+            var btn = $(this);
+            if (btn.hasClass('loading')) {
+
+                alert('handling ...');
+
+            } else {
+                btn.addClass('loading');
+                $.ajax({
+                    url: "/admin/tipOffFeedback/handle",
+                    type: "POST",
+                    dataType: "json",
+                    data: {'id': id},
+                    success: function (result) {
+                        btn.removeClass('loading');
+                        btn.addClass('disabled');
+                        table.ajax.reload();
+                    },
+                    error: function (result) {
+                        btn.removeClass('loading');
+                        var exception = result.responseJSON.exception;
+                        if(exception){
+                            $('#alert-message').append(exception);
+                            $('#alert-message').removeClass('hidden');
+                            $('#alert-message').addClass('show');
+                        }
+                    }
+                });
+            }
+
+        });
+    });
+</script>
+
+</body>
+</html>

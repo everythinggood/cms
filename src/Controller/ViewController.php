@@ -108,6 +108,13 @@ class ViewController
         return $this->view->render($response, '/admin/sellerFeedbacks.phtml', compact('asider', 'header'));
     }
 
+    public function tipOffFeedbacks(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        $asider = 'tipOffFeedbacks';
+        $header = 'customer_service';
+        return $this->view->render($response, '/admin/tipOffFeedbacks.phtml', compact('asider', 'header'));
+    }
+
     public function adIntentions(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $asider = 'adIntentions';
