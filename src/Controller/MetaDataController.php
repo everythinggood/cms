@@ -14,6 +14,7 @@ use Cms\Helper\FileHelper;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\MetaDataService;
 use Doctrine\ORM\EntityManager;
+use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Container;
@@ -35,6 +36,10 @@ class MetaDataController
      * @var string
      */
     private $uploadDirectory;
+    /**
+     * @var Logger
+     */
+    private $logger;
 
     /**
      * MetaDataController constructor.
@@ -46,6 +51,7 @@ class MetaDataController
         $this->container = $container;
         $this->metaDataService = new MetaDataService($this->container[EntityManager::class]);
         $this->uploadDirectory = $container['settings']['upload_file_directory'];
+        $this->logger = $container['logger'];
     }
 
     /**
@@ -62,7 +68,12 @@ class MetaDataController
         /** @var Request $request */
         /** @var Response $response */
         $type = $request->getParam('type');
+        $this->logger->addInfo('type',compact('type'));
         $uploadedFiles = $request->getUploadedFiles();
+
+        if(strpos($type,MetaData::TYPE_IMAGE)!==false){
+            $type = MetaData::TYPE_IMAGE;
+        }
 
         ValidationHelper::checkIsNull($type, 'type');
         ValidationHelper::checkIsTrue($uploadedFiles, 'must upload some thing');

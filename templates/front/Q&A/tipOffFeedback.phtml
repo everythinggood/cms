@@ -21,21 +21,21 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 填表人<i style="color: red;">*</i>
             </label>
-            <input type="text" class="form-control" name="userName" id="userName" placeholder="陈 X X" >
+            <input type="text" class="form-control" name="userName" id="userName" placeholder="陈 X X">
         </div>
         <div class="form-group">
             <label for="phone" class="text-white p-1">
                 <i class="fa fa-pencil fa-fw"></i>
                 联系电话<i style="color: red;">*</i>
             </label>
-            <input type="number" class="form-control" name="phone" id="phone" placeholder="请如实填写，以便反馈奖金的发放" >
+            <input type="number" class="form-control" name="phone" id="phone" placeholder="请如实填写，以便反馈奖金的发放">
         </div>
         <div class="form-group">
             <label for="wxId" class="text-white p-1">
                 <i class="fa fa-pencil fa-fw"></i>
                 微信ID<i style="color: red;">*</i>
             </label>
-            <input type="text" class="form-control" name="wxId" id="wxId" placeholder="请如实填写，以便反馈奖金的发放" >
+            <input type="text" class="form-control" name="wxId" id="wxId" placeholder="请如实填写，以便反馈奖金的发放">
         </div>
         <div class="form-group">
             <label for="Province" class="text-white p-1">
@@ -43,7 +43,8 @@
                 设备位置<i style="color: red;">*</i>
             </label>
             <br/>
-            <select style="display: inline-block;width:50%;" class="form-control" name="province" id="Province" onchange="changeCity()" >
+            <select style="display: inline-block;width:50%;" class="form-control" name="province" id="Province"
+                    onchange="changeCity()">
                 <option>省份</option>
             </select>
             <select style="display: inline-block;width:40%;" class="form-control" name="city" id="city">
@@ -55,14 +56,15 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 设备唯一码<i style="color: red;">*</i>
             </label>
-            <input type="text" class="form-control" name="machineCode" id="machineCode" placeholder="请填写设备二维码下方的代码，例如【1012171229000010】" >
+            <input type="text" class="form-control" name="machineCode" id="machineCode"
+                   placeholder="请填写设备二维码下方的代码【字母L+12位数字】">
         </div>
         <div class="form-group">
             <label for="detail" class="text-white p-1">
                 <i class="fa fa-pencil fa-fw"></i>
                 不规范行为描述<i style="color: red;">*</i>
             </label>
-            <select name="detail" class="form-control" id="detail" onchange="changeDetail()" >
+            <select name="detail" class="form-control" id="detail" onchange="changeDetail()">
                 <option value="商户刷单问题">商户刷单问题</option>
                 <option value="商户刷单问题">设备上有非纸色官方宣传内容，如广告贴纸</option>
                 <option value="设备被恶意转让、变卖等">设备被恶意转让、变卖等</option>
@@ -83,9 +85,27 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 请上传照片凭证<i style="color: red;">*</i>
             </label>
-            <input type="file" id="photo" class="form-control" name="multipleFiles[]"
-                   accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff"
-                    multiple="multiple">
+            <div class="weui-cells weui-cells_form" id="uploader">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <div class="weui-uploader">
+                            <div class="weui-uploader__hd">
+                                <p class="weui-uploader__title">图片上传</p>
+                                <div class="weui-uploader__info"><span id="uploadCount">0</span>/3</div>
+                            </div>
+                            <div class="weui-uploader__bd">
+                                <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+                                <div class="weui-uploader__input-box">
+                                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" capture="camera" multiple="multiple"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--            <input type="file" id="photo" class="form-control" name="multipleFiles[]"-->
+<!--                   accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff"-->
+<!--                   multiple="multiple">-->
         </div>
         <div class="form-group">
             <label for="advise" class="text-white p-1">
@@ -114,7 +134,7 @@
 <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
 <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
 
-<script >
+<script>
 
     function tipOffFeedBack() {
 
@@ -144,23 +164,95 @@
         })
     }
 
-    function getJsonData(){
-        return new FormData($("#tipOffForm")[0]);
+    function getJsonData() {
+        let form = new FormData($("#tipOffForm")[0]);
+        picture = JSON.stringify(picture);
+        form.append("picture",picture);
+        return form;
     }
 
-    function changeDetail(){
+    function changeDetail() {
         let detail = document.getElementById('detail');
         let selectedValue = detail.options[detail.selectedIndex].value;
         let otherDetailGroup = document.getElementById("otherDetailGroup");
-        if(selectedValue == '其他'){
+        if (selectedValue == '其他') {
             console.log("selectedValue is 其他");
             otherDetailGroup.style.cssText = "display:block;";
-        }else{
+        } else {
             console.log("selectedValue is not 其他");
             otherDetailGroup.style.cssText = "display:none;";
         }
     }
 
+    var uploadCount = 0;
+    var picture = [];
+    weui.uploader('#uploader', {
+        url: '/admin/metadata/add',
+        auto: true,
+        type: 'file',
+        fileVal: 'multipleFiles[]',
+        compress: {
+            width: 1600,
+            height: 1600,
+            quality: .8
+        },
+        onBeforeQueued: function(files) {
+            // `this` 是轮询到的文件, `files` 是所有文件
+
+            if(["image/jpg", "image/jpeg", "image/png", "image/gif"].indexOf(this.type) < 0){
+                weui.alert('请上传图片');
+                return false; // 阻止文件添加
+            }
+            if(this.size > 10 * 1024 * 1024){
+                weui.alert('请上传不超过10M的图片');
+                return false;
+            }
+            if (files.length > 3) { // 防止一下子选择过多文件
+                weui.alert('最多只能上传5张图片，请重新选择');
+                return false;
+            }
+            if (uploadCount + 1 > 3) {
+                weui.alert('最多只能上传5张图片');
+                return false;
+            }
+
+            ++uploadCount;
+
+            // return true; // 阻止默认行为，不插入预览图的框架
+        },
+        onQueued: function(){
+            // console.log(this);
+
+            // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
+            // console.log(this.base64); // 如果是base64上传，file.base64可以获得文件的base64
+
+            // this.upload(); // 如果是手动上传，这里可以通过调用upload来实现；也可以用它来实现重传。
+            // this.stop(); // 中断上传
+
+            // return true; // 阻止默认行为，不显示预览图的图像
+        },
+        onBeforeSend: function(data, headers){
+            // console.log(this, data, headers);
+            // $.extend(data, { test: 1 }); // 可以扩展此对象来控制上传参数
+            // $.extend(headers, { Origin: 'http://127.0.0.1' }); // 可以扩展此对象来控制上传头部
+
+            // return false; // 阻止文件上传
+        },
+        onProgress: function(procent){
+            // console.log(this, procent);
+            // return true; // 阻止默认行为，不使用默认的进度显示
+        },
+        onSuccess: function (ret) {
+            picture = picture.concat(ret.responseData.multipleFiles);
+            console.log(picture);
+            // return true; // 阻止默认行为，不使用默认的成功态
+        },
+        onError: function(err){
+            weui.alert(err);
+            // console.log(this, err);
+            // return true; // 阻止默认行为，不使用默认的失败态
+        }
+    });
 
 </script>
 </body>

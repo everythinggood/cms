@@ -60,6 +60,7 @@ class TipOffController
     {
 
         /** @var Request $request */
+        $this->logger->addInfo($request->getUri()->getPath(),$request->getParams());
 
         $userName = $request->getParam('userName');
         $phone = $request->getParam('phone');
@@ -70,17 +71,21 @@ class TipOffController
         $otherDetail = $request->getParam('otherDetail');
         $machineCode = $request->getParam('machineCode');
         $advise = $request->getParam('advise');
-        $uploadedFiles = $request->getUploadedFiles();
-        $multipleFiles = [];
-        /** @var UploadedFile $uploadedFile */
-        $uploadedMultipleFiles = $uploadedFiles['multipleFiles'];
-        /** @var UploadedFile $uploadedFile */
-        foreach ($uploadedMultipleFiles as $uploadedFile){
-            if ($uploadedFile && $uploadedFile->getError() === UPLOAD_ERR_OK) {
-                $filename = FileHelper::moveUploadedFile($this->uploadDirectory, $uploadedFile);
-                $multipleFiles[] = $filename;
-            }
-        }
+        $picture = $request->getParam('picture');
+//        $uploadedFiles = $request->getUploadedFiles();
+//        $multipleFiles = [];
+//        /** @var UploadedFile $uploadedFile */
+//        $uploadedMultipleFiles = $uploadedFiles['multipleFiles'];
+//        /** @var UploadedFile $uploadedFile */
+//        foreach ($uploadedMultipleFiles as $uploadedFile){
+//            if ($uploadedFile && $uploadedFile->getError() === UPLOAD_ERR_OK) {
+//                $filename = FileHelper::moveUploadedFile($this->uploadDirectory, $uploadedFile);
+//                $multipleFiles[] = $filename;
+//            }
+//        }
+
+        ValidationHelper::checkIsInTable(compact('userName','phone','wxId','province','city','detail','machineCode','picture'),
+            "表格未填写完整，带*号的必填");
 
         ValidationHelper::checkIsNull($userName, 'uerName');
         ValidationHelper::checkIsNull($phone, 'phone');
@@ -89,15 +94,15 @@ class TipOffController
         ValidationHelper::checkIsNull($city, 'city');
         ValidationHelper::checkIsNull($detail, 'detail');
         ValidationHelper::checkIsNull($machineCode, 'machineCode');
-        ValidationHelper::checkIsTrue($multipleFiles, 'picture');
+//        ValidationHelper::checkIsTrue($multipleFiles, 'picture');
 
         ValidationHelper::checkIsTrue(MatchHelper::isPhone($phone),'非法手机号码');
 
-        if(strlen($machineCode) != 16){
-            throw new \Exception("非法机器唯一码，应为16位");
+        if(strlen($machineCode) != 13){
+            throw new \Exception("设备唯一码应有12位数");
         }
 
-        $picture = json_encode($multipleFiles);
+//        $picture = json_encode($multipleFiles);
 
         $tipOffService = new TipOffFeedbackService($this->container[EntityManager::class]);
         $tipOff = $tipOffService->createTipOff(compact('userName', 'phone', 'wxId', 'province', 'city', 'detail', 'otherDetail', 'machineCode', 'advise', 'picture'));

@@ -10,9 +10,9 @@
       <change beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MetaDataController.php" afterPath="$PROJECT_DIR$/src/Controller/MetaDataController.php" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TipOffController.php" afterPath="$PROJECT_DIR$/src/Controller/TipOffController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TipOffFeedbackService.php" afterPath="$PROJECT_DIR$/src/Service/TipOffFeedbackService.php" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/tipOffFeedbacks.phtml" afterPath="$PROJECT_DIR$/templates/admin/tipOffFeedbacks.phtml" />
+      <change beforePath="$PROJECT_DIR$/src/Helper/ValidationHelper.php" afterPath="$PROJECT_DIR$/src/Helper/ValidationHelper.php" />
       <change beforePath="$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml" afterPath="$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +42,18 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="2" selection-end-line="208" selection-end-column="5" />
+            <state relative-caret-position="228">
+              <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tipOffFeedback.phtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="196" column="23" lean-forward="true" selection-start-line="196" selection-start-column="23" selection-end-line="196" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -52,8 +62,8 @@
       <file leaf-file-name="TipOffController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/TipOffController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="99" column="47" lean-forward="false" selection-start-line="99" selection-start-column="47" selection-end-line="99" selection-end-column="47" />
+            <state relative-caret-position="218">
+              <caret line="101" column="45" lean-forward="false" selection-start-line="101" selection-start-column="45" selection-end-line="101" selection-end-column="45" />
               <folding>
                 <element signature="e#114#140#0#PHP" expanded="true" />
               </folding>
@@ -61,21 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json.php" pinned="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/json/json.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="78" column="23" lean-forward="false" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ValidationHelper.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Helper/ValidationHelper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+            <state relative-caret-position="186">
+              <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -84,58 +84,47 @@
       <file leaf-file-name="MetaDataController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/MetaDataController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
+            <state relative-caret-position="182">
+              <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TipOffFeedbackService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Service/TipOffFeedbackService.php">
+      <file leaf-file-name="standard_1.php" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+            <state relative-caret-position="494">
+              <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topCharts.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admin/topCharts.phtml">
+      <file leaf-file-name="app.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logs/app.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state relative-caret-position="427">
+              <caret line="556" column="263" lean-forward="false" selection-start-line="556" selection-start-column="263" selection-end-line="556" selection-end-column="263" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MetaDataService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Service/MetaDataService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+            <state relative-caret-position="231">
+              <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tipOffFeedbacks.phtml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/admin/tipOffFeedbacks.phtml">
+      <file leaf-file-name="MetaData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/MetaData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="148" column="62" lean-forward="false" selection-start-line="148" selection-start-column="62" selection-end-line="148" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dependencies.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dependencies.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="92" column="2" lean-forward="true" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ImageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="25" />
+            <state relative-caret-position="186">
+              <caret line="24" column="10" lean-forward="false" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -152,8 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>create</find>
-      <find>creat</find>
       <find>#crea</find>
       <find>submit</find>
       <find>adIntentionLo</find>
@@ -180,8 +167,10 @@
       <find>/view</find>
       <find>tipOffFeedbacks</find>
       <find>changeDetail</find>
-      <find>file</find>
       <find>thu</find>
+      <find>file</find>
+      <find>fileVal</find>
+      <find>Meta</find>
     </findStrings>
     <replaceStrings>
       <replace>./</replace>
@@ -209,8 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Helper/MatchHelper.php" />
-        <option value="$PROJECT_DIR$/src/Helper/ValidationHelper.php" />
         <option value="$PROJECT_DIR$/src/Controller/WeChatUserController.php" />
         <option value="$PROJECT_DIR$/tests/wechatUser/init.php" />
         <option value="$PROJECT_DIR$/templates/admin/wechatUsers.phtml" />
@@ -253,13 +240,15 @@
         <option value="$PROJECT_DIR$/src/Controller/ViewController.php" />
         <option value="$PROJECT_DIR$/templates/admin/ex/asider.phtml" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml" />
-        <option value="$PROJECT_DIR$/src/Controller/TipOffController.php" />
         <option value="$PROJECT_DIR$/src/Service/TipOffFeedbackService.php" />
         <option value="$PROJECT_DIR$/src/Controller/ImageController.php" />
         <option value="$PROJECT_DIR$/src/dependencies.php" />
         <option value="$PROJECT_DIR$/src/routes.php" />
         <option value="$PROJECT_DIR$/templates/admin/tipOffFeedbacks.phtml" />
+        <option value="$PROJECT_DIR$/src/Helper/ValidationHelper.php" />
+        <option value="$PROJECT_DIR$/src/Controller/MetaDataController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/TipOffController.php" />
+        <option value="$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml" />
       </list>
     </option>
   </component>
@@ -365,8 +354,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -398,12 +385,6 @@
             <path>
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
               <item name="cms" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Service" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cms" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -423,19 +404,14 @@
               <item name="cms" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="front" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="activity" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cms" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="front" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Q&amp;A" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -571,14 +547,8 @@
       <workItem from="1533881077409" duration="1055000" />
       <workItem from="1534777301766" duration="38000" />
       <workItem from="1535524302652" duration="13331000" />
-      <workItem from="1535611392804" duration="3396000" />
-    </task>
-    <task id="LOCAL-00021" summary="[HotFix]fix input file accept on phone">
-      <created>1532513765326</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1532513765326</updated>
+      <workItem from="1535611392804" duration="3476000" />
+      <workItem from="1535622047079" duration="3535000" />
     </task>
     <task id="LOCAL-00022" summary="[HotFix]fix">
       <created>1532514090711</created>
@@ -916,22 +886,28 @@
       <option name="project" value="LOCAL" />
       <updated>1535536781841</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="[dev】upload mulitifile on tipoff_feedback">
+      <created>1535614848954</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1535614848955</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342930000" />
+    <option name="totallyTimeSpent" value="346545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2585794" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26256984" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980047" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -944,6 +920,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -980,7 +957,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[dev]add vote-activity on wechat" />
     <MESSAGE value="[fix]fix route add wechatusersessionmiddleware" />
     <MESSAGE value="[dev]update .gitignore" />
     <MESSAGE value="[dev]move websites on this" />
@@ -1005,7 +981,8 @@
     <MESSAGE value="[fix]update some css on /front/pages/adIntention.phtml and update some image static resource" />
     <MESSAGE value="[fix]fix pages/adIntention css" />
     <MESSAGE value="[dev] add tipOffFeedBack" />
-    <option name="LAST_COMMIT_MESSAGE" value="[dev] add tipOffFeedBack" />
+    <MESSAGE value="[dev】upload mulitifile on tipoff_feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="[dev】upload mulitifile on tipoff_feedback" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1014,21 +991,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/test.md" />
-    <entry file="file://$PROJECT_DIR$/tests/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="827" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="935" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/pages/index.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4158">
-          <caret line="231" column="14" lean-forward="false" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/pages/adIntention.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1146,7 +1108,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,7 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,7 +1122,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,7 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,7 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,7 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,7 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1278">
           <caret line="71" column="58" lean-forward="false" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1226,7 +1181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
           <caret line="110" column="35" lean-forward="false" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,7 +1188,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="109" column="9" lean-forward="false" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1242,7 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="96" column="8" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1266,7 +1218,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,57 +1229,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="90" column="55" lean-forward="false" selection-start-line="90" selection-start-column="55" selection-end-line="90" selection-end-column="55" />
-          <folding>
-            <element signature="e#4868#4874#0#HTML" expanded="false" />
-            <element signature="e#4874#4880#0#HTML" expanded="false" />
-            <element signature="e#4883#4889#0#HTML" expanded="false" />
-            <element signature="e#4889#4895#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/app.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="427">
-          <caret line="501" column="120" lean-forward="false" selection-start-line="501" selection-start-column="117" selection-end-line="501" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MetaDataController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helper/ValidationHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/json/json.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="1404">
           <caret line="78" column="23" lean-forward="false" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/TipOffController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="99" column="47" lean-forward="false" selection-start-line="99" selection-start-column="47" selection-end-line="99" selection-end-column="47" />
-          <folding>
-            <element signature="e#114#140#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1347,7 +1252,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/TipOffFeedbackService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
+        <state relative-caret-position="774">
           <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
           <folding />
         </state>
@@ -1355,7 +1260,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ImageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="612">
           <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="25" />
           <folding />
         </state>
@@ -1363,24 +1268,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dependencies.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="92" column="2" lean-forward="true" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="2" selection-end-line="208" selection-end-column="5" />
+        <state relative-caret-position="1656">
+          <caret line="92" column="2" lean-forward="false" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/tipOffFeedbacks.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="148" column="62" lean-forward="false" selection-start-line="148" selection-start-column="62" selection-end-line="148" selection-end-column="62" />
+        <state relative-caret-position="252">
+          <caret line="161" column="0" lean-forward="true" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/MetaDataService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/MetaData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="24" column="10" lean-forward="false" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helper/ValidationHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/MetaDataController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/TipOffController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="101" column="45" lean-forward="false" selection-start-line="101" selection-start-column="45" selection-end-line="101" selection-end-column="45" />
+          <folding>
+            <element signature="e#114#140#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/app.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="427">
+          <caret line="556" column="263" lean-forward="false" selection-start-line="556" selection-start-column="263" selection-end-line="556" selection-end-column="263" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="196" column="23" lean-forward="true" selection-start-line="196" selection-start-column="23" selection-end-line="196" selection-end-column="23" />
           <folding />
         </state>
       </provider>

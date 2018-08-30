@@ -52,4 +52,17 @@ class ValidationHelper
         if(!in_array($examiner,$arr)) throw new \Exception($name);
     }
 
+    /**
+     * @param array $checked
+     * @param $errMsg
+     * @throws \Exception
+     */
+    public static function checkIsInTable(array $checked, $errMsg){
+        foreach ($checked as $value){
+            if(!$value){
+                throw new \Exception($errMsg);
+            }
+        }
+    }
+
 }
