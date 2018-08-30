@@ -115,7 +115,7 @@
                             var id = full.id;
                             var isHandle = full.isHandle;
 
-                            if(isHandle == 'pending'){
+                            if (isHandle == 'pending') {
 
                                 return "<button type='button' class='handle ui button primary' id='" + id + "'>handle</button>"
                             }
@@ -124,14 +124,14 @@
                         }
                     },
                     {
-                        "targets":11,
-                        "render":function (data, type, full, meta) {
+                        "targets": 11,
+                        "render": function (data, type, full, meta) {
 
-                            if(data == 'done'){
+                            if (data == 'done') {
                                 return "<div class='bg-primary-gradient text-center'>done<i class='fa fa-thumbs-o-up fa-fw'></i></div>";
                             }
 
-                            if(data == 'pending'){
+                            if (data == 'pending') {
                                 return "<div class='bg-warning-gradient text-center'>pending<i class='fa fa-warning fa-fw'></i></div>";
                             }
 
@@ -140,9 +140,15 @@
                         }
                     },
                     {
-                        "targets":7,
-                        "render":function (data,type,full,meta) {
-                            return "<img src='/uploads/"+data+"'>";
+                        "targets": 7,
+                        "render": function (data, type, full, meta) {
+                            let result = "";
+                            data = JSON.parse(data);
+                            console.log(data);
+                            data.forEach(function (value, index, arr) {
+                                result += "<img src='/uploads/" + value + "' width='100px'/>";
+                            })
+                            return result;
                         }
                     }
                 ]
@@ -174,7 +180,7 @@
                     error: function (result) {
                         btn.removeClass('loading');
                         var exception = result.responseJSON.exception;
-                        if(exception){
+                        if (exception) {
                             $('#alert-message').append(exception);
                             $('#alert-message').removeClass('hidden');
                             $('#alert-message').addClass('show');

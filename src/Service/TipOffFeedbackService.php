@@ -47,7 +47,7 @@ class TipOffFeedbackService
         $tipOff->setAdvise($data['advise']?:"");
         $tipOff->setDetail($data['detail']);
         $tipOff->setOtherDetail($data['otherDetail']?:"");
-        $tipOff->setPicture($data['singeFile']);
+        $tipOff->setPicture($data['picture']);
         $tipOff->setIsHandle(TipOffFeedback::$pending);
 
         $this->em->persist($tipOff);

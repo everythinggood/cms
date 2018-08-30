@@ -10,6 +10,7 @@ namespace Cms\Controller;
 
 
 use Cms\Helper\FileHelper;
+use Cms\Helper\MatchHelper;
 use Cms\Helper\ValidationHelper;
 use Cms\Service\TipOffFeedbackService;
 use Doctrine\ORM\EntityManager;
@@ -55,10 +56,10 @@ class TipOffController
      * @return ResponseInterface|Response
      * @throws \Exception
      */
-    public function add(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function add(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
 
-        /** @var Request $request*/
-        $params = $request->getParams();
+        /** @var Request $request */
 
         $userName = $request->getParam('userName');
         $phone = $request->getParam('phone');
@@ -70,33 +71,45 @@ class TipOffController
         $machineCode = $request->getParam('machineCode');
         $advise = $request->getParam('advise');
         $uploadedFiles = $request->getUploadedFiles();
-        $singeFile = null;
+        $multipleFiles = [];
         /** @var UploadedFile $uploadedFile */
-        $uploadedFile = $uploadedFiles['singeFile'];
-        if ($uploadedFile && $uploadedFile->getError() === UPLOAD_ERR_OK) {
-            $filename = FileHelper::moveUploadedFile($this->uploadDirectory, $uploadedFile);
-            $singeFile = $filename;
+        $uploadedMultipleFiles = $uploadedFiles['multipleFiles'];
+        /** @var UploadedFile $uploadedFile */
+        foreach ($uploadedMultipleFiles as $uploadedFile){
+            if ($uploadedFile && $uploadedFile->getError() === UPLOAD_ERR_OK) {
+                $filename = FileHelper::moveUploadedFile($this->uploadDirectory, $uploadedFile);
+                $multipleFiles[] = $filename;
+            }
         }
 
-        ValidationHelper::checkIsNull($userName,'uerName');
-        ValidationHelper::checkIsNull($phone,'phone');
-        ValidationHelper::checkIsNull($wxId,'wxId');
-        ValidationHelper::checkIsNull($province,'province');
-        ValidationHelper::checkIsNull($city,'city');
-        ValidationHelper::checkIsNull($detail,'detail');
-        ValidationHelper::checkIsNull($machineCode,'machineCode');
-        ValidationHelper::checkIsNull($singeFile,'file');
+        ValidationHelper::checkIsNull($userName, 'uerName');
+        ValidationHelper::checkIsNull($phone, 'phone');
+        ValidationHelper::checkIsNull($wxId, 'wxId');
+        ValidationHelper::checkIsNull($province, 'province');
+        ValidationHelper::checkIsNull($city, 'city');
+        ValidationHelper::checkIsNull($detail, 'detail');
+        ValidationHelper::checkIsNull($machineCode, 'machineCode');
+        ValidationHelper::checkIsTrue($multipleFiles, 'picture');
+
+        ValidationHelper::checkIsTrue(MatchHelper::isPhone($phone),'非法手机号码');
+
+        if(strlen($machineCode) != 16){
+            throw new \Exception("非法机器唯一码，应为16位");
+        }
+
+        $picture = json_encode($multipleFiles);
 
         $tipOffService = new TipOffFeedbackService($this->container[EntityManager::class]);
-        $tipOff = $tipOffService->createTipOff(compact('userName','phone','wxId','province','city','detail','otherDetail','machineCode','advise','singeFile'));
+        $tipOff = $tipOffService->createTipOff(compact('userName', 'phone', 'wxId', 'province', 'city', 'detail', 'otherDetail', 'machineCode', 'advise', 'picture'));
 
         /** @var Response $response */
         return $response->withJson([
-            'data'=>$tipOff
+            'data' => $tipOff
         ]);
     }
 
-    public function findAll(ServerRequestInterface $request,ResponseInterface $response,array $args){
+    public function findAll(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
 
 
         $tipOffService = new TipOffFeedbackService($this->container[EntityManager::class]);
@@ -104,7 +117,7 @@ class TipOffController
 
         /** @var Response $response */
         return $response->withJson([
-            'data'=>$tipOffs
+            'data' => $tipOffs
         ]);
     }
 
@@ -112,23 +125,24 @@ class TipOffController
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @param array $args
-     * @return static
+     * @return Response
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Exception
      */
-    public function handle(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function handle(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
         /** @var Request $request */
         $id = $request->getParam('id');
 
-        ValidationHelper::checkIsNull($id,'id');
+        ValidationHelper::checkIsNull($id, 'id');
 
         $tipOffService = new TipOffFeedbackService($this->container[EntityManager::class]);
         $tipOff = $tipOffService->handle($id);
 
         /** @var Response $response */
         return $response->withJson([
-           'data'=>$tipOff
+            'data' => $tipOff
         ]);
     }
 

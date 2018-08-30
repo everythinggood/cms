@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div style="display: flex;flex-direction: column;justify-content: center;align-content: center;">
         <div style="text-align: center;">
-            <img src="/static/img/bg/logo.jpg" alt="标志" width="20%">
+            <img src="/static/img/bg/logo.jpg" alt="标志" width="10%">
         </div>
         <div style="color: #ffc107;text-align: center;font-size: 30px;font-weight: bolder; font-family: 'PT Sans';">
             <label style="display: block;" for="">纸色免费纸巾</label>
@@ -55,7 +55,7 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 设备唯一码<i style="color: red;">*</i>
             </label>
-            <input type="text" class="form-control" name="machineCode" id="machineCode" placeholder="请填写设备二维码下方的代码，格式为【1+纯数字】" >
+            <input type="text" class="form-control" name="machineCode" id="machineCode" placeholder="请填写设备二维码下方的代码，例如【1012171229000010】" >
         </div>
         <div class="form-group">
             <label for="detail" class="text-white p-1">
@@ -83,8 +83,9 @@
                 <i class="fa fa-pencil fa-fw"></i>
                 请上传照片凭证<i style="color: red;">*</i>
             </label>
-            <input type="file" id="photo" class="form-control" name="singeFile"
-                   accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff" >
+            <input type="file" id="photo" class="form-control" name="multipleFiles[]"
+                   accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp,image/psd,image/tiff"
+                    multiple="multiple">
         </div>
         <div class="form-group">
             <label for="advise" class="text-white p-1">
