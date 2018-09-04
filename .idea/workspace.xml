@@ -46,17 +46,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tipOffFeedback.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tipOffFeedback.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="69" column="39" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+            <state relative-caret-position="150">
+              <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
               <folding>
                 <element signature="e#6076#6082#0#HTML" expanded="true" />
                 <element signature="e#6082#6088#0#HTML" expanded="true" />
                 <element signature="e#6091#6097#0#HTML" expanded="true" />
                 <element signature="e#6097#6103#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -241,7 +251,6 @@
         <option value="$PROJECT_DIR$/src/Entity/TipOffFeedback.php" />
         <option value="$PROJECT_DIR$/src/Controller/ViewController.php" />
         <option value="$PROJECT_DIR$/templates/admin/ex/asider.phtml" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Service/TipOffFeedbackService.php" />
         <option value="$PROJECT_DIR$/src/Controller/ImageController.php" />
         <option value="$PROJECT_DIR$/src/dependencies.php" />
@@ -251,6 +260,7 @@
         <option value="$PROJECT_DIR$/src/Controller/MetaDataController.php" />
         <option value="$PROJECT_DIR$/src/Controller/TipOffController.php" />
         <option value="$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -551,14 +561,7 @@
       <workItem from="1535524302652" duration="13331000" />
       <workItem from="1535611392804" duration="3476000" />
       <workItem from="1535622047079" duration="3679000" />
-      <workItem from="1536054696325" duration="153000" />
-    </task>
-    <task id="LOCAL-00023" summary="[HotFix]fix">
-      <created>1532514648339</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1532514648339</updated>
+      <workItem from="1536054696325" duration="437000" />
     </task>
     <task id="LOCAL-00024" summary="[HotFix]fix">
       <created>1532514877012</created>
@@ -896,11 +899,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535625883092</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="[fix] add two options on select in tipOffFeedback.phtml">
+      <created>1536054892155</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1536054892156</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="346842000" />
+    <option name="totallyTimeSpent" value="347126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1299" height="743" extended-state="6" />
@@ -960,7 +970,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[dev]update .gitignore" />
     <MESSAGE value="[dev]move websites on this" />
     <MESSAGE value="[dev]move website imgs on this" />
     <MESSAGE value="[fit]fit controller on activity" />
@@ -985,7 +994,8 @@
     <MESSAGE value="[dev] add tipOffFeedBack" />
     <MESSAGE value="[dev】upload mulitifile on tipoff_feedback" />
     <MESSAGE value="[dev]upload file hot fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="[dev]upload file hot fix" />
+    <MESSAGE value="[fix] add two options on select in tipOffFeedback.phtml" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fix] add two options on select in tipOffFeedback.phtml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1212,13 +1222,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Request.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1341,14 +1344,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/front/Q&amp;A/tipOffFeedback.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="69" column="39" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        <state relative-caret-position="150">
+          <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
           <folding>
             <element signature="e#6076#6082#0#HTML" expanded="true" />
             <element signature="e#6082#6088#0#HTML" expanded="true" />
             <element signature="e#6091#6097#0#HTML" expanded="true" />
             <element signature="e#6097#6103#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

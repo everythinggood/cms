@@ -247,6 +247,7 @@
         onSuccess: function (ret) {
             picture = picture.concat(ret.responseData.multipleFiles);
             console.log(picture);
+            document.getElementById('uploadCount').innerHTML = uploadCount;
             // return true; // 阻止默认行为，不使用默认的成功态
         },
         onError: function(err){
