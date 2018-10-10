@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<?php include __DIR__ . '/../ex/head.phtml'; ?>
+<body style="background-color: #8451d8;">
+<div class="container-fluid"
+     style="position:relative;border: none;padding: 0;margin: 0;background-image: url('/static/img/temp/setMenuTemp.jpg');background-repeat:no-repeat;background-size: cover;height:1700px;">
+    <div id="intention-btn"
+         style="background-image: url('/static/img/temp/intention-btn.jpg');position: absolute;bottom: 8%;left:26%;background-size: cover;height: 54px;width: 160px;"></div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex">
+                        <a class="flex-fill text-dark" href="/front/view/sellerIntention">
+                            纸巾机合作
+                        </a>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        <a class="flex-fill text-dark" href="/front/view/adIntention">
+                            广告合作
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script src="/static/jquery-3.2.1.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+<script>
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $(this).css('display', 'block');
+        var modalHeight=$(window).height() / 2 - $('#myModal .modal-dialog').height() / 2;
+        $(this).find('.modal-dialog').css({
+            'margin-top': modalHeight
+        });
+    });
+
+    $('#intention-btn').click(function(){
+        $('#myModal').modal('toggle');
+    })
+</script>
+</body>
+</html>

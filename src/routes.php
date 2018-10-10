@@ -36,7 +36,7 @@ $app->group('/admin', function () {
 
     $this->get('/userFeedbacks', \Cms\Controller\UserFeedBackController::class . ":findAll");
 
-    $this->get('/tipOffFeedbacks',\Cms\Controller\TipOffController::class.':findAll');
+    $this->get('/tipOffFeedbacks', \Cms\Controller\TipOffController::class . ':findAll');
 
     $this->post('/question/pushTop', \Cms\Controller\QuestionController::class . ":pushTop");
 
@@ -177,6 +177,9 @@ $app->group('/front/view', function () {
     $this->get('/adIntentionLook', \Cms\Controller\FrontViewController::class . ':adIntentionLook');
     $this->get('/deviceInfo', \Cms\Controller\FrontViewController::class . ':deviceInfo');
     $this->get('/jobInfo', \Cms\Controller\FrontViewController::class . ':jobInfo');
+    //临时页面
+    $this->get('/pageTemp', \Cms\Controller\FrontViewController::class . ':pageTemp');
+    $this->get('/setMenuTemp', \Cms\Controller\FrontViewController::class . ':setMenuTemp');
 
 });
 

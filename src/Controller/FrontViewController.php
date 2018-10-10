@@ -396,5 +396,15 @@ class FrontViewController
         return $this->view->render($response, '/front/activity/myWorks.phtml', compact('myWorkVote', 'resultTop', 'voteFlag', 'jsSdk', 'activity'));
     }
 
+    public function pageTemp(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+
+        return $this->view->render($response, '/front/temp/pageTemp.phtml');
+    }
+
+    public function setMenuTemp(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        return $this->view->render($response, '/front/temp/setMenuTemp.phtml');
+    }
 
 }
