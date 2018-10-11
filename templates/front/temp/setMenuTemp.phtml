@@ -3,9 +3,9 @@
 <?php include __DIR__ . '/../ex/head.phtml'; ?>
 <body style="background-color: #8451d8;">
 <div class="container-fluid"
-     style="position:relative;border: none;padding: 0;margin: 0;background-image: url('/static/img/temp/setMenuTemp.jpg');background-repeat:no-repeat;background-size: contain;height:1700px;">
+     style="position:relative;border: none;padding: 0;margin: 0;background-image: url('/static/img/temp/setMenuTemp.jpg');background-repeat:no-repeat;background-size: 100% 100%;height:1700px;">
     <div id="intention-btn"
-         style="background-image: url('/static/img/temp/intention-btn.jpg');position: absolute;bottom: 8%;left:26%;background-size: cover;height: 54px;width: 160px;"></div>
+         style="background-image: url('/static/img/temp/intention-btn.jpg');position: absolute;bottom: 150px;left:25%;background-size: cover;height: 70px;width: 220px;"></div>
 </div>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -32,6 +32,10 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="/plugins/bootstrap/js/bootstrap.js"></script>
 <script>
+    var btnLeftPosition = $(window).width()/2 - $('#intention-btn').width()/2;
+    $('#intention-btn').css({
+        'left' : btnLeftPosition
+    });
     $('#myModal').on('shown.bs.modal', function (e) {
         $(this).css('display', 'block');
         var modalHeight=$(window).height() / 2 - $('#myModal .modal-dialog').height() / 2;
